@@ -1,5 +1,5 @@
 <?php
-include 'article.php';
+include 'Article.php';
 
 class ArticlesModel {
     public $string;
@@ -23,11 +23,10 @@ class ArticlesModel {
                 ,$row['article_image']
                 ,$row['article_status']
                 ,$row['article_type']
-                );
+            );
             $articles[] = $article;
         }
         return $articles;
-
     }
 
 }

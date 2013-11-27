@@ -9,7 +9,7 @@ echo $url = $_GET['url'];
 $page = $_GET['page'];
 
 /*  @IAPT If the page requested is not the index page, then we will need to do something */
-if (!empty($page) && $page !== "index"){
+if (!empty($page)){
 
     /*  @IAPT For each of the pages in our website, we create a view, a controller and a model.  When
     *   someone requests the page, we instnce a version of each of those to run the page */
@@ -29,10 +29,9 @@ if (!empty($page) && $page !== "index"){
         $view = new VideosView($controller, $model);
         echo $view->output();
      }*/
-}
-else
-{
-    include 'home.php';
+} else {
+    //include 'home.php';
+    header("Location: index.php?page=articles");
 }
 
 
