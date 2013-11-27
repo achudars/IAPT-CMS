@@ -1,7 +1,4 @@
-<?php
-    include 'views/header.html.php';
-    include_once("views/articlesView.php");
-?>
+<?php include 'views/header.html.php'; ?>
 
 <div class="container">
     <ol>

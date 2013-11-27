@@ -31,7 +31,7 @@
                 <!-- @IAPT: A basic navigation list which is modified by CSS to be horizontal - note the use of the class .navlist -->
                 <ul class="navlist">
                     <li><a href="?page=index">Home</a></li>
-                    <li><a href="?page=books">Articles</a></li>
+                    <li><a href="?page=articles">Articles</a></li>
                     <li><a href="?page=register">Register</a></li>
                     <li><a href="?page=login">Login</a></li>
                     <li><a href="?page=list">List</a></li>
