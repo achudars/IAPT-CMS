@@ -1,23 +1,34 @@
 <?php
-include_once("config/connection.php");
 include 'article.php';
 
 class ArticlesModel {
-	public $string;
+    public $string;
 
-	public function __construct(){
-		$this->string= "articles";
-	}
+    public function __construct(){
+        $this->string= "articles";
+    }
 
-	public function getArticles( $article_id ){
-		global $pdo;
 
-    	$query = $pdo->prepare( "SELECT * FROM articles WHERE article_id = ?" );
-        $query->bindValue( 1, $article_id );
-        $query->execute();
+    public function getArticles(){
+        $pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
+        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
+        $sth->execute(array(':type'=>'article'));
+        $rows = $sth->fetchAll();
 
-        return $query->fetch();
-	}
+        foreach($rows as $row){
+            $article = new Article(
+                 $row['article_title']
+                ,$row['article_content']
+                ,$row['article_timestamp']
+                ,$row['article_image']
+                ,$row['article_status']
+                ,$row['article_type']
+                );
+            $articles[] = $article;
+        }
+        return $articles;
+
+    }
 
 }
 

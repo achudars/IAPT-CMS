@@ -8,9 +8,8 @@ require 'controllers/articlesController.php';
 require 'models/articlesModel.php';
 require 'views/articlesView.php';
 
-require_once("controllers/controller.php");
-require_once("models/model.php");
-require_once("views/view.php");
-
+// Report all errors except E_NOTICE
+// This is the default value set in php.ini
+error_reporting(E_ALL ^ E_NOTICE);
 
  ?>
