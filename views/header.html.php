@@ -7,9 +7,9 @@
         Remove this if you use the .htaccess -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title>Congo Online Shop - Home</title>
+        <title>IAPT CMS</title>
         <meta name="description" content="">
-        <meta name="author" content="Christopher Power">
+        <meta name="author" content="">
 
         <meta name="viewport" content="width=device-width; initial-scale=1.0">
 
@@ -24,7 +24,7 @@
         <div id ="main">
          <!--@IAPT: HTML5 element header helps add semantic structure the page, telling machines where the top of the page is -->
             <header>
-                <h1>Congo Online Shop</h1>
+                <h1>Articles</h1>
             </header>
             <!--@IAPT: Semantic element nav helps SEO identify key options on the page -->
             <nav>
@@ -35,4 +35,3 @@
                     <li><a href="?page=videos">Videos</a></li>
                 </ul>
             </nav>
-            

@@ -1,17 +1,12 @@
-<?php 
+<?php
 
 // Config
 require 'config/database.php';
 
-// MVC Books
-require 'controllers/booksController.php';
-require 'models/booksModel.php';
-require 'views/booksView.php';
-
-// MVC Videos
-require 'controllers/videosController.php';
-require 'models/videosModel.php';
-require 'views/videosView.php';
+// MVC Articles
+require 'controllers/articlesController.php';
+require 'models/articlesModel.php';
+require 'views/articlesView.php';
 
 
  ?>

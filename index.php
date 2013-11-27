@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /* 	@IAPT Bring in the includes - the list was getting kind of long and is needed on most pages,
 * 	so let's bring it in one file just to make including a do-it-once */
@@ -13,24 +13,24 @@ if (!empty($page) && $page !== "index"){
 
 	/* 	@IAPT For each of the pages in our website, we create a view, a controller and a model.  When
 	*	someone requests the page, we instnce a version of each of those to run the page */
-	 if ($page == "books")
+	 if ($page == "articles")
 	 {
-	 	
-	 	$model = new BooksModel();
-	 	$controller = new BooksController($model);
-	 	$view = new BooksView($controller, $model);
+
+	 	$model = new ArticleModel();
+	 	$controller = new ArticleController($model);
+	 	$view = new ArticleView($controller, $model);
 	 	echo $view->output();
-	 } 
-	 /* @IAPT We do the same as we did for books with the Videos link */
-	 else if ($page == "videos")
+	 }
+	 /* @IAPT We do the same as we did for Article with the Videos link */
+/*	 else if ($page == "videos")
 	 {
 	 	$model = new VideosModel();
 	 	$controller = new VideosController($model);
 	 	$view = new VideosView($controller, $model);
 	 	echo $view->output();
-	 } 
-} 
-else 
+	 } */
+}
+else
 {
 	include 'home.php';
 }
@@ -44,7 +44,7 @@ else
 // 		$v = $value['view'];
 // 		$c = $value['controller'];
 // 		break;
-// 	} 
+// 	}
 // }
 
 
