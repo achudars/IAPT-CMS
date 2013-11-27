@@ -3,7 +3,7 @@
 // Config
 require 'config/database.php';
 
-// MVC Articles
+// MVC articles
 require 'controllers/articlesController.php';
 require 'models/articlesModel.php';
 require 'views/articlesView.php';

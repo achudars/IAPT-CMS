@@ -24,14 +24,19 @@
         <div id ="main">
          <!--@IAPT: HTML5 element header helps add semantic structure the page, telling machines where the top of the page is -->
             <header>
-                <h1>Articles</h1>
+
             </header>
             <!--@IAPT: Semantic element nav helps SEO identify key options on the page -->
             <nav>
                 <!-- @IAPT: A basic navigation list which is modified by CSS to be horizontal - note the use of the class .navlist -->
                 <ul class="navlist">
                     <li><a href="?page=index">Home</a></li>
-                    <li><a href="?page=books">Books</a></li>
-                    <li><a href="?page=videos">Videos</a></li>
+                    <li><a href="?page=books">Articles</a></li>
+                    <li><a href="?page=register">Register</a></li>
+                    <li><a href="?page=login">Login</a></li>
+                    <li><a href="?page=list">List</a></li>
+                    <li><a href="?page=submit">Submit</a></li>
+                    <li><a href="?page=check">Check</a></li>
+                    <li><a href="?page=admin">Admin</a></li>
                 </ul>
             </nav>

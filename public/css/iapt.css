@@ -1,222 +1,28 @@
-/* 
-Colour Scheme:
-Tope - F5D0AA - distinctive areas/text for bars
-Orange - F19231 - highlights
-Deep Red - 9A2720 - bars and structure
-Deep Purple - 571D69 - accents 
-
-*/
-
-
 /* This section resets all elements; in this case all boxes will
  * now be set to be the size specified, regardless of border or
- * padding being provided.  It makes layout of comparable boxes 
+ * padding being provided.  It makes layout of comparable boxes
  * with different types of formatting easier. */
-* { 
+* {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-
-/* Setting myself up some fonts.  The font size of 62.5% sets my
- * font to be exactly 10px.  Default font size is 16px.  Why do we
- * do this? 
- * It allows me to use em as a unit easily in place of pixels (px) or point (pt)
- * in my fonts and layout.  Now 1.0em == 100% == 10px == 8pt, and so if I want
- * to make everything 200% bigger, I can specify 2.0em, which displays more
- * reliably in most major browsers.    Useful conversions available at: http://pxtoem.com/
- */
 body {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 62.5%;
 }
 
-/* An old school div class element for main content.  This can be replaced by the
- * HTML5 extension <main> if I so choose.
- * 900 px sets the maximum size that my screen can go.  This is becoming more common
- * in websites, making them fixed layout.  This has potential consequences down the road,
- * in particular if people resize the stuff inside the that main section a lot, it will 
- * spill out the edges.  The alternative is to use a fluid layout.
- */
-#main {
-  	max-width: 900px;
-  	margin: 0 auto;
-  	color: #000;
-  	font-size: 1.2em;
-}
 
-/* Setting up different sizes of headings.  Note the use of em in each.  I can control
- * the relative size of the headings, while also allowing them to be flexible if the
- * user chooses to resize the content in the screen.
- */
-h1 {
-	font-size: 2em;
+nav li {
+	list-style: none;
+	display: inline-block;
+	background: navy;
+	border-radius: 3px;
 }
-
-h2 {
-	font-size: 1.6em;
-}
-
-h3 {
-	font-size: 1.4em;
-}
-
-h4 {
-	font-size: 1.2em;
-}
-
-/* I really want my introductory text to be black, no matter what else happens. */
-.intro {
-	color: #000;
-}
-
-/* This is the header section. Providing the red colour for the website, a maximum width is
- * the full 900px that we specific for the main.  Remember, these elements cascade, my header
- * is inside of the main content area - and as a result anything like 100% will be relative to
- * what is set there.
- */
-header {
-	max-width: 100%;
-	padding: 1em;
-	border: 1em solid #9A2720;
-	height: 10em;
-	margin: .1em 0em 0em 0em;
-	background: #9A2720;
-	font-weight: bold;
-	color: #fff;
-	
-	-moz-border-radius: 1.5em;
-	border-radius: 1.5em;
-}
-
-/* Setting up some nice navigation using a semantic element nav */
-nav {
-	max-width: 100%;
-	color: #9A2720;
-	border-bottom: .3em solid #9A2720;
-	background: #fff;
-}
-
-/* Now I style the list inside; I get rid of any margins or padding, so it will be completely flush to the
- * edge, then I centre the whole thing.  I also remove any bullets.
- */
-.navlist{
-    list-style:none;
-    margin:0;
-    padding:0;
-	text-align:center;
-}
-
-/* I change all of my list items in the nav list to not be block elements, but instead inline elements
- * so that they will be next to each other.
- */
-.navlist li{
-    display:inline;
-}
-
-/* This is for styling the text inside the list elements.  All text in the list elements are contained in
- * links, and as a result I need to set styles in a cascading way down to the anchor element <a>
- */
-.navlist a{
-    display:inline-block;
-    padding:1em;
+nav li a {
 	text-decoration: none;
-	font-size: 1.2em;
-	font-weight: bold;
-	color: #9A2720;
+	color: #FFF;
+	padding: 2em;
+	font-size: 200%;
 }
-
-/* My featured area will take up 100% of the screen, but I want it slightly indended.  Remember the setting of the
- *  '*' at the top that makes sure everything sizes properly?  This is where it becomes useful.  The box will be ever
- * so slightly shrunk to accommodate the margin.
- */
-.featured{
-	width: 100%;
-	margin: .5em .5em 0em 0em;
-	
-}
-
-/* Here I change the position, colour and visual emphasis of the text.  It inherits the size from the previous h2
- * specification previously in the file.
- */
-.featured h2 {
-	color: #571D69;
-	font-weight: bold;
-	margin: .5em 1em 0em 0em;
-	padding: .2em;
-}
-
-/* The following specifications (up until footer) set all of the features of the individual boxes for
- * books/products - given them the bordered box with rounded corners and a slight shadow, and adjusting
- * the presentation of the text slightly each time.
- */ 
-.product {
-	width: 90%;
-	margin: .5em auto;
-	padding: .2em;
-	border: .1em solid #333;
-	-moz-box-shadow: 0 0 .5em #888;
-	-webkit-box-shadow: 0 0 .5em #888;
-	box-shadow: 0 0 .5em #888;	
-	-moz-border-radius: 1.5em;
-	border-radius: 1.5em;
-	
-}
-
-.product h3{
-	color: #9A2720;
-	font-weight: bold;
-	margin: .2em;
-	padding: .2em;
-}
-
-.product h4{
-	font-style: italic;
-	margin: .2em;
-	padding: .2em;
-	margin-left: .5em;
-}
-
-
-.product .details {
-	float: left;
-	width: 50%;
-	margin: .1em auto;
-	padding: .1em;
-}
-
-.product .highlights{
-	float: right;
-	width: 50%;
-	margin: .1em auto;
-	padding: .1em;
-}
-
-.product .glance {
-	clear: both;
-}
-
-.product .glance p{
-	margin-left: 1em;
-}
-
-/* And we close with a footer that looks like the header.  In this one I have put the footer in em instead
- * of pixels just to demonstrate that it can be done a lot of different ways - this is not necessarily the best
- * practice!
- */
-footer { 
-	max-width: 90em;
-	border: .1em solid #ccc;
-	background: #9A2720;
-	margin: 0em 0em .1em 0em;
-	padding: 1em;
-	clear: both;
-	font-weight: bold;
-	color: #fff;
-	-moz-border-radius: 1.5em;
-	border-radius: 1.5em;
-	
-}
-
-

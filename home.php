@@ -1,24 +1,25 @@
-<?php include 'views/header.html.php'; ?>
+<?php
+    include 'views/header.html.php';
+    include_once("views/articlesView.php");
+?>
 
 <div class="container">
-    <a href="index.php" id="logo">CMS</a>
-
-    <h4>Delete an article</h4>
-
-    <?php if ( isset($error) ) { ?>
-    <small style="color:#aa0000"><?php echo $error; ?></small>
-    <?php } ?>
-
-    <form action="delete.php" method="get">
-        <select  name="id">
-            <?php foreach ($articles as $article) { ?>
-            <option value="<?php echo $article['article_id']; ?>">
+    <ol>
+        <?php foreach( $articles as $article ) { ?>
+        <li>
+            <a href="article.php?id=<?php echo $article['article_id']?>">
                 <?php echo $article['article_title']; ?>
-            </option>
-            <?php } ?>
-        </select>
-        <input type='submit' value='Delete'>
-    </form>
+            </a>
+            - <small>
+            <!-- l = short version of the day, jS = th, nd-->
+            posted <?php echo date("l jS", $article["article_timestamp"]); ?>
+        </small>
+    </li>
+    <?php } ?>
+</ol>
+<br />
+
+<small><a href="admin">ADMIN</a></small>
 
 </div>
 
