@@ -1,11 +1,13 @@
 <?php
 
-class Model {
+class Model
+{
     public $string;
 
     public function __construct(){
-        $this->string = "MVC + PHP = Awesome!";
+        $this->string = "MVC + PHP is Awesome, click here!";
     }
+
 }
 
 ?>
