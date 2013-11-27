@@ -2,9 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
-        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-        Remove this if you use the .htaccess -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
         <title>IAPT CMS</title>
@@ -18,15 +15,11 @@
     </head>
 
     <body>
-		<!-- @IAPT: Extra div element id with main could be replaced by HTML5 extension spec <main> -->
-        <div id ="main">
-         <!--@IAPT: HTML5 element header helps add semantic structure the page, telling machines where the top of the page is -->
+        <main>
             <header>
 
             </header>
-            <!--@IAPT: Semantic element nav helps SEO identify key options on the page -->
             <nav>
-                <!-- @IAPT: A basic navigation list which is modified by CSS to be horizontal - note the use of the class .navlist -->
                 <ul class="navlist">
                     <li><a href="?page=articles">Home</a></li>
                     <li><a href="?page=register">Register</a></li>
