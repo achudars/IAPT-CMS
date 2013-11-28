@@ -40,7 +40,7 @@ if (isset($_POST["username"], $_POST["password"])) {
 
 <h1>LOGIN</h1>
 
-<div class="form-content">
+<div class="form-content login">
 
     <div class="left untouchable">
         <div class="pull-right">

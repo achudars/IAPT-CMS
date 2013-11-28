@@ -163,8 +163,13 @@ ol {
  	background-size: cover;
  }
 
-.form-content {
+.form-content.login {
 	background: #6BBBFF;
+	display: inline-block;
+ 	width: 100%;
+}
+.form-content.register {
+	background: #FFF;
 	display: inline-block;
  	width: 100%;
 }
@@ -177,9 +182,13 @@ ol {
  	height: 100%;
  }
 
- .right {
+ .login .right {
  	 background: #FFF;
  }
+ .register .right {
+ 	 background: #6BBBFF;
+ }
+
  .left p, .right input {
  	height: 20px;
  	font-size: 20px;
@@ -189,24 +198,45 @@ ol {
  	margin: 1em 0;
  	padding: 1em;
  	background: none;
- 	color: #FFF;
  	width: 15em;
  }
- .right input {
+  .right input[type="submit"]:hover {
+ 	cursor: pointer;
+ }
+
+ .login .right input {
  	border: 1px solid #6BBBFF;
  	border-left: none;
  	color: #6BBBFF;
  }
- .right input[type="submit"] {
+ .login .right input[type="submit"] {
  	width: 30em;
  	margin-left: -15em;
  	background: #FFF;
  }
- .right input[type="submit"]:hover {
- 	cursor: pointer;
- }
- .left p {
+
+ .login .left p {
  	border: 1px solid #FFF;
  	border-right: none;
  	text-align: right;
+ 	color: #FFF;
+ }
+
+ .register .right input {
+ 	border: 1px solid #FFF;
+ 	border-left: none;
+ 	color: #FFF;
+ }
+ .register .right input[type="submit"] {
+ 	width: 30em;
+ 	margin-left: -15em;
+ 	background: #FFF;
+ 	border: 1px solid #6BBBFF;
+ }
+
+ .register .left p {
+ 	border: 1px solid #6BBBFF;
+ 	border-right: none;
+ 	text-align: right;
+ 	color: #6BBBFF;
  }
