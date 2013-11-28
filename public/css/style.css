@@ -347,3 +347,70 @@ ol {
     padding: 0em 1em;
  }
 
+ .block.article-editor {
+    margin: 0 auto;
+    float: none;
+    font-size: 200%;
+    width: 700px;
+ }
+ .block.article-editor form * {
+    font-family: "Lato", sans-serif;
+    font-size: 100%;
+ }
+ .block.article-editor form > * {
+    padding: 0.5em;
+    border: none;
+    -moz-box-shadow:    #6BBBFF 0px 0px 5px 1px;
+    -webkit-box-shadow: #6BBBFF 0px 0px 5px 1px;
+    box-shadow:         #6BBBFF 0px 0px 5px 1px;
+    color: #222;
+ }
+ .block.article-editor input[type="text"],
+ .block.article-editor input[type="range"] {
+    width:100%;
+    height: 2em;
+    padding: 0.5em;
+ }
+ .block.article-editor textarea {
+    width:100%;
+    padding: 0.5em;
+ }
+ .block.article-editor .col {
+    width: 30%;
+    float: left;
+    height: 130px;
+ }
+ .block.article-editor .col:first-child,
+ .block.article-editor .col:last-child {
+    width: 5%;
+ }
+ .block.article-editor input[type="submit"] {
+    float:left;
+    width: 48%;
+    background: #6BBBFF;
+    color: #FFF;
+    margin: 0.25em;
+ }
+ .block.article-editor input[type="submit"]:hover {
+    cursor: pointer;
+    background: #222;
+    margin: 0.25em;
+ }
+
+ .tag {
+    background: #6BBBFF;
+    color: #FFF;
+    padding: 0.2em;
+    border-radius: 4px;
+ }
+ .tag:hover {
+    cursor: pointer;
+    background: #222;
+ }
+ .tag + input[type="text"] {
+    margin-top: 0.5em;
+    border: none;
+    -moz-box-shadow:    #6BBBFF 0px 0px 5px 1px;
+    -webkit-box-shadow: #6BBBFF 0px 0px 5px 1px;
+    box-shadow:         #6BBBFF 0px 0px 5px 1px;
+ }
