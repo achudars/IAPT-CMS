@@ -14,8 +14,8 @@
         <?php } ?>
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
-            <input id="username" type="text" name="username" autofocus />
-            <input type="password" name="password" />
+            <input id="username" type="text" name="username" autofocus required/>
+            <input type="password" name="password" required />
             <input type="submit" value="Register" />
         </form>
     </div>

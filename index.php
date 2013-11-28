@@ -45,19 +45,19 @@ if (!empty($id)) {
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            echo $view->output_article_fields();
+            echo $view->output_new_article_fields();
             break;
         case "check":
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            echo $view->output();
+            echo $view->output_existing_article_fields();
             break;
         case "admin":
-            $model = new ArticlesModel();
-            $controller = new ArticlesController($model);
-            $view = new ArticlesView($controller, $model);
-            echo $view->output();
+            $model = new UsersModel();
+            $controller = new UsersController($model);
+            $view = new UsersView($controller, $model);
+            echo $view->output_users();
             break;
         case "list":
             $model = new ArticlesModel();

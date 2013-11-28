@@ -21,6 +21,13 @@ class UsersView {
         include 'html/footer.html.php';
 
     }
+
+    public function output_users(){
+        include 'html/header.html.php';
+        $users = $this->model->getAllUsers();
+        include 'html/admin.html.php';
+        include 'html/footer.html.php';
+    }
 }
 
  ?>

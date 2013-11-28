@@ -322,3 +322,28 @@ ol {
  	text-align: right;
  	color: #6BBBFF;
  }
+
+
+ .list-header p {
+    display: inline-block;
+    width: 8.2%;
+ }
+ .list-header + li p {
+    display: inline-block;
+    font-size: 200%;
+    width: 20%;
+    padding: 0.5em 0;
+ }
+ .list-header + li p:before {
+    content: " | ";
+ }
+ .list-header + li {
+    height: 5em;
+    line-height: 0.5em;
+ }
+ .list-header + li div {
+    display: inline-block;
+    font-size: 200%;
+    padding: 0em 1em;
+ }
+

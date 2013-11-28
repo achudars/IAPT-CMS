@@ -1,8 +1,11 @@
-<h1>LIST OF ALL ARTICLES</h1>
+
 
 <div class="content">
     <div class="block list">
         <ol>
+            <li class="list-header">
+                <h1>LIST OF ALL ARTICLES</h1>
+            </li>
             <?php foreach($articles as $article): ?><li>
                 <a href="index.php?id=<?php echo $article->getId(); ?>">
                     <div class="square-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>

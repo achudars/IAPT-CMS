@@ -9,24 +9,23 @@ class UsersModel {
     }
 
 
-    public function getUsers(){
+    public function getAllUsers(){
         global $pdo;
-        /*$sth = $pdo->prepare("SELECT * FROM users WHERE user_type = :type");
-        $sth->execute(array(':type'=>'user'));
-        $rows = $sth->fetchAll();
+
+        $query = $pdo->prepare("SELECT * FROM users");
+        $query->execute();
+        $rows = $query->fetchAll();
 
         foreach($rows as $row){
             $user = new User(
-                 $row['user_title']
-                ,$row['user_content']
-                ,$row['user_timestamp']
-                ,$row['user_image']
-                ,$row['user_status']
+                 $row['user_id']
+                ,$row['user_name']
+                ,$row['user_password']
                 ,$row['user_type']
             );
             $users[] = $user;
         }
-        return $users;*/
+        return $users;
     }
 
 }

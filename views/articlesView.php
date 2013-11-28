@@ -39,9 +39,15 @@ class ArticlesView {
 
 	}
 
-	public function output_article_fields(){
+	public function output_new_article_fields() {
 		include 'html/header.html.php';
 		include 'html/submit.html.php';
+		include 'html/footer.html.php';
+	}
+
+	public function output_existing_article_fields() {
+		include 'html/header.html.php';
+		include 'html/check.html.php';
 		include 'html/footer.html.php';
 	}
 }
