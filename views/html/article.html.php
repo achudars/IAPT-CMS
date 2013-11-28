@@ -7,11 +7,14 @@
         <small>likes: </small>
         <small>dislikes: </small>
         <small>tags: </small>
-        <br />
+        <br /><br />
         <hr>
         <br />
         <p><?php echo $article['article_content']; ?></p>
+        <br />
+        <hr>
     </div>
+
 
     <div class="block article comment">
         <article>

@@ -33,7 +33,9 @@
  	background: #222;
  	color: #FFF;
  	line-height: 0em;
- 	box-shadow: rgba(0,0,0,0.3) 0px 2px 2px -1px;
+ 	-moz-box-shadow:    rgba(0,0,0,0.3) 0px 2px 2px -1px;
+    -webkit-box-shadow: rgba(0,0,0,0.3) 0px 2px 2px -1px;
+ 	box-shadow:         rgba(0,0,0,0.3) 0px 2px 2px -1px;
  }
 
  header h1 {
@@ -112,7 +114,9 @@ ol {
  	position: relative;
  	padding: 1em;
     float: left;
- 	box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+ 	-moz-box-shadow:    0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+    -webkit-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+ 	box-shadow:         0 0 0.1em 0.1em rgba(255,255,255, 0.5);
  	height: 100%;
  }
  .block.list {
@@ -123,7 +127,7 @@ ol {
  	color: #FFF;
  	background: #6BBBFF;
  	padding: 0.25em 0.5em;
- 	font-size: 50%;
+ 	font-size: 70%;
  	border-radius: 3px;
  }
   .block.list button {
@@ -145,6 +149,14 @@ ol {
  	width: 600px;
  	margin: 0 auto;
  }
+
+ .block.article small {
+ 	color: #FFF;
+ 	background: #6BBBFF;
+ 	padding: 0.25em 0.5em;
+ 	font-size: 100%;
+ }
+
  .block h2 {
  	width: 100%;
  	background: #242424;
@@ -171,12 +183,16 @@ ol {
 
  .block ol li {
  	padding: 1em;
- 	box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
+ 	-moz-box-shadow:    rgba(0,0,0,0.5) 0px 0px 5px -1px;
+    -webkit-box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
+ 	box-shadow:         rgba(0,0,0,0.5) 0px 0px 5px -1px;
  	margin: 0.5em auto;
  }
  .block ol li:hover {
  	cursor: pointer;
- 	box-shadow: rgba(0,0,0,1) 0px 0px 5px -1px;
+ 	-moz-box-shadow:    rgba(0,0,0,0.5) 0px 0px 5px -1px;
+    -webkit-box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
+ 	box-shadow:         rgba(0,0,0,0.5) 0px 0px 5px -1px;
  }
 
  .block ol small {
@@ -252,7 +268,9 @@ ol {
  }
   .right input[type="submit"]:hover {
  	cursor: pointer;
- 	box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);;
+ 	-moz-box-shadow:    0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+    -webkit-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+ 	box-shadow:         0 0 0.1em 0.1em rgba(255,255,255, 0.5);
  }
 
  .login .right input {
