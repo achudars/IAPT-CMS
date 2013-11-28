@@ -1,6 +1,6 @@
 <?php
-include_once("config/connection.php");
-include 'Article.php';
+include_once "config/connection.php";
+include_once "Article.php";
 
 class ArticlesModel {
     public $string;
@@ -74,6 +74,14 @@ class ArticlesModel {
             $review_articles[] = $article;
         }
         return $review_articles;
+    }
+
+    public function sortAscending() {
+
+    }
+
+    public function getStaffPicks() {
+
     }
 
 }

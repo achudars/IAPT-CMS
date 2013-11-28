@@ -1,52 +1,27 @@
 <?php
 
 // Config
-require_once("config/database.php");
+require_once "config/database.php";
 
 // MVC articles
-require 'controllers/ArticlesController.php';
-require 'models/ArticlesModel.php';
-require 'views/ArticlesView.php';
+require_once 'controllers/ArticlesController.php';
+require_once 'models/ArticlesModel.php';
+require_once 'views/ArticlesView.php';
 
 // MVC register
-require 'controllers/RegisterController.php';
-require 'models/RegisterModel.php';
-require 'views/RegisterView.php';
+require_once 'controllers/RegisterController.php';
+require_once 'models/RegisterModel.php';
+require_once 'views/RegisterView.php';
 
-/*// MVC login
-require 'controllers/LoginController.php';
-require 'models/LoginModel.php';
-require 'views/LoginView.php';
-
-// MVC submit
-require 'controllers/SubmitController.php';
-require 'models/SubmitModel.php';
-require 'views/SubmitView.php';
-
-// MVC check
-require 'controllers/CheckController.php';
-require 'models/CheckModel.php';
-require 'views/CheckView.php';
-
-// MVC admin
-require 'controllers/AdminController.php';
-require 'models/AdminModel.php';
-require 'views/AdminView.php';
-
-// MVC list
-require 'controllers/ListController.php';
-require 'models/ListModel.php';
-require 'views/ListView.php';
-
-// MVC tutorial
-require 'controllers/TutorialController.php';
-require 'models/TutorialModel.php';
-require 'views/TutorialView.php';
+// MVC login
+require_once 'controllers/LoginController.php';
+require_once 'models/LoginModel.php';
+require_once 'views/LoginView.php';
 
 // MVC users
-require 'controllers/UsersController.php';
-require 'models/UsersModel.php';
-require 'views/UsersView.php';*/
+require_once 'controllers/UsersController.php';
+require_once 'models/UsersModel.php';
+require_once 'views/UsersView.php';
 
 // Report all errors except E_NOTICE
 // This is the default value set in php.ini

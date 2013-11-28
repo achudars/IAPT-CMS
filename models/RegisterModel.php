@@ -1,5 +1,5 @@
 <?php
-/*include 'User.php';*/
+include_once 'User.php';
 
 class RegisterModel {
     public $string;

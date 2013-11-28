@@ -1,22 +1,23 @@
 <?php
-include 'Article.php';
+include_once 'User.php';
 
-class ArticlesModel {
+class LoginModel {
     public $string;
 
     public function __construct(){
-        $this->string= "articles";
+        $this->string= "users";
     }
 
 
-    public function getArticles(){
-        $pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
-        $sth->execute(array(':type'=>'article'));
+    public function getLogins(){
+        global $pdo;
+
+        $sth = $pdo->prepare("SELECT * FROM users WHERE article_type = :type");
+/*        $sth->execute(array(':type'=>'article'));
         $rows = $sth->fetchAll();
 
         foreach($rows as $row){
-            $article = new Article(
+            $article = new Login(
                  $row['article_title']
                 ,$row['article_content']
                 ,$row['article_timestamp']
@@ -26,7 +27,7 @@ class ArticlesModel {
             );
             $articles[] = $article;
         }
-        return $articles;
+        return $articles;*/
     }
 
 }

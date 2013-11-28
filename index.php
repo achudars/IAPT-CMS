@@ -2,7 +2,7 @@
 
 /*  @IAPT Bring in the includes - the list was getting kind of long and is needed on most pages,
 *   so let's bring it in one file just to make including a do-it-once */
-require 'config/includes.php';
+require_once 'config/includes.php';
 
 /*  @IAPT Let's get our URL and find out to what page we should be directing */
 echo $url = $_GET['url'];

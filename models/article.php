@@ -90,12 +90,6 @@
 		 	return true;
 		 }
 
-		 /** Getter Methods */
-
-		 /**
-		  * Getter Method: get the title of the Article
-		  * @return the title of the Article
-		  */
 		 public function getRating(){
 		 	return $this->title;
 		 }
