@@ -3,7 +3,7 @@
 <div class="content">
     <div class="block list">
         <ol>
-            <li class="list-header">
+            <li>
                 <h1>LIST OF ALL ARTICLES</h1>
             </li>
             <?php foreach($articles as $article): ?><li>
