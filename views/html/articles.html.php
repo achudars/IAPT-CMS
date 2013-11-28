@@ -1,21 +1,40 @@
+<div class="content">
 <div class="block">
-    <h1><?php echo $title; ?></h1>
-    <?php foreach($articles as $article): ?>
+    <h2>Most liked</h2>
+    <ol>
+        <?php foreach($articles as $article): ?><li>
 
-        <h3><?php echo $article->getTitle(); ?></h3>
-        <h4><?php echo $article->getContent(); ?></h4>
-        <h3><?php echo $article->getTimestamp(); ?></h3>
-        <h3><img src="<?php echo $article->getImage(); ?>"/></h3>
-        <h4><?php echo $article->getStatus(); ?></h4>
-        <h4><?php echo $article->getType(); ?></h4>
+        <h4><a href="article.php?id=<?php echo $article->getTitle(); ?>"><?php echo $article->getTitle(); ?></a></h4>
+        <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
+        <div class="small-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
 
-    <?php endforeach; ?>
+        </li><?php endforeach; ?>
+    </ol>
 </div>
 
 <div class="block">
-    <h1><?php echo $title; ?></h1>
+    <h2>New</h2>
+    <ol>
+        <?php foreach($articles as $article): ?><li>
+
+        <h4><a href="article.php?id=<?php echo $article->getTitle(); ?>"><?php echo $article->getTitle(); ?></a></h4>
+        <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
+        <div class="small-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
+
+        </li><?php endforeach; ?>
+    </ol>
 </div>
 
 <div class="block">
-    <h1><?php echo $title; ?></h1>
+    <h2>Staff picks</h2>
+    <ol>
+        <?php foreach($articles as $article): ?><li>
+
+        <h4><a href="article.php?id=<?php echo $article->getTitle(); ?>"><?php echo $article->getTitle(); ?></a></h4>
+        <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
+        <div class="small-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
+
+        </li><?php endforeach; ?>
+    </ol>
+</div>
 </div>

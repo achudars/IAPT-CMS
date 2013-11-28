@@ -2,71 +2,124 @@
  * now be set to be the size specified, regardless of border or
  * padding being provided.  It makes layout of comparable boxes
  * with different types of formatting easier. */
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-}
+ * {
+ 	-webkit-box-sizing: border-box;
+ 	-moz-box-sizing: border-box;
+ 	box-sizing: border-box;
+ 	margin: 0;
+ 	padding: 0;
+ }
 
-body {
-	font-family: 'Lato', sans-serif;
-	font-size: 62.5%;
-	background: #DCDDD8;
-}
+ body {
+ 	font-family: 'Lato', sans-serif;
+ 	font-size: 62.5%;
+ 	background: #DCDDD8;
+ }
 
-header {
-	padding: 1em;
-	text-align: center;
-	height: 5em;
-	width: 100%;
-	display: inline-block;
-	background: #222;
-	color: #FFF;
-	line-height: 0em;
-}
+ header {
+ 	padding: 3em;
+ 	text-align: center;
+ 	height: 5em;
+ 	width: 100%;
+ 	display: inline-block;
+ 	background: #222;
+ 	color: #FFF;
+ 	line-height: 0em;
+ }
 
-header h1 {
-	margin-top: 0.75em;
-}
-.emphasis {
-	color: #6BBBFF;
-}
+ header h1 {
+ 	margin-top: 0em;
+ }
+ .emphasis {
+ 	color: #6BBBFF;
+ }
 
-input[type="search"] {
-	margin-top: -1em;
-	float: right;
-	border: none;
-	display: inline-block;
-	background: rgba(255,255,255, .1);
-	outline: none;
-	height: 2em;
-	padding-left: 1em;
-	color: #FFF;
-}
+ input[type="search"] {
+ 	margin-top: -1em;
+ 	float: right;
+ 	border: none;
+ 	display: inline-block;
+ 	background: rgba(255,255,255, .1);
+ 	outline: none;
+ 	height: 2em;
+ 	padding-left: 1em;
+ 	color: #FFF;
+ }
 
-nav {
-	width: 100%;
-	height: 3em;
-	background: #6BBBFF;
-	text-align: center;
-}
-nav li {
+ nav {
+ 	width: 100%;
+ 	height: 3em;
+ 	background: #6BBBFF;
+ 	text-align: center;
+ }
+ nav li {
+ 	list-style: none;
+ 	display: inline-block;
+ }
+ nav li a {
+ 	text-decoration: none;
+ 	color: #FFF;
+ 	padding: 1em;
+ 	font-size: 200%;
+ }
+ nav li.active {
+ 	text-decoration: overline;
+ }
+ main {
+ 	display: inline-block;
+ 	padding: 3em;
+ 	width: 100%;
+ 	top: 8em;
+ 	bottom: 0;
+ 	position: fixed;
+ }
+
+ol {
 	list-style: none;
-	display: inline-block;
 }
-nav li a {
-	text-decoration: none;
-	color: #FFF;
-	padding: 1em;
-	font-size: 200%;
-}
-nav li.active {
-	text-decoration: overline;
-}
-main {
-	border: 5px solid #CC0000;
-	display: inline-block;
-	padding: 3em;
-}
+
+ .content {
+ 	background: #FFF;
+ 	width: 100%;
+ 	height: 100%;
+ }
+
+ .content > :first-child {
+ 	width: 20%;
+ }
+ .content > :nth-child(2) {
+ 	width: 30%;
+ }
+ .content > :nth-child(3) {
+ 	width: 50%;
+ }
+
+ .block {
+ 	position: relative;
+ 	padding: 1em;
+ 	float: left;
+ 	box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+ 	height: 100%;
+ }
+
+ .block ol {
+ 	font-size: 200%;
+ }
+ .block ol small{
+ 	font-size: 80%;
+ }
+
+ .block h2 {
+ 	width: 100%;
+ 	background: #242424;
+ 	color: #FFF;
+ 	text-transform: uppercase;
+ 	padding: 0.2em;
+ }
+
+ .block .small-thumb{
+ 	width: 100%;
+ 	height: 100px;
+ 	background-position: center;
+ 	background-size: cover;
+ }
