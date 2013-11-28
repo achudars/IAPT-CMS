@@ -1,9 +1,3 @@
-<?php
-    require_once('load.php');
-    $j->register('login.php');
-?>
-
-
 <h1>REGISTER</h1>
 
 <div class="form-content register">
@@ -20,16 +14,10 @@
         <?php } ?>
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
-            <input id="username" type="text" name="username" />
+            <input id="username" type="text" name="username" autofocus />
             <input type="password" name="password" />
             <input type="submit" value="Register" />
         </form>
     </div>
 
 </div>
-
-<script>
-    window.onload = function() {
-      var input = document.getElementById("username").focus();
-    }
-</script>

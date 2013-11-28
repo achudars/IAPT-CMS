@@ -38,6 +38,12 @@ class ArticlesView {
 		include 'html/footer.html.php';
 
 	}
+
+	public function output_article_fields(){
+		include 'html/header.html.php';
+		include 'html/submit.html.php';
+		include 'html/footer.html.php';
+	}
 }
 
  ?>

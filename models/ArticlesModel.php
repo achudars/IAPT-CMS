@@ -117,6 +117,14 @@ class ArticlesModel {
 
     }
 
+    public function addArticle() {
+
+    }
+
+    public function deleteArticle() {
+
+    }
+
 }
 
  ?>

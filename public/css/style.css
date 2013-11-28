@@ -19,7 +19,7 @@
  }
 
  body {
- 	font-family: 'Lato', sans-serif;
+ 	font-family: "Lato", sans-serif;
  	font-size: 62.5%;
  	background: #F1F1F1;
  }
@@ -150,15 +150,22 @@ ol {
 
  .block.article {
  	float: none;
- 	width: 600px;
+ 	width: 700px;
  	margin: 0 auto;
+ }
+
+ .block.article .small-thumb{
+    height: 300px;
  }
 
  .block.article small {
  	color: #FFF;
  	background: #6BBBFF;
  	padding: 0.25em 0.5em;
- 	font-size: 100%;
+ 	font-size: 130%;
+ }
+ .block.article p {
+    font-size: 150%;
  }
 
  .block h2 {
@@ -194,26 +201,27 @@ ol {
  }
  .block ol li:hover {
  	cursor: pointer;
- 	-moz-box-shadow:    rgba(0,0,0,0.5) 0px 0px 5px -1px;
-    -webkit-box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
- 	box-shadow:         rgba(0,0,0,0.5) 0px 0px 5px -1px;
+ 	-moz-box-shadow:    rgba(0,0,0,1) 0px 0px 5px -1px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0px 0px 5px -1px;
+ 	box-shadow:         rgba(0,0,0,1) 0px 0px 5px -1px;
  }
 
  .block ol small {
- 	font-size: 70%;
+ 	font-size: 80%;
  }
 
  .block.comment article {
  	border-left: 1em solid #6BBBFF;
  	margin-bottom: 0.5em;
  	padding: 1em;
+    font-size: 130%;
  }
-
  .block.comment article a, .block.comment article time {
  	font-weight: bold;
  }
  .block.comment article p {
  	margin-top: 1em;
+    font-size: 100%;
  }
 
  .block .small-thumb{

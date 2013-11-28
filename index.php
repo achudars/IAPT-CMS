@@ -45,7 +45,7 @@ if (!empty($id)) {
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            echo $view->output();
+            echo $view->output_article_fields();
             break;
         case "check":
             $model = new ArticlesModel();
