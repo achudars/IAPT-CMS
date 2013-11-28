@@ -11,8 +11,11 @@ class ArticlesView {
 
 	public function output(){
 		include 'html/header.html.php';
-		$title = "Articles";
-		$articles = $this->model->getArticles();
+
+		$basic_articles = $this->model->getBasicArticles();
+		$column_articles = $this->model->getColumnArticles();
+		$review_articles = $this->model->getReviewArticles();
+
 		include 'html/articles.html.php';
 		include 'html/footer.html.php';
 

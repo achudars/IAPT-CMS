@@ -4,9 +4,9 @@
 require_once("config/database.php");
 
 // MVC articles
-require 'controllers/BasicArticlesController.php';
-require 'models/BasicArticlesModel.php';
-require 'views/BasicArticlesView.php';
+require 'controllers/ArticlesController.php';
+require 'models/ArticlesModel.php';
+require 'views/ArticlesView.php';
 
 // MVC register
 require 'controllers/RegisterController.php';

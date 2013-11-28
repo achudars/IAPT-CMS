@@ -2,7 +2,7 @@
     <div class="block">
         <h2>Most liked</h2>
         <ol>
-            <?php foreach($articles as $article): ?><li>
+            <?php foreach($basic_articles as $article): ?><li>
 
                 <h4><a href="article.php?id=<?php echo $article->getTitle(); ?>"><?php echo $article->getTitle(); ?></a></h4>
                 <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
@@ -15,7 +15,7 @@
     <div class="block">
         <h2>New</h2>
         <ol>
-            <?php foreach($articles as $article): ?><li>
+            <?php foreach($column_articles as $article): ?><li>
 
                 <h4><a href="article.php?id=<?php echo $article->getTitle(); ?>"><?php echo $article->getTitle(); ?></a></h4>
                 <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
@@ -28,7 +28,7 @@
     <div class="block">
         <h2>Staff picks</h2>
         <ol>
-            <?php foreach($articles as $article): ?><li>
+            <?php foreach($review_articles as $article): ?><li>
 
                 <h4><a href="article.php?id=<?php echo $article->getTitle(); ?>"><?php echo $article->getTitle(); ?></a></h4>
                 <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>

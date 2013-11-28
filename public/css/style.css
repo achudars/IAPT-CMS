@@ -64,7 +64,7 @@
  	font-size: 200%;
  }
  nav li.active {
- 	text-decoration: overline;
+ 	/*text-decoration: overline;*/
  }
  nav li:hover a {
  	color: #242424;

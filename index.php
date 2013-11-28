@@ -16,9 +16,9 @@ if (!empty($page)){
 
      switch ($page) {
         case "articles":
-            $model = new BasicArticlesModel();
-            $controller = new BasicArticlesController($model);
-            $view = new BasicArticlesView($controller, $model);
+            $model = new ArticlesModel();
+            $controller = new ArticlesController($model);
+            $view = new ArticlesView($controller, $model);
             echo $view->output();
             break;
         case "register":
@@ -34,33 +34,33 @@ if (!empty($page)){
             echo $view->output();
             break;
         case "submit":
-            $model = new BasicArticlesModel();
-            $controller = new BasicArticlesController($model);
-            $view = new BasicArticlesView($controller, $model);
+            $model = new ArticlesModel();
+            $controller = new ArticlesController($model);
+            $view = new ArticlesView($controller, $model);
             echo $view->output();
             break;
         case "check":
-            $model = new BasicArticlesModel();
-            $controller = new BasicArticlesController($model);
-            $view = new BasicArticlesView($controller, $model);
+            $model = new ArticlesModel();
+            $controller = new ArticlesController($model);
+            $view = new ArticlesView($controller, $model);
             echo $view->output();
             break;
         case "admin":
-            $model = new BasicArticlesModel();
-            $controller = new BasicArticlesController($model);
-            $view = new BasicArticlesView($controller, $model);
+            $model = new ArticlesModel();
+            $controller = new ArticlesController($model);
+            $view = new ArticlesView($controller, $model);
             echo $view->output();
             break;
         case "list":
-            $model = new BasicArticlesModel();
-            $controller = new BasicArticlesController($model);
-            $view = new BasicArticlesView($controller, $model);
+            $model = new ArticlesModel();
+            $controller = new ArticlesController($model);
+            $view = new ArticlesView($controller, $model);
             echo $view->output();
             break;
         case "tutorial":
-            $model = new BasicArticlesModel();
-            $controller = new BasicArticlesController($model);
-            $view = new BasicArticlesView($controller, $model);
+            $model = new ArticlesModel();
+            $controller = new ArticlesController($model);
+            $view = new ArticlesView($controller, $model);
             echo $view->output();
             break;
         default:
