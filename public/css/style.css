@@ -10,6 +10,14 @@
  	padding: 0;
  }
 
+ .untouchable {
+ 	-moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+ }
+
  body {
  	font-family: 'Lato', sans-serif;
  	font-size: 62.5%;
@@ -153,4 +161,52 @@ ol {
  	height: 100px;
  	background-position: center;
  	background-size: cover;
+ }
+
+.form-content {
+	background: #6BBBFF;
+	display: inline-block;
+ 	width: 100%;
+}
+.pull-right {
+	float: right;
+}
+.left, .right {
+ 	float: left;
+ 	width: 50%;
+ 	height: 100%;
+ }
+
+ .right {
+ 	 background: #FFF;
+ }
+ .left p, .right input {
+ 	height: 20px;
+ 	font-size: 20px;
+ 	line-height: 0px;
+ 	display: block;
+ 	outline: none;
+ 	margin: 1em 0;
+ 	padding: 1em;
+ 	background: none;
+ 	color: #FFF;
+ 	width: 15em;
+ }
+ .right input {
+ 	border: 1px solid #6BBBFF;
+ 	border-left: none;
+ 	color: #6BBBFF;
+ }
+ .right input[type="submit"] {
+ 	width: 30em;
+ 	margin-left: -15em;
+ 	background: #FFF;
+ }
+ .right input[type="submit"]:hover {
+ 	cursor: pointer;
+ }
+ .left p {
+ 	border: 1px solid #FFF;
+ 	border-right: none;
+ 	text-align: right;
  }
