@@ -1,6 +1,6 @@
 <?php
 
-class ArticlesController {
+class BasicArticlesController {
 	private $model;
 
 

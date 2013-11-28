@@ -1,7 +1,7 @@
 <?php
 include 'Article.php';
 
-class ArticlesModel {
+class BasicArticlesModel {
     public $string;
 
     public function __construct(){
@@ -9,7 +9,7 @@ class ArticlesModel {
     }
 
 
-    public function getArticles(){
+    public function getBasicArticles(){
         $pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
         $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
         $sth->execute(array(':type'=>'article'));

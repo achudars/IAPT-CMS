@@ -16,9 +16,9 @@ if (!empty($page)){
      if ($page == "articles")
      {
 
-        $model = new ArticlesModel();
-        $controller = new ArticlesController($model);
-        $view = new ArticlesView($controller, $model);
+        $model = new BasicArticlesModel();
+        $controller = new BasicArticlesController($model);
+        $view = new BasicArticlesView($controller, $model);
         echo $view->output();
      }
      /* @IAPT We do the same as we did for books with the Videos link */

@@ -10,11 +10,11 @@ class ArticlesView {
 	}
 
 	public function output(){
-		include 'header.html.php';
+		include 'html/header.html.php';
 		$title = "Articles";
 		$articles = $this->model->getArticles();
-		include 'template.html.php';
-		include 'footer.html.php';
+		include 'html/articles.html.php';
+		include 'html/footer.html.php';
 
 	}
 }

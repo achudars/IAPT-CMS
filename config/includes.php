@@ -4,9 +4,9 @@
 require_once("config/database.php");
 
 // MVC articles
-require 'controllers/ArticlesController.php';
-require 'models/ArticlesModel.php';
-require 'views/ArticlesView.php';
+require 'controllers/BasicArticlesController.php';
+require 'models/BasicArticlesModel.php';
+require 'views/BasicArticlesView.php';
 
 // Report all errors except E_NOTICE
 // This is the default value set in php.ini
