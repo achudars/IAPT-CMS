@@ -15,7 +15,7 @@ if (!empty($id)) {
     $model = new ArticlesModel();
     $controller = new ArticlesController($model);
     $view = new ArticlesView($controller, $model);
-    echo $view->single_output();
+    echo $view->output_single_article();
 
 } else if (!empty($page)){
 
@@ -27,7 +27,7 @@ if (!empty($id)) {
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            echo $view->output();
+            echo $view->output_home_articles();
             break;
         case "register":
             $model = new RegisterModel();
@@ -63,7 +63,7 @@ if (!empty($id)) {
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            echo $view->output();
+            echo $view->output_all_articles();
             break;
         case "tutorial":
             $model = new ArticlesModel();
