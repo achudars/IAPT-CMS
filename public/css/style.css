@@ -111,14 +111,40 @@ ol {
  .block {
  	position: relative;
  	padding: 1em;
- 	float: left;
+    float: left;
  	box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
  	height: 100%;
  }
  .block.list {
+ 	float: left;
  	width: 100%;
  }
+ .block.list small {
+ 	color: #FFF;
+ 	background: #6BBBFF;
+ 	padding: 0.25em 0.5em;
+ 	font-size: 50%;
+ 	border-radius: 3px;
+ }
+  .block.list button {
+ 	color: #FFF;
+ 	background: #222;
+ 	padding: 0.25em 0.5em;
+ 	font-size: 100%;
+ 	border: none;
+ 	border-radius: 3px;
+ }
+ .block.list button:hover {
+ 	background: #CC0000;
+ 	cursor: pointer;
+ }
 
+
+ .block.article {
+ 	float: none;
+ 	width: 600px;
+ 	margin: 0 auto;
+ }
  .block h2 {
  	width: 100%;
  	background: #242424;
@@ -157,7 +183,18 @@ ol {
  	font-size: 70%;
  }
 
+ .block.comment article {
+ 	border-left: 1em solid #6BBBFF;
+ 	margin-bottom: 0.5em;
+ 	padding: 1em;
+ }
 
+ .block.comment article a, .block.comment article time {
+ 	font-weight: bold;
+ }
+ .block.comment article p {
+ 	margin-top: 1em;
+ }
 
  .block .small-thumb{
  	width: 100%;

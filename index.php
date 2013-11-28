@@ -15,7 +15,7 @@ if (!empty($id)) {
     $model = new ArticlesModel();
     $controller = new ArticlesController($model);
     $view = new ArticlesView($controller, $model);
-    echo $view->output_single_article();
+    echo $view->output_one_article( $id );
 
 } else if (!empty($page)){
 

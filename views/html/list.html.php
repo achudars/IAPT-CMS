@@ -8,9 +8,14 @@
                     <div class="square-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
                     <h4><?php echo $article->getTitle(); ?></h4>
                     <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
+                    <small>author</small>
+                    <small>number of comments</small>
+                    <small>number of likes</small>
+                    <small>number of dislikes</small>
+                    <small>tags</small>
                 </a>
-                <span>
-                    <label>Set status</label>
+                <span class="pull-right">
+                    <label>STATUS: </label>
                     <select>
                         <option>Published</option>
                         <option>Rejected</option>
@@ -18,9 +23,10 @@
                         <option>Awaiting Changes</option>
                         <option>Submitted</option>
                     </select>
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </span>
-                <button>Edit</button>
-                <button>Delete</button>
+
             </li><?php endforeach; ?>
         </ol>
     </div>

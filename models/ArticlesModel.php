@@ -10,7 +10,6 @@ class ArticlesModel {
     }
 
     public function getArticle( $article_id ) {
-
         global $pdo;
 
         $query = $pdo->prepare( "SELECT * FROM articles WHERE article_id = ?" );
