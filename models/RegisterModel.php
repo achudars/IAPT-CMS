@@ -1,16 +1,12 @@
 <?php
-include 'User.php';
+/*include 'User.php';*/
 
 class RegisterModel {
     public $string;
 
-    public function __construct(){
-        $this->string= "users";
-    }
-
 
     public function getUsers(){
-        $pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
+        /*$pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
         $sth = $pdo->prepare("SELECT * FROM users WHERE user_type = :type");
         $sth->execute(array(':type'=>'user'));
         $rows = $sth->fetchAll();
@@ -24,7 +20,7 @@ class RegisterModel {
             );
             $users[] = $user;
         }
-        return $users;
+        return $users;*/
     }
 
 }
