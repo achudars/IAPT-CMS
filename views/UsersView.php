@@ -1,6 +1,6 @@
 <?php
 
-class BasicArticlesView {
+class UsersView {
     private $model;
     private $controller;
 
@@ -11,9 +11,13 @@ class BasicArticlesView {
 
     public function output(){
         include 'html/header.html.php';
-        $title = "Basic Articles";
-        $articles = $this->model->getBasicArticles();
-        include 'html/articles.html.php';
+
+        $subscribers = $this->model->getSubscribers();
+        $writers = $this->model->getWriters();
+        $editors = $this->model->getEditors();
+        $publishers = $this->model->getPublishers();
+
+        include 'html/admin.html.php';
         include 'html/footer.html.php';
 
     }
