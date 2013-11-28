@@ -1,32 +1,30 @@
 <?php
-include 'Article.php';
+include 'User.php';
 
-class ArticlesModel {
+class RegisterModel {
     public $string;
 
     public function __construct(){
-        $this->string= "articles";
+        $this->string= "users";
     }
 
 
-    public function getArticles(){
+    public function getUsers(){
         $pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
-        $sth->execute(array(':type'=>'article'));
+        $sth = $pdo->prepare("SELECT * FROM users WHERE user_type = :type");
+        $sth->execute(array(':type'=>'user'));
         $rows = $sth->fetchAll();
 
         foreach($rows as $row){
-            $article = new Article(
-                 $row['article_title']
-                ,$row['article_content']
-                ,$row['article_timestamp']
-                ,$row['article_image']
-                ,$row['article_status']
-                ,$row['article_type']
+            $user = new Article(
+                 $row['user_id']
+                ,$row['user_name']
+                ,$row['user_password']
+                ,$row['user_role']
             );
-            $articles[] = $article;
+            $users[] = $user;
         }
-        return $articles;
+        return $users;
     }
 
 }

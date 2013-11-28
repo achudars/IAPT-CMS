@@ -13,14 +13,61 @@ if (!empty($page)){
 
     /*  @IAPT For each of the pages in our website, we create a view, a controller and a model.  When
     *   someone requests the page, we instnce a version of each of those to run the page */
-     if ($page == "articles")
-     {
 
-        $model = new BasicArticlesModel();
-        $controller = new BasicArticlesController($model);
-        $view = new BasicArticlesView($controller, $model);
-        echo $view->output();
-     }
+     switch ($page) {
+        case "articles":
+            $model = new BasicArticlesModel();
+            $controller = new BasicArticlesController($model);
+            $view = new BasicArticlesView($controller, $model);
+            echo $view->output();
+            break;
+        case "register":
+            $model = new RegisterModel();
+            $controller = new RegisterController($model);
+            $view = new RegisterView($controller, $model);
+            echo $view->output();
+            break;
+        case "login":
+            $model = new LoginModel();
+            $controller = new LoginController($model);
+            $view = new LoginView($controller, $model);
+            echo $view->output();
+            break;
+        case "submit":
+            $model = new BasicArticlesModel();
+            $controller = new BasicArticlesController($model);
+            $view = new BasicArticlesView($controller, $model);
+            echo $view->output();
+            break;
+        case "check":
+            $model = new BasicArticlesModel();
+            $controller = new BasicArticlesController($model);
+            $view = new BasicArticlesView($controller, $model);
+            echo $view->output();
+            break;
+        case "admin":
+            $model = new BasicArticlesModel();
+            $controller = new BasicArticlesController($model);
+            $view = new BasicArticlesView($controller, $model);
+            echo $view->output();
+            break;
+        case "list":
+            $model = new BasicArticlesModel();
+            $controller = new BasicArticlesController($model);
+            $view = new BasicArticlesView($controller, $model);
+            echo $view->output();
+            break;
+        case "tutorial":
+            $model = new BasicArticlesModel();
+            $controller = new BasicArticlesController($model);
+            $view = new BasicArticlesView($controller, $model);
+            echo $view->output();
+            break;
+        default:
+            echo "The request page does not exist. Please go back.";
+
+    }
+
      /* @IAPT We do the same as we did for books with the Videos link */
     /* else if ($page == "videos")
      {
