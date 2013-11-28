@@ -1,41 +1,11 @@
+
 <?php
-
-session_start();
-     // validation
-if (isset($_POST["username"], $_POST["password"])) {
-
-    $username = $_POST["username"];
-    $password = md5($_POST['password']);
-
-            //check if submitted fields are non blank
-    if ( empty($username) or empty($password) ) {
-
-        $error = "All fields are mandatory.";
-
-    } else {
-
-        $query = $pdo->prepare("SELECT * FROM users WHERE user_name = ? AND user_password = ?");
-
-        $query->bindValue(1, $username);
-        $query->bindValue(2, $password);
-
-        $query->execute();
-
-        $num = $query->rowCount();
-        if( $num == 1 ) {
-                    // user entered correct details
-            $_SESSION["logged_in"] = true;
-
-            header("Location: index.php");
-            exit();
-        } else {
-                    // user entered false details
-            $error = "Incorrect details!";
-        }
+    require_once('load.php');
+    if ( $_GET['action'] == 'logout' ) {
+        $loggedout = $j->logout();
     }
-}
 
-        // display login
+    $logged = $j->login('index.php');
 ?>
 
 <h1>LOGIN</h1>
@@ -59,6 +29,55 @@ if (isset($_POST["username"], $_POST["password"])) {
             <input type="submit" value="Login" />
         </form>
     </div>
+
+    <div style="width: 960px; background: #fff; border: 1px solid #e4e4e4; padding: 20px; margin: 10px auto;">
+            <?php if ( $logged == 'invalid' ) : ?>
+                <p style="background: #e49a9a; border: 1px solid #c05555; padding: 7px 10px;">
+                    The username password combination you entered is incorrect. Please try again.
+                </p>
+            <?php endif; ?>
+            <?php if ( $_GET['reg'] == 'true' ) : ?>
+                <p style="background: #fef1b5; border: 1px solid #eedc82; padding: 7px 10px;">
+                    Your registration was successful, please login below.
+                </p>
+            <?php endif; ?>
+            <?php if ( $_GET['action'] == 'logout' ) : ?>
+                <?php if ( $loggedout == true ) : ?>
+                    <p style="background: #fef1b5; border: 1px solid #eedc82; padding: 7px 10px;">
+                        You have been successfully logged out.
+                    </p>
+                <?php else: ?>
+                    <p style="background: #e49a9a; border: 1px solid #c05555; padding: 7px 10px;">
+                        There was a problem logging you out.
+                    </p>
+                <?php endif; ?>
+            <?php endif; ?>
+            <?php if ( $_GET['msg'] == 'login' ) : ?>
+                <p style="background: #e49a9a; border: 1px solid #c05555; padding: 7px 10px;">
+                        You must log in to view this content. Please log in below.
+                    </p>
+            <?php endif; ?>
+
+            <h3>Login</h3>
+
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <table>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" name="username" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Login" /></td>
+                    </tr>
+                </table>
+            </form>
+            <p>Not a member? <a href="register.php">Register here</a></p>
+        </div>
 
 </div>
 
