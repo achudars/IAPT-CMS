@@ -121,7 +121,7 @@ ol {
  	background: #242424;
  	color: #FFF;
  	text-transform: uppercase;
- 	padding: 0.2em;
+ 	padding: 0.4em 0.8em;
  	transition: background 2s;
  }
 
@@ -151,7 +151,7 @@ ol {
  }
 
  .block ol small {
- 	font-size: 130%;
+ 	font-size: 70%;
  }
 
 
@@ -202,6 +202,7 @@ ol {
  }
   .right input[type="submit"]:hover {
  	cursor: pointer;
+ 	box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);;
  }
 
  .login .right input {
@@ -232,6 +233,7 @@ ol {
  	margin-left: -15em;
  	background: #FFF;
  	border: 1px solid #6BBBFF;
+ 	color: #6BBBFF;
  }
 
  .register .left p {

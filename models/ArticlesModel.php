@@ -20,7 +20,8 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_title']
+                 $row['article_id']
+                ,$row['article_title']
                 ,$row['article_content']
                 ,$row['article_timestamp']
                 ,$row['article_image']
@@ -42,7 +43,8 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_title']
+                 $row['article_id']
+                ,$row['article_title']
                 ,$row['article_content']
                 ,$row['article_timestamp']
                 ,$row['article_image']
@@ -64,7 +66,8 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_title']
+                 $row['article_id']
+                ,$row['article_title']
                 ,$row['article_content']
                 ,$row['article_timestamp']
                 ,$row['article_image']

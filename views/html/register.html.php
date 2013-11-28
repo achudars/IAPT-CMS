@@ -54,10 +54,16 @@ if (isset($_POST["username"], $_POST["password"])) {
         <?php } ?>
 
         <form action="index.php" method="post" autocomplete="off">
-            <input type="text" name="username" />
+            <input id="username" type="text" name="username" />
             <input type="password" name="password" />
             <input type="submit" value="Register" />
         </form>
     </div>
 
 </div>
+
+<script>
+    window.onload = function() {
+      var input = document.getElementById("username").focus();
+    }
+</script>
