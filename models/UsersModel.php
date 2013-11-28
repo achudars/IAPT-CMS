@@ -28,6 +28,13 @@ class UsersModel {
         return $users;
     }
 
+    public function getUserRole(){ }
+    public function getUserName(){ }
+    public function getUserPassword(){ }
+    public function setUserRole(){ }
+    public function addUser(){ }
+    public function deleteUser(){ }
+
 }
 
  ?>
