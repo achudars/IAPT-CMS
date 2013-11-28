@@ -7,9 +7,17 @@ require_once 'config/includes.php';
 /*  @IAPT Let's get our URL and find out to what page we should be directing */
 echo $url = $_GET['url'];
 $page = $_GET['page'];
+$id = $_GET['id'];
 
 /*  @IAPT If the page requested is not the index page, then we will need to do something */
-if (!empty($page)){
+if (!empty($id)) {
+
+    $model = new ArticlesModel();
+    $controller = new ArticlesController($model);
+    $view = new ArticlesView($controller, $model);
+    echo $view->single_output();
+
+} else if (!empty($page)){
 
     /*  @IAPT For each of the pages in our website, we create a view, a controller and a model.  When
     *   someone requests the page, we instnce a version of each of those to run the page */
