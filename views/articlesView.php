@@ -39,17 +39,17 @@ class ArticlesView {
 
 	}
 
-	public function output_new_article_fields() {
+	public function output_found_articles(){
+
+		$search_key = $_POST['search_key'];
+
 		include 'html/header.html.php';
-		include 'html/submit.html.php';
+		$articles = $this->model->getFoundArticles( $search_key );
+		include 'html/list.html.php';
 		include 'html/footer.html.php';
 	}
 
-	public function output_existing_article_fields() {
-		include 'html/header.html.php';
-		include 'html/check.html.php';
-		include 'html/footer.html.php';
-	}
+
 }
 
  ?>

@@ -109,6 +109,31 @@ class ArticlesModel {
         return $review_articles;
     }
 
+    public function getFoundArticles( $search_key ) {
+        global $pdo;
+
+        //$article_title = $_GET
+        echo "<p>2. getFoundArticles() from articlesModel </p>";
+
+        $query = $pdo->prepare("SELECT * FROM articles WHERE article_title LIKE '%".$search_key."%'");
+        $query->execute();
+        $rows = $query->fetchAll();
+
+        foreach($rows as $row){
+            $article = new Article(
+                 $row['article_id']
+                ,$row['article_title']
+                ,$row['article_content']
+                ,$row['article_timestamp']
+                ,$row['article_image']
+                ,$row['article_status']
+                ,$row['article_type']
+            );
+            $articles[] = $article;
+        }
+        return $articles;
+    }
+
     public function sortAscending() {
 
     }

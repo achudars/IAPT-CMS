@@ -5,11 +5,10 @@
 require_once 'config/includes.php';
 
 /*  @IAPT Let's get our URL and find out to what page we should be directing */
-echo $url = $_GET['url'];
+//echo $url = $_GET['url'];
 $page = $_GET['page'];
 $id = $_GET['id'];
 
-/*  @IAPT If the page requested is not the index page, then we will need to do something */
 if (!empty($id)) {
 
     $model = new ArticlesModel();
@@ -69,7 +68,18 @@ if (!empty($id)) {
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            echo $view->output_all_articles();
+            if ( isset($_GET['action']) ) {
+
+                echo "FILTERED STUFF";
+                $model = new ArticlesModel();
+                $controller = new ArticlesController($model);
+                $view = new ArticlesView($controller, $model);
+                echo $view->output_found_articles();
+                break;
+
+            } else {
+                echo $view->output_all_articles();
+            }
             break;
         case "tutorial":
             $model = new ArticlesModel();

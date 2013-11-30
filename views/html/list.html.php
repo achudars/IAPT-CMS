@@ -4,7 +4,7 @@
     <div class="block list">
         <ol>
             <li>
-                <h1>LIST OF ALL ARTICLES</h1>
+                <h1>LIST OF ARTICLES</h1>
             </li>
             <?php foreach($articles as $article): ?><li>
                 <a href="index.php?id=<?php echo $article->getId(); ?>">

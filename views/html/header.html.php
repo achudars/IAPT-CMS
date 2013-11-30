@@ -13,7 +13,11 @@
 <body>
     <header>
         <h1><span class="emphasis">C</span>MS</h1>
-        <input type="search" placeholder="Search" />
+
+        <form action="?page=list&action=search_articles" method="post">
+            <input type="search" placeholder="Search" name="search_key" value="" />
+        </form>
+
     </header>
     <nav>
         <ul class="navlist">
