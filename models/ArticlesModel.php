@@ -112,9 +112,6 @@ class ArticlesModel {
     public function getFoundArticles( $search_key ) {
         global $pdo;
 
-        //$article_title = $_GET
-        echo "<p>2. getFoundArticles() from articlesModel </p>";
-
         $query = $pdo->prepare("SELECT * FROM articles WHERE article_title LIKE '%".$search_key."%'");
         $query->execute();
         $rows = $query->fetchAll();

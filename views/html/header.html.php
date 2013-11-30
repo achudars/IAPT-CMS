@@ -15,7 +15,7 @@
         <h1><span class="emphasis">C</span>MS</h1>
 
         <form action="?page=list&action=search_articles" method="post">
-            <input type="search" placeholder="Search" name="search_key" value="" />
+            <input type="search" placeholder="Find articles..." name="search_key" value="" autofocus />
         </form>
 
     </header>

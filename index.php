@@ -69,8 +69,7 @@ if (!empty($id)) {
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
             if ( isset($_GET['action']) ) {
-
-                echo "FILTERED STUFF";
+                // filtered stuff
                 $model = new ArticlesModel();
                 $controller = new ArticlesController($model);
                 $view = new ArticlesView($controller, $model);

@@ -1,6 +1,6 @@
 <div class="content">
     <div class="block">
-        <h2>Most liked</h2>
+        <h2>Most liked/h2>
         <ol>
             <?php foreach($basic_articles as $article): ?><li>
                 <a href="index.php?id=<?php echo $article->getId(); ?>">
