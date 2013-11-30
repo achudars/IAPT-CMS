@@ -3,13 +3,18 @@
 class UsersController {
 	private $model;
 
-
-	/* @IAPT In this case - there is no user interaction in the interface, so our controller doesn't
-	really do anything in this example. */
-
 	public function __construct($model){
 		$this->model = $model;
 	}
+
+    public function deleteUser() {
+        $user_id = $_POST['user_id'];
+
+        echo "FROM CONTROLLER: " . $user_id . " | ";
+
+        $this->model->deleteUser( $user_id );
+    }
+
 }
 
 

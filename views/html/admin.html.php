@@ -12,6 +12,12 @@
                 <p><?php echo $user->getUserName(); ?></p>
                 <p><?php echo $user->getUserRole(); ?></p>
 
+                <form class="pull-right" action="?page=admin&action=delete_user" method="post" id="delete_form">
+                    <input type='hidden' name='action' value='delete' />
+                    <input type='hidden' name='user_id' value='<?php echo $user->getUserId(); ?>' />
+                    <a href="" onclick="document.getElementById('delete_form').submit(); return false;">Delete item</a>
+                </form>
+
                 <span class="pull-right">
                 <div>
                     <input <?php echo ($user->getUserRole()=='subscriber')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "subscriber" value = "subscriber" />
@@ -29,11 +35,8 @@
                     <input <?php echo ($user->getUserRole()=='publisher')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "publisher" value = "publisher" />
                     <label for = "publisher">Publisher</label>
                 </div>
-
-
-
-                    <button>Delete</button>
                 </span>
+
 
             </li><?php endforeach; ?>
         </ol>

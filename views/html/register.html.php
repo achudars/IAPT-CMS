@@ -14,7 +14,7 @@
         <small style="color:#aa0000"><?php echo $error; ?></small>
         <?php } ?>
 
-        <form action="?page=register&action=reg_user" method="post" autocomplete="off">
+        <form action="?page=register&action=register_user" method="post" autocomplete="off">
             <input type="text" name="user_name" autofocus required/>
             <input type="password" name="user_password" required />
             <input type="password" name="repeated_user_password" required />

@@ -51,8 +51,19 @@ class UsersModel {
     public function getUserName(){ }
     public function getUserPassword(){ }
     public function setUserRole(){ }
-    public function addUser(){ }
-    public function deleteUser(){ }
+
+    public function deleteUser( $user_id ){
+        global $pdo;
+
+        echo "DELETING USER with ID: " . $user_id;
+
+        $query = $pdo->prepare("DELETE FROM users WHERE user_id = ?");
+        $query->bindValue(1, $user_id);
+        $query->execute();
+
+        //header("Location: index.php?page=admin");
+
+    }
 
 }
 

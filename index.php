@@ -35,7 +35,6 @@ if (!empty($id)) {
             $view = new RegisterView($controller, $model);
             if ( isset($_GET['action']) ) {
                 $controller->registerUser();
-                //$controller->registerUser( $_GET['user_name'], $_GET['user_password'], $_GET['repeated_user_password']);
             }
             echo $view->output();
             break;
@@ -61,6 +60,9 @@ if (!empty($id)) {
             $model = new UsersModel();
             $controller = new UsersController($model);
             $view = new UsersView($controller, $model);
+            if ( isset($_GET['action']) ) {
+                $controller->deleteUser();
+            }
             echo $view->output_users();
             break;
         case "list":

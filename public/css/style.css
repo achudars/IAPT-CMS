@@ -134,7 +134,7 @@ ol li.list-header {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-.block.list button {
+.block.list .button {
   color: #FFF;
   background: #222;
   padding: 0.25em 0.5em;
@@ -144,7 +144,7 @@ ol li.list-header {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-.block.list button:hover {
+.block.list .button:hover {
   background: #CC0000;
   cursor: pointer;
 }
