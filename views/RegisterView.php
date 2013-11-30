@@ -13,8 +13,8 @@ class RegisterView {
         include 'html/header.html.php';
         include 'html/register.html.php';
         include 'html/footer.html.php';
-
     }
+
 }
 
  ?>

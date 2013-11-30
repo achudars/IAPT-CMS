@@ -5,29 +5,35 @@ class RegisterModel {
     public $string;
 
 
-    public function hash_password($password, $nonce) {
-        $secureHash = hash_hmac('sha512', $password . $nonce, SITE_KEY);
-        return $secureHash;
-    }
 
-    public function registerUser(){
-        /*$pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-        $sth = $pdo->prepare("SELECT * FROM users WHERE user_type = :type");
-        $sth->execute(array(':type'=>'user'));
-        $rows = $sth->fetchAll();
+    public function checkRegistration( $user_name, $user_password, $repeated_user_password ) {
+        global $pdo;
 
-        foreach($rows as $row){
-            $user = new Article(
-                 $row['user_id']
-                ,$row['user_name']
-                ,$row['user_password']
-                ,$row['user_role']
-            );
-            $users[] = $user;
+        if( $user_password != $repeated_user_password ) {
+            echo "Passwords fields are inconsistent.";
+        } else {
+            $query = $pdo->prepare("INSERT INTO users (user_name, user_password, user_role) VALUES (?,?,?)");
+
+            $query->bindValue(1, $user_name);
+            $query->bindValue(2, $user_password);
+            $query->bindValue(3, "subscriber");
+
+            $query->execute();
+
+            //redirection
+            header("Location: index.php?page=login");
         }
-        return $users;*/
+
     }
 
+    public function registerUser( $user_name, $user_password, $repeated_user_password ){
+        global $pdo;
+
+        // echo $user_name . " + " . $user_password . " + " . $repeated_user_password;
+
+        $this->checkRegistration( $user_name, $user_password, $repeated_user_password );
+
+    }
 }
 
- ?>
+    ?>

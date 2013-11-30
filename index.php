@@ -33,6 +33,10 @@ if (!empty($id)) {
             $model = new RegisterModel();
             $controller = new RegisterController($model);
             $view = new RegisterView($controller, $model);
+            if ( isset($_GET['action']) ) {
+                $controller->registerUser();
+                //$controller->registerUser( $_GET['user_name'], $_GET['user_password'], $_GET['repeated_user_password']);
+            }
             echo $view->output();
             break;
         case "login":

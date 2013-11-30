@@ -6,6 +6,7 @@
         <div class="pull-right">
             <p>Username</p>
             <p>Password</p>
+            <p>Repeat Password</p>
         </div>
     </div>
     <div class="right">
@@ -13,9 +14,10 @@
         <small style="color:#aa0000"><?php echo $error; ?></small>
         <?php } ?>
 
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
-            <input id="username" type="text" name="username" autofocus required/>
-            <input type="password" name="password" required />
+        <form action="?page=register&action=reg_user" method="post" autocomplete="off">
+            <input type="text" name="user_name" autofocus required/>
+            <input type="password" name="user_password" required />
+            <input type="password" name="repeated_user_password" required />
             <input type="submit" value="Register" />
         </form>
     </div>
