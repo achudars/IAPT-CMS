@@ -14,19 +14,19 @@
 
                 <span class="pull-right">
                 <div>
-                    <input type = "radio" name = "user_roles" id = "subscriber" value = "subscriber" />
+                    <input <?php echo ($user->getUserRole()=='subscriber')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "subscriber" value = "subscriber" />
                     <label for = "subscriber">Subscriber</label>
                 </div>
                 <div>
-                    <input type = "radio" name = "user_roles" id = "writer" value = "writer" />
+                    <input <?php echo ($user->getUserRole()=='writer')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "writer" value = "writer" />
                     <label for = "writer">Writer</label>
                 </div>
                 <div>
-                    <input type = "radio" name = "user_roles" id = "editor" value = "editor" />
+                    <input <?php echo ($user->getUserRole()=='editor')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "editor" value = "editor" />
                     <label for = "editor">Editor</label>
                 </div>
                 <div>
-                    <input checked type = "radio" name = "user_roles" id = "publisher" value = "publisher" />
+                    <input <?php echo ($user->getUserRole()=='publisher')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "publisher" value = "publisher" />
                     <label for = "publisher">Publisher</label>
                 </div>
 

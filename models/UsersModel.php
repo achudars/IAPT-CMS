@@ -29,8 +29,25 @@ class UsersModel {
     }
 
     public function getUserRole(){
+        global $pdo;
 
+        $query = $pdo->prepare("SELECT * FROM users");
+        $query->execute();
+        $rows = $query->fetchAll();
+
+        foreach($rows as $row){
+            $user = new User(
+                 $row['user_id']
+                ,$row['user_name']
+                ,$row['user_password']
+                ,$row['user_role']
+            );
+            $users[] = $user;
+        }
+        return $users;
     }
+
+
     public function getUserName(){ }
     public function getUserPassword(){ }
     public function setUserRole(){ }
