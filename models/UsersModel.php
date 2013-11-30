@@ -21,14 +21,16 @@ class UsersModel {
                  $row['user_id']
                 ,$row['user_name']
                 ,$row['user_password']
-                ,$row['user_type']
+                ,$row['user_role']
             );
             $users[] = $user;
         }
         return $users;
     }
 
-    public function getUserRole(){ }
+    public function getUserRole(){
+
+    }
     public function getUserName(){ }
     public function getUserPassword(){ }
     public function setUserRole(){ }
