@@ -1,7 +1,7 @@
 
 
 <div class="content">
-    <div class="block list">
+    <div class="block user-list">
         <ol>
             <li class="list-header">
                 <h1>ADMIN DASHBOARD</h1>

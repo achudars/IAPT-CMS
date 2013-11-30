@@ -92,7 +92,9 @@
 ol {
 	list-style: none;
 }
-
+ol li.list-header {
+    line-height: 3em !important;
+}
  .content {
  	background: #FFF;
  	width: 100%;
@@ -224,7 +226,7 @@ ol {
     font-size: 100%;
  }
 
- .block .small-thumb{
+ .block .small-thumb {
  	width: 100%;
  	height: 100px;
  	background-position: center;
@@ -232,7 +234,7 @@ ol {
  	display: inline-block;
  }
 
- .list .square-thumb{
+ .list .square-thumb {
  	width: 50px;
  	height: 50px;
  	background-position: center;
@@ -323,25 +325,28 @@ ol {
  	color: #6BBBFF;
  }
 
+ .block.user-list {
+    width: 100%;
+ }
 
- .list-header p {
+ .user-list p {
     display: inline-block;
     width: 8.2%;
  }
- .list-header + li p {
+ .user-list li p {
     display: inline-block;
     font-size: 200%;
-    width: 20%;
+    width: 15%;
     padding: 0.5em 0;
  }
- .list-header + li p:before {
+ .user-list li p:before {
     content: " | ";
  }
- .list-header + li {
+ .user-list li {
     height: 5em;
     line-height: 0.5em;
  }
- .list-header + li div {
+ .user-list li div {
     display: inline-block;
     font-size: 200%;
     padding: 0em 1em;
