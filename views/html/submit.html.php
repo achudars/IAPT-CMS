@@ -7,70 +7,71 @@
             <input type="text" name="title" placeholder="Title" autofocus />
             <br />
             <br />
-            <textarea rows="20" name="content" placeholder="Content"></textarea>
+            <textarea rows="20" name="content" placeholder="Content" id="article_content"></textarea>
             <br />
+            <div class="word_count"><em>Word count: <span>0 / 2000</span></em></div>
             <br />
             <div class="content">
-            <span class="col">
+                <span class="col">
 
-            </span>
-            <span class="col">
-                <div>
-                    <input checked type = "radio" name = "article_type" id = "basic_article" value = "basic_article" />
-                    <label for = "basic_article">Basic Article</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "article_type" id = "column_article" value = "column_article" />
-                    <label for = "column_article">Column Article</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "article_type" id = "review_article" value = "review_article" />
-                    <label for = "review_article">Review Article</label>
-                </div>
-            </span>
-            <span class="col">
-                <div>
-                    <input checked type = "radio" name = "columns" id = "column_1" value = "column_1" />
-                    <label for = "column_1">Column 1</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "columns" id = "column_2" value = "column_2" />
-                    <label for = "column_2">Column 2</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "columns" id = "column_3" value = "column_3" />
-                    <label for = "column_3">Column 3</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "columns" id = "column_4" value = "column_4" />
-                    <label for = "column_4">Column 4</label>
-                </div>
-            </span>
-            <span class="col">
-                <div>
-                    <input checked type = "radio" name = "user_roles" id = "subscriber" value = "subscriber" />
-                    <label for = "subscriber">Submitted</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "user_roles" id = "writer" value = "writer" />
-                    <label for = "writer">Under review</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "user_roles" id = "editor" value = "editor" />
-                    <label for = "editor">Awaiting Changes</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "user_roles" id = "writer" value = "writer" />
-                    <label for = "writer">Published</label>
-                </div>
-                <div>
-                    <input type = "radio" name = "user_roles" id = "editor" value = "editor" />
-                    <label for = "editor">Rejected</label>
-                </div>
-            </span>
-            <span class="col">
+                </span>
+                <span class="col">
+                    <div>
+                        <input checked type = "radio" name = "article_type" id = "basic_article" value = "basic_article" />
+                        <label for = "basic_article">Basic Article</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "article_type" id = "column_article" value = "column_article" />
+                        <label for = "column_article">Column Article</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "article_type" id = "review_article" value = "review_article" />
+                        <label for = "review_article">Review Article</label>
+                    </div>
+                </span>
+                <span class="col">
+                    <div>
+                        <input checked type = "radio" name = "columns" id = "column_1" value = "column_1" />
+                        <label for = "column_1">Column 1</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "columns" id = "column_2" value = "column_2" />
+                        <label for = "column_2">Column 2</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "columns" id = "column_3" value = "column_3" />
+                        <label for = "column_3">Column 3</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "columns" id = "column_4" value = "column_4" />
+                        <label for = "column_4">Column 4</label>
+                    </div>
+                </span>
+                <span class="col">
+                    <div>
+                        <input checked type = "radio" name = "user_roles" id = "subscriber" value = "subscriber" />
+                        <label for = "subscriber">Submitted</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "user_roles" id = "writer" value = "writer" />
+                        <label for = "writer">Under review</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "user_roles" id = "editor" value = "editor" />
+                        <label for = "editor">Awaiting Changes</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "user_roles" id = "writer" value = "writer" />
+                        <label for = "writer">Published</label>
+                    </div>
+                    <div>
+                        <input type = "radio" name = "user_roles" id = "editor" value = "editor" />
+                        <label for = "editor">Rejected</label>
+                    </div>
+                </span>
+                <span class="col">
 
-            </span>
+                </span>
             </div>
             <br />
             <br />
@@ -127,6 +128,49 @@
         $('#tags').on('click', '.tag', function () {
             if (confirm("Really delete this tag?")) $(this).remove();
         });
+
+
+        var maxWords = 2000;
+        $('#article_content').keypress(function () {
+            var $this, wordcount;
+            $this = $(this);
+            var words = $this.val().split(/\b[\s,\.-:;]*/);
+            wordcount = words.length;
+            if (words[wordcount - 1].length === 0) {
+                --wordcount;
+            }
+            if (words[0].length === 0) {
+                --wordcount;
+            }
+            words = null;
+            if (wordcount > maxWords) {
+                $(".word_count span").text(wordcount + " is over " + maxWords);
+                return false;
+            } else {
+                return $(".word_count span").text(wordcount + " / "+ maxWords);
+            }
+        });
+
+        $('#article_content').change(function () {
+            var words = $(this).val().split(/\b[\s,\.-:;]*/);
+            var content = $(this).val();
+            for (var i = maxWords; i < words.length; ++i) {
+                content = trimNonWords(content);
+                content = content.substring(0, content.length - words[i].length);
+            }
+            $(this).val(content);
+        });
+
+        function trimNonWords(str) {
+            var col = str.length-1;
+            while (" ,.-:;".indexOf(str.charAt(col)) >= 0) {
+                --col;
+            }
+            if (col+1 < str.length) {
+                return str.substring(0, col+1);
+            }
+            return str;
+        }
 
     });
 </script>

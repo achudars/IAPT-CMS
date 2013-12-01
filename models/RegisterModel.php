@@ -28,11 +28,7 @@ class RegisterModel {
 
     public function registerUser( $user_name, $user_password, $repeated_user_password ){
         global $pdo;
-
-        // echo $user_name . " + " . $user_password . " + " . $repeated_user_password;
-
         $this->checkRegistration( $user_name, $user_password, $repeated_user_password );
-
     }
 }
 

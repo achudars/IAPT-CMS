@@ -59,12 +59,14 @@ if (!empty($id)) {
             $model = new UsersModel();
             $controller = new UsersController($model);
             $view = new UsersView($controller, $model);
-            if ( isset($_GET["action"]) && $_GET["action"]=="delete_user") {
-                $controller->deleteUser();
-            } else if ( isset($_GET["action"]) && $_GET["action"]=="change_role") {
-                $controller->changeUserRole();
+            if ( isset($_GET["action"])) {
+                if( $_GET["action"]=="delete_user") {
+                    $controller->deleteUser();
+                } else if ( $_GET["action"]=="change_role") {
+                    $controller->changeUserRole();
+                }
             }
-            echo $view->output_users();
+            echo $view->output();
             break;
         case "list":
             $model = new ArticlesModel();

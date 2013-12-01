@@ -7,6 +7,8 @@
         <small>likes: </small>
         <small>dislikes: </small>
         <small>tags: </small>
+        <button>Like</button>
+        <button>Dislike</button>
         <br /><br />
         <hr>
         <br />
