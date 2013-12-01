@@ -1,39 +1,35 @@
+
+
 <div class="content">
-    <div class="block">
-        <h2>Most liked</h2>
+    <div class="block list">
         <ol>
-            <?php foreach($basic_articles as $article): ?><li>
+            <li>
+                <h1>LIST OF ARTICLES</h1>
+            </li>
+            <?php foreach($articles as $article): ?><li>
                 <a href="index.php?id=<?php echo $article->getId(); ?>">
+                    <div class="square-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
                     <h4><?php echo $article->getTitle(); ?></h4>
                     <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
-                    <div class="small-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
+                    <small>author</small>
+                    <small>number of comments</small>
+                    <small>number of likes</small>
+                    <small>number of dislikes</small>
+                    <small>tags</small>
                 </a>
-            </li><?php endforeach; ?>
-        </ol>
-    </div>
+                <span class="pull-right">
+                    <label>STATUS: </label>
+                    <select>
+                        <option>Published</option>
+                        <option>Rejected</option>
+                        <option>Under Review</option>
+                        <option>Awaiting Changes</option>
+                        <option>Submitted</option>
+                    </select>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </span>
 
-    <div class="block">
-        <h2>New</h2>
-        <ol>
-            <?php foreach($column_articles as $article): ?><li>
-                <a href="index.php?id=<?php echo $article->getId(); ?>">
-                    <h4><?php echo $article->getTitle(); ?></h4>
-                    <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
-                    <div class="small-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
-                </a>
-            </li><?php endforeach; ?>
-        </ol>
-    </div>
-
-    <div class="block">
-        <h2>Staff picks</h2>
-        <ol>
-            <?php foreach($review_articles as $article): ?><li>
-                <a href="index.php?id=<?php echo $article->getId(); ?>">
-                    <h4><?php echo $article->getTitle(); ?></h4>
-                    <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
-                    <div class="small-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
-                </a>
             </li><?php endforeach; ?>
         </ol>
     </div>

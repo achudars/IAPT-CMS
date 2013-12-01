@@ -3,11 +3,11 @@
 <div class="content">
     <div class="block article-editor">
 
-        <form action="" method="post" autocomplete="off">
-            <input type="text" name="title" placeholder="Title" autofocus />
+        <form action="?page=submit&action=add_article" method="post" autocomplete="off">
+            <input type="text" name="title" placeholder="Title" autofocus required />
             <br />
             <br />
-            <textarea rows="20" name="content" placeholder="Content" id="article_content"></textarea>
+            <textarea rows="20" name="content" placeholder="Content" id="article_content" required></textarea>
             <br />
             <div class="word_count"><em>Word count: <span>0 / 2000</span></em></div>
             <br />
@@ -143,8 +143,8 @@
                 --wordcount;
             }
             words = null;
-            if (wordcount > maxWords) {
-                $(".word_count span").text(wordcount + " is over " + maxWords);
+            if (wordcount+1 > maxWords) {
+                $(".word_count span").text("Word limit reached.");
                 return false;
             } else {
                 return $(".word_count span").text(wordcount + " / "+ maxWords);

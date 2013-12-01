@@ -22,7 +22,7 @@ if (!empty($id)) {
     *   someone requests the page, we instnce a version of each of those to run the page */
 
      switch ($page) {
-        case "articles":
+        case "home":
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
@@ -43,19 +43,18 @@ if (!empty($id)) {
             $view = new LoginView($controller, $model);
             echo $view->output();
             break;
-        case "submit":
+        case "add":
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
+            if ( isset($_GET["action"])) {
+                if( $_GET["action"]=="add_article") {
+                    $controller->addArticle();
+                }
+            }
             echo $view->output_new_article_fields();
             break;
-        case "check":
-            $model = new ArticlesModel();
-            $controller = new ArticlesController($model);
-            $view = new ArticlesView($controller, $model);
-            echo $view->output_existing_article_fields();
-            break;
-        case "admin":
+        case "users":
             $model = new UsersModel();
             $controller = new UsersController($model);
             $view = new UsersView($controller, $model);
@@ -68,7 +67,7 @@ if (!empty($id)) {
             }
             echo $view->output();
             break;
-        case "list":
+        case "articles":
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
@@ -94,32 +93,9 @@ if (!empty($id)) {
             echo "The request page does not exist. Please go back.";
 
     }
-
-     /* @IAPT We do the same as we did for books with the Videos link */
-    /* else if ($page == "videos")
-     {
-        $model = new VideosModel();
-        $controller = new VideosController($model);
-        $view = new VideosView($controller, $model);
-        echo $view->output();
-     }*/
 } else {
     //include 'home.php';
-    header("Location: index.php?page=articles");
+    header("Location: index.php?page=home");
 }
-
-
-
-// foreach($data as $key => $value){
-//  if ($page == $key){
-//      echo $page;
-//      $m = $value['model'];
-//      $v = $value['view'];
-//      $c = $value['controller'];
-//      break;
-//  }
-// }
-
-
 
  ?>

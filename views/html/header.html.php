@@ -14,21 +14,20 @@
     <header>
         <h1><span class="emphasis">C</span>MS for you, <span class="emphasis"><?php echo "USER"; ?></span></h1>
 
-        <form action="?page=list&action=search_articles" method="post">
+        <form action="?page=articles&action=search_articles" method="post">
             <input type="search" placeholder="Find articles..." name="search_key" value="" autofocus />
         </form>
 
     </header>
     <nav>
         <ul class="navlist">
-            <li class="active"><a href="?page=articles">Home</a></li>
-            <li><a href="?page=register">Register</a></li>
-            <li><a href="?page=login">Login</a></li>
-            <li><a href="?page=list">List</a></li>
-            <li><a href="?page=submit">Submit</a></li>
-            <li><a href="?page=check">Check</a></li>
-            <li><a href="?page=admin">Admin</a></li>
-            <li><a href="?page=tutorial">Tutorial</a></li>
+            <li class="active"><a href="?page=home">home</a></li>
+            <li><a href="?page=register">register</a></li>
+            <li><a href="?page=login">login</a></li>
+            <li><a href="?page=articles">articles</a></li>
+            <li><a href="?page=add">add</a></li>
+            <li><a href="?page=users">users</a></li>
+            <li><a href="?page=tutorial">tutorial</a></li>
         </ul>
     </nav>
     <main>

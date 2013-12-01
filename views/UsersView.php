@@ -11,10 +11,8 @@ class UsersView {
 
     public function output(){
         include 'html/header.html.php';
-
         $users = $this->model->getAllUsers();
-
-        include 'html/admin.html.php';
+        include 'html/users.html.php';
         include 'html/footer.html.php';
 
     }
