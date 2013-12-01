@@ -62,8 +62,6 @@ class UsersModel {
     public function changeUserRole( $user_id, $user_role ) {
         global $pdo;
 
-        //echo "UPDATE users SET user_role=" . $user_role . " WHERE user_id=" . $user_id;
-
         $sql = "UPDATE users SET user_role=? WHERE user_id=?";
         $query = $pdo->prepare($sql);
         $query->execute(array($user_role,$user_id));

@@ -20,7 +20,6 @@
 
                 <form class="pull-right" action="?page=admin&action=change_role" method="post" id="change_role_form">
                     <input type='hidden' name='user_id' value='<?php echo $user->getUserId(); ?>' />
-                    <input type='hidden' name='user_role' value='<?php echo $user->getUserRole(); ?>' />
                     <select onchange="this.form.submit();" name="user_role">
                     <option <?php echo ($user->getUserRole()=='subscriber')?'selected':'' ?> value="subscriber" name='subscriber'>Subscriber</option>
                     <option <?php echo ($user->getUserRole()=='writer')?'selected':'' ?> value="writer" name='writer'>Writer</option>
