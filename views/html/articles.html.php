@@ -7,28 +7,16 @@
                 <h1>LIST OF ARTICLES</h1>
             </li>
             <?php foreach($articles as $article): ?><li>
-                <a href="index.php?id=<?php echo $article->getId(); ?>">
-                    <div class="square-thumb" style="background-image: url(<?php echo $article->getImage(); ?>);"></div>
-                    <h4><?php echo $article->getTitle(); ?></h4>
-                    <small>posted <?php echo date("l jS", $article->getTimestamp()); ?></small>
+                <a href="index.php?id=<?php echo $article->getArticleId(); ?>">
+                    <div class="square-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
+                    <h4><?php echo $article->getArticleTitle(); ?></h4>
+                    <small>posted <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <small>author</small>
                     <small>number of comments</small>
                     <small>number of likes</small>
                     <small>number of dislikes</small>
                     <small>tags</small>
                 </a>
-                <span class="pull-right">
-                    <label>STATUS: </label>
-                    <select>
-                        <option>Published</option>
-                        <option>Rejected</option>
-                        <option>Under Review</option>
-                        <option>Awaiting Changes</option>
-                        <option>Submitted</option>
-                    </select>
-
-
-                </span>
                 <form class="pull-right" action="?page=admin&action=change_article_status" method="post">
                     <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
                     <select onchange="this.form.submit();" name="article_status">

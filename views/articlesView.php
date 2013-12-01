@@ -9,7 +9,7 @@ class ArticlesView {
 		$this->model 	  = $model;
 	}
 
-	public function output_all_articles(){
+	public function output_articles(){
 		include 'html/header.html.php';
 		$articles = $this->model->getAllArticles();
 		include 'html/articles.html.php';

@@ -29,7 +29,7 @@
 		  * Getter Method: get the title of the Article
 		  * @return the title of the Article
 		  */
-		 public function getId(){
+		 public function getArticleId(){
 		 	return $this->id;
 		 }
 
@@ -37,7 +37,7 @@
 		  * Getter Method: get the title of the Article
 		  * @return the title of the Article
 		  */
-		 public function getTitle(){
+		 public function getArticleTitle(){
 		 	return $this->title;
 		 }
 
@@ -45,7 +45,7 @@
 		  * Getter Method: get the content of the Article
 		  * @return the content of the Article
 		  */
-		 public function getContent(){
+		 public function getArticleContent(){
 		 	return $this->content;
 		 }
 
@@ -53,7 +53,7 @@
 		  * Getter Method: get the timestamp of the Article
 		  * @return the timestamp of the Article
 		  */
-		 public function getTimestamp(){
+		 public function getArticleTimestamp(){
 		 	return $this->timestamp;
 		 }
 
@@ -61,7 +61,7 @@
 		  * Getter Method: get the image of the Article
 		  * @return the image of the Article
 		  */
-		 public function getImage(){
+		 public function getArticleImage(){
 		 	return $this->image;
 		 }
 
@@ -69,7 +69,7 @@
 		  * Getter Method: get the status of the Article
 		  * @return tha status of the Article
 		  */
-		 public function getStatus(){
+		 public function getArticleStatus(){
 		 	return $this->status;
 		 }
 
@@ -77,7 +77,7 @@
 		  * Getter Method: get the type of the Article
 		  * @return the type of the Article
 		  */
-		 public function getType(){
+		 public function getArticleType(){
 		 	return $this->type;
 		 }
 	}
@@ -100,8 +100,8 @@
 		 	return true;
 		 }
 
-		 public function getRating(){
-		 	return $this->title;
+		 public function getArticleRating(){
+		 	return $this->article_rating;
 		 }
 
 	}

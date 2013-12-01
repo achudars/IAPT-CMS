@@ -72,16 +72,19 @@ if (!empty($id)) {
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
             if ( isset($_GET['action']) ) {
-                // filtered stuff
-                $model = new ArticlesModel();
-                $controller = new ArticlesController($model);
-                $view = new ArticlesView($controller, $model);
-                echo $view->output_found_articles();
-                break;
-
-            } else {
-                echo $view->output_all_articles();
+                if ( $_GET["action"]=="change_article_status") {
+                    $controller->changeArticleStatus();
+                } else if ( $_GET["action"]=="edit_article") {
+                    $controller->editArticle();
+                } else if ( $_GET["action"]=="delete_article") {
+                    $controller->deleteArticle();
+                } else if ( $_GET["action"]=="search_articles") {
+                    // filtered stuff
+                    echo $view->output_found_articles();
+                    break;
+                }
             }
+            echo $view->output_articles();
             break;
         case "tutorial":
             $model = new ArticlesModel();
