@@ -158,9 +158,20 @@ class ArticlesModel {
         header("Location: index.php?page=articles");
     }
 
-    public function deleteArticle() {
-
+    public function deleteArticle( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("DELETE FROM articles WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
     }
+
+    public function changeArticleStatus( $article_id, $article_status ) {
+        global $pdo;
+        $sql = "UPDATE articles SET article_status=? WHERE article_id=?";
+        $query = $pdo->prepare($sql);
+        $query->execute(array($article_status,$article_id));
+    }
+
 
 }
 

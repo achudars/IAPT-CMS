@@ -17,7 +17,10 @@
                     <small>number of dislikes</small>
                     <small>tags</small>
                 </a>
-                <form class="pull-right" action="?page=admin&action=change_article_status" method="post">
+
+                <?php echo $article->getArticleStatus(); ?>
+
+                <form class="pull-right" action="?page=articles&action=change_article_status" method="post">
                     <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
                     <select onchange="this.form.submit();" name="article_status">
                         <option <?php echo ($article->getArticleStatus()=='submitted')?'selected':'' ?> value="submitted" name='submitted'>submitted</option>
@@ -27,12 +30,14 @@
                         <option <?php echo ($article->getArticleStatus()=='rejected')?'selected':'' ?> value="rejected" name='rejected'>rejected</option>
                     </select>
                 </form>
-                <form class="pull-right" action="?page=admin&action=edit_article" method="post">
+
+                <form class="pull-right" action="?page=articles&action=edit_article" method="post">
                     <input type='hidden' name='action' value='delete' />
                     <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
                     <button onclick="this.form.submit(); return false;">edit</button>
                 </form>
-                <form class="pull-right" action="?page=admin&action=delete_article" method="post">
+
+                <form class="pull-right" action="?page=articles&action=delete_article" method="post">
                     <input type='hidden' name='action' value='delete' />
                     <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
                     <button onclick="this.form.submit(); return false;">delete</button>

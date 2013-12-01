@@ -73,6 +73,7 @@ if (!empty($id)) {
             $view = new ArticlesView($controller, $model);
             if ( isset($_GET['action']) ) {
                 if ( $_GET["action"]=="change_article_status") {
+                    echo "about to use article status";
                     $controller->changeArticleStatus();
                 } else if ( $_GET["action"]=="edit_article") {
                     $controller->editArticle();
