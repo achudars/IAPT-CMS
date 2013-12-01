@@ -52,7 +52,7 @@ if (!empty($id)) {
                     $controller->addArticle();
                 }
             }
-            echo $view->output_new_article_fields();
+            echo $view->output_article_fields();
             break;
         case "users":
             $model = new UsersModel();

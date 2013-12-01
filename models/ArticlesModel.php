@@ -28,14 +28,14 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_id']
-                ,$row['article_title']
-                ,$row['article_content']
-                ,$row['article_timestamp']
-                ,$row['article_image']
-                ,$row['article_status']
-                ,$row['article_type']
-            );
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+               );
             $articles[] = $article;
         }
         return $articles;
@@ -50,14 +50,14 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_id']
-                ,$row['article_title']
-                ,$row['article_content']
-                ,$row['article_timestamp']
-                ,$row['article_image']
-                ,$row['article_status']
-                ,$row['article_type']
-            );
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+               );
             $basic_articles[] = $article;
         }
         return $basic_articles;
@@ -73,14 +73,14 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_id']
-                ,$row['article_title']
-                ,$row['article_content']
-                ,$row['article_timestamp']
-                ,$row['article_image']
-                ,$row['article_status']
-                ,$row['article_type']
-            );
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+               );
             $column_articles[] = $article;
         }
         return $column_articles;
@@ -96,14 +96,14 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_id']
-                ,$row['article_title']
-                ,$row['article_content']
-                ,$row['article_timestamp']
-                ,$row['article_image']
-                ,$row['article_status']
-                ,$row['article_type']
-            );
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+               );
             $review_articles[] = $article;
         }
         return $review_articles;
@@ -118,14 +118,14 @@ class ArticlesModel {
 
         foreach($rows as $row){
             $article = new Article(
-                 $row['article_id']
-                ,$row['article_title']
-                ,$row['article_content']
-                ,$row['article_timestamp']
-                ,$row['article_image']
-                ,$row['article_status']
-                ,$row['article_type']
-            );
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+               );
             $articles[] = $article;
         }
         return $articles;
@@ -139,8 +139,23 @@ class ArticlesModel {
 
     }
 
-    public function addArticle() {
+    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type ) {
+        global $pdo;
 
+        echo "title: " . $article_title ." | content: ". $article_content ." | timestamp: ". time() ." | image: ". $article_image ." | status: ". $article_status ." | type: ". $article_type;
+
+        $query = $pdo->prepare("INSERT INTO articles (article_title, article_content, article_timestamp, article_image, article_status, article_type) VALUES (?,?,?,?,?,?)");
+
+        $query->bindValue(1, $article_title);
+        $query->bindValue(2, $article_content);
+        $query->bindValue(3, time());
+        $query->bindValue(4, "http://placehold.it/350x150"); // TODO change to real image
+        $query->bindValue(5, "submitted");
+        $query->bindValue(6, $article_type);
+
+        $query->execute();
+        //redirection
+        header("Location: index.php?page=articles");
     }
 
     public function deleteArticle() {
@@ -149,4 +164,4 @@ class ArticlesModel {
 
 }
 
- ?>
+?>

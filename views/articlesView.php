@@ -27,7 +27,7 @@ class ArticlesView {
 
 	}
 
-	public function output_new_article_fields(){
+	public function output_article_fields(){
 		include 'html/header.html.php';
 		include 'html/add.html.php';
 		include 'html/footer.html.php';

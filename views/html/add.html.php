@@ -3,13 +3,16 @@
 <div class="content">
     <div class="block article-editor">
 
-        <form action="?page=submit&action=add_article" method="post" autocomplete="off">
-            <input type="text" name="title" placeholder="Title" autofocus required />
+        <form action="?page=add&action=add_article" method="post" autocomplete="off">
+            <input type="text" name="article_title" placeholder="Title" autofocus required />
             <br />
             <br />
-            <textarea rows="20" name="content" placeholder="Content" id="article_content" required></textarea>
+            <textarea rows="20" name="article_content" placeholder="Content" id="article_content" required></textarea>
             <br />
             <div class="word_count"><em>Word count: <span>0 / 2000</span></em></div>
+            <br />
+            <input type="text" name="article_image" placeholder="Image / Image URL" id="article_image" required />
+            <br />
             <br />
             <div class="content">
                 <span class="col">
@@ -49,24 +52,24 @@
                 </span>
                 <span class="col">
                     <div>
-                        <input checked type = "radio" name = "user_roles" id = "subscriber" value = "subscriber" />
-                        <label for = "subscriber">Submitted</label>
+                        <input checked type = "radio" name = "article_status" id = "submitted" value = "submitted" />
+                        <label for = "submitted">submitted</label>
                     </div>
                     <div>
-                        <input type = "radio" name = "user_roles" id = "writer" value = "writer" />
-                        <label for = "writer">Under review</label>
+                        <input type = "radio" name = "article_status" id = "under_review" value = "under_review" />
+                        <label for = "under_review">under review</label>
                     </div>
                     <div>
-                        <input type = "radio" name = "user_roles" id = "editor" value = "editor" />
-                        <label for = "editor">Awaiting Changes</label>
+                        <input type = "radio" name = "article_status" id = "awaiting_changes" value = "awaiting_changes" />
+                        <label for = "awaiting_changes">awaiting changes</label>
                     </div>
                     <div>
-                        <input type = "radio" name = "user_roles" id = "writer" value = "writer" />
-                        <label for = "writer">Published</label>
+                        <input type = "radio" name = "article_status" id = "published" value = "published" />
+                        <label for = "published">published</label>
                     </div>
                     <div>
-                        <input type = "radio" name = "user_roles" id = "editor" value = "editor" />
-                        <label for = "editor">Rejected</label>
+                        <input type = "radio" name = "article_status" id = "rejected" value = "rejected" />
+                        <label for = "rejected">rejected</label>
                     </div>
                 </span>
                 <span class="col">
@@ -77,19 +80,19 @@
             <br />
             <div class="rating">
                 <div>Rating</div>
-                <input type="range" name="rating" min="1" max="5" />
+                <input type="range" name="article_rating" min="1" max="5" />
             </div>
             <br />
             <div id="tags">
                 <span class="tag">PC</span>
                 <span class="tag">PS4</span>
                 <span class="tag">XBONE</span>
-                <input type="text" value="" placeholder="Add a tag" />
+                <input type="text" value="article_tags" placeholder="Add a tag" />
             </div>
             <br />
             <div id="authors">
                 <span class="tag">ME</span>
-                <input type="text" value="" placeholder="Add an author" />
+                <input type="text" value="article_authors" placeholder="Add an author" />
             </div>
             <br />
 
@@ -99,9 +102,7 @@
             </div>
             <br />
 
-            <input type="submit" value="SUBMIT" />
-
-            <input type="submit" value="PUBLISH" />
+            <input type="submit" value="DONE" />
 
         </form>
 

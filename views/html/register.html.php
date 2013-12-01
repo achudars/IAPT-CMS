@@ -10,10 +10,6 @@
         </div>
     </div>
     <div class="right">
-        <?php if ( isset($error) ) { ?>
-        <small style="color:#aa0000"><?php echo $error; ?></small>
-        <?php } ?>
-
         <form action="?page=register&action=register_user" method="post" autocomplete="off">
             <input type="text" name="user_name" autofocus required/>
             <input type="password" name="user_password" required />
