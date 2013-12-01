@@ -173,24 +173,9 @@ class ArticlesModel {
 
     public function editArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_id ) {
         global $pdo;
-
-        echo "EXECUTING UPDATE OF RATICLES: " . $article_id . "||||" . $article_title . ">>";
-
         $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=? WHERE article_id=?";
         $query = $pdo->prepare($sql);
-
-        /*$query->bindValue(1, $article_title);
-        $query->bindValue(2, $article_content);
-        $query->bindValue(3, time());
-        $query->bindValue(4, $article_image);
-        $query->bindValue(5, $article_status);
-        $query->bindValue(6, $article_type);
-        $query->bindValue(7, $article_id);*/
-
         $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_id ));
-
-        //redirection
-        //header("Location: index.php?page=articles");
     }
 
 }

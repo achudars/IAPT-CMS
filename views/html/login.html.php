@@ -9,14 +9,12 @@
         </div>
     </div>
     <div class="right">
-        <?php if ( isset($error) ) { ?>
-        <small style="color:#aa0000"><?php echo $error; ?></small>
-        <?php } ?>
-
-        <form action="index.php" method="post" autocomplete="off">
-            <input id="username" type="text" name="username" autofocus required />
-            <input type="password" name="password" required />
+        <form action="?page=login&action=login" method="post" autocomplete="off">
+            <input id="user_name" type="text" name="user_name" autofocus required />
+            <input type="user_password" name="user_password" required />
             <input type="submit" value="Login" />
         </form>
     </div>
+    <p>Not a member? <a href="?page=register">Register here</a></p>
 </div>
+

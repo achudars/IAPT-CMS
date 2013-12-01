@@ -23,9 +23,6 @@ class ArticlesController {
         $article_image = $_POST['article_image'];
         $article_status = $_POST['article_status'];
         $article_type = $_POST['article_type'];
-
-        echo "ARTICLE ID: " . $article_id;
-
         $this->model->editArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_id );
     }
 

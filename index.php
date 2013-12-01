@@ -49,6 +49,11 @@ if (!empty($show_id)) {
             $model = new LoginModel();
             $controller = new LoginController($model);
             $view = new LoginView($controller, $model);
+            if ( isset($_GET["action"])) {
+                if( $_GET["action"]=="login") {
+                    $controller->login();
+                }
+            }
             echo $view->output();
             break;
         case "add":
@@ -81,7 +86,6 @@ if (!empty($show_id)) {
             $view = new ArticlesView($controller, $model);
             if ( isset($_GET['action']) ) {
                 if ( $_GET["action"]=="change_article_status") {
-                    echo "about to use article status";
                     $controller->changeArticleStatus();
                 } else if ( $_GET["action"]=="edit_article") {
                     $controller->editArticle();

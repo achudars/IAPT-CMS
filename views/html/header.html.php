@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <h1><span class="emphasis">C</span>MS for you, <span class="emphasis"><?php echo "USER"; ?></span></h1>
+        <h1><span class="emphasis">C</span>MS for you, <span class="emphasis"><?php echo $_SESSION["user_name"] . " + " . $_SESSION["user_password"]; ?></span></h1>
 
         <form action="?page=articles&action=search_articles" method="post">
             <input type="search" placeholder="Find articles..." name="search_key" value="" autofocus />

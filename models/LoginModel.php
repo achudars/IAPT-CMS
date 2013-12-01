@@ -21,6 +21,8 @@ class LoginModel {
                 $subname = $values['user_name'];
                 $subpass = $values['user_password'];
 
+                echo $subname;
+
                 //The name of the table we want to select data from
                 $table = 'users';
 
