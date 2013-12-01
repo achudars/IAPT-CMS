@@ -12,31 +12,23 @@
                 <p><?php echo $user->getUserName(); ?></p>
                 <p><?php echo $user->getUserRole(); ?></p>
 
-                <form class="pull-right" action="?page=admin&action=delete_user" method="post" id="delete_form">
+                <form class="pull-right" action="?page=admin&action=delete_user" method="post" id="delete_user_form">
                     <input type='hidden' name='action' value='delete' />
                     <input type='hidden' name='user_id' value='<?php echo $user->getUserId(); ?>' />
-                    <a href="" onclick="document.getElementById('delete_form').submit(); return false;">Delete item</a>
+                    <button onclick="document.getElementById('delete_user_form').submit(); return false;">Delete item</button>
                 </form>
 
-                <span class="pull-right">
-                <div>
-                    <input <?php echo ($user->getUserRole()=='subscriber')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "subscriber" value = "subscriber" />
-                    <label for = "subscriber">Subscriber</label>
-                </div>
-                <div>
-                    <input <?php echo ($user->getUserRole()=='writer')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "writer" value = "writer" />
-                    <label for = "writer">Writer</label>
-                </div>
-                <div>
-                    <input <?php echo ($user->getUserRole()=='editor')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "editor" value = "editor" />
-                    <label for = "editor">Editor</label>
-                </div>
-                <div>
-                    <input <?php echo ($user->getUserRole()=='publisher')?'checked':'' ?> type = "radio" name = "<?php echo $user->getUserId(); ?>" id = "publisher" value = "publisher" />
-                    <label for = "publisher">Publisher</label>
-                </div>
-                </span>
+                <form class="pull-right" action="?page=admin&action=change_role" method="post" id="change_role_form">
 
+                    <label>ROLE: </label>
+                        <select>
+                            <option <?php echo ($user->getUserRole()=='subscriber')?'selected':'' ?> >Subscriber</option>
+                            <option <?php echo ($user->getUserRole()=='writer')?'selected':'' ?> >Writer</option>
+                            <option <?php echo ($user->getUserRole()=='editor')?'selected':'' ?> >Editor</option>
+                            <option <?php echo ($user->getUserRole()=='publisher')?'selected':'' ?> >Publisher</option>
+                        </select>
+                    <button>Edit</button>
+                </form>
 
             </li><?php endforeach; ?>
         </ol>
