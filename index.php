@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 /*  @IAPT Bring in the includes - the list was getting kind of long and is needed on most pages,
 *   so let's bring it in one file just to make including a do-it-once */
 require_once 'config/includes.php';
@@ -52,6 +54,8 @@ if (!empty($show_id)) {
             if ( isset($_GET["action"])) {
                 if( $_GET["action"]=="login") {
                     $controller->login();
+                } else if( $_GET["action"]=="logout") {
+                    $controller->logout();
                 }
             }
             echo $view->output();
