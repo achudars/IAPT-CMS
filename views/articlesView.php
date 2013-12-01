@@ -33,12 +33,18 @@ class ArticlesView {
 		include 'html/footer.html.php';
 	}
 
+	public function output_edit_article( $article_id ){
+		include 'html/header.html.php';
+		$article = $this->model->getArticle( $article_id );
+		include 'html/edit.html.php';
+		include 'html/footer.html.php';
+	}
+
 	public function output_one_article( $article_id ){
 		include 'html/header.html.php';
 		$article = $this->model->getArticle( $article_id );
 		include 'html/article.html.php';
 		include 'html/footer.html.php';
-
 	}
 
 	public function output_found_articles(){

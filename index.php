@@ -7,14 +7,22 @@ require_once 'config/includes.php';
 /*  @IAPT Let's get our URL and find out to what page we should be directing */
 //echo $url = $_GET['url'];
 $page = $_GET['page'];
-$id = $_GET['id'];
+$show_id = $_GET['show'];
+$edit_id = $_GET['edit'];
 
-if (!empty($id)) {
+if (!empty($show_id)) {
 
     $model = new ArticlesModel();
     $controller = new ArticlesController($model);
     $view = new ArticlesView($controller, $model);
-    echo $view->output_one_article( $id );
+    echo $view->output_one_article( $show_id );
+
+} else if (!empty($edit_id)) {
+
+    $model = new ArticlesModel();
+    $controller = new ArticlesController($model);
+    $view = new ArticlesView($controller, $model);
+    echo $view->output_edit_article( $edit_id );
 
 } else if (!empty($page)){
 

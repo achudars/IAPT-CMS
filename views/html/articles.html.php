@@ -7,7 +7,7 @@
                 <h1>LIST OF ARTICLES</h1>
             </li>
             <?php foreach($articles as $article): ?><li>
-                <a href="index.php?id=<?php echo $article->getArticleId(); ?>">
+                <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <div class="square-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                     <h4><?php echo $article->getArticleTitle(); ?></h4>
                     <small>posted <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
@@ -18,7 +18,15 @@
                     <small>tags</small>
                 </a>
 
-                <?php echo $article->getArticleStatus(); ?>
+                <a class="pull-right" href="index.php?edit=<?php echo $article->getArticleId(); ?>">
+                    <button>edit</button>
+                </a>
+
+                <form class="pull-right" action="?page=articles&action=delete_article" method="post">
+                    <input type='hidden' name='action' value='delete' />
+                    <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
+                    <button onclick="this.form.submit(); return false;">delete</button>
+                </form>
 
                 <form class="pull-right" action="?page=articles&action=change_article_status" method="post">
                     <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
@@ -29,18 +37,6 @@
                         <option <?php echo ($article->getArticleStatus()=='published')?'selected':'' ?> value="published" name='published'>published</option>
                         <option <?php echo ($article->getArticleStatus()=='rejected')?'selected':'' ?> value="rejected" name='rejected'>rejected</option>
                     </select>
-                </form>
-
-                <form class="pull-right" action="?page=articles&action=edit_article" method="post">
-                    <input type='hidden' name='action' value='delete' />
-                    <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
-                    <button onclick="this.form.submit(); return false;">edit</button>
-                </form>
-
-                <form class="pull-right" action="?page=articles&action=delete_article" method="post">
-                    <input type='hidden' name='action' value='delete' />
-                    <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
-                    <button onclick="this.form.submit(); return false;">delete</button>
                 </form>
 
             </li><?php endforeach; ?>
