@@ -12,6 +12,15 @@ class UsersController {
         $this->model->deleteUser( $user_id );
     }
 
+    public function changeUserRole() {
+        $user_id = $_POST['user_id'];
+        $user_role = $_POST['user_role'];
+
+        echo "FROM CONTROLLER: " . $user_id . " + " . $user_role;
+
+        $this->model->changeUserRole( $user_id, $user_role );
+    }
+
 }
 
 

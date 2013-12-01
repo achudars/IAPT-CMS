@@ -59,8 +59,10 @@ if (!empty($id)) {
             $model = new UsersModel();
             $controller = new UsersController($model);
             $view = new UsersView($controller, $model);
-            if ( isset($_GET['action']) ) {
+            if ( isset($_GET["action"]) && $_GET["action"]=="delete_user") {
                 $controller->deleteUser();
+            } else if ( isset($_GET["action"]) && $_GET["action"]=="change_role") {
+                $controller->changeUserRole();
             }
             echo $view->output_users();
             break;
