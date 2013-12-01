@@ -31,6 +31,14 @@ class ArticlesView {
 
 	}
 
+	public function output_new_article_fields(){
+		include 'html/header.html.php';
+		include 'html/submit.html.php';
+		include 'html/footer.html.php';
+	}
+
+
+
 	public function output_one_article( $article_id ){
 		include 'html/header.html.php';
 		$article = $this->model->getArticle( $article_id );
