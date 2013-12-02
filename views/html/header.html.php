@@ -28,9 +28,9 @@
             <span><a href="?page=register">register</a></span>
             <span><a href="?page=login">login</a></span>
             <?php } else { ?>
-            <span><form action="?page=login&action=logout" method="post" autocomplete="off">
+            <form action="?page=login&action=logout" method="post" autocomplete="off">
                 <input type="submit" value="Logout" />
-            </form></span>
+            </form>
             <?php } ?>
         </span>
 

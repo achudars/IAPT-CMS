@@ -49,19 +49,40 @@ header h1 {
   float: right;
   margin-right: 1em;
 }
-#session > span {
+#session > span, #session form {
   background: #6BBBFF;
   line-height: 1em;
-  padding: 0.7em;
   margin-top: -1.3em;
   width: 7em;
   display: inline-block;
 }
+
+#session > span {
+  padding: 0.7em;
+}
+
+#session form {
+  padding: 0.4em;
+}
+
 #session a {
   color: #FFF;
   text-decoration: none;
   display: inline-block;
   font-size: 150%;
+}
+#session a:hover, #session form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+#session form input[type="submit"] {
+  background: #6BBBFF;
+  color: #FFF;
+  display: inline-block;
+  font-size: 150%;
+  background: none;
+  outline: none;
+  border: none;
 }
 
 input[type="search"] {
