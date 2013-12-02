@@ -13,13 +13,13 @@
                 <p><?php echo $user->getUserName(); ?></p>
                 <p><?php echo $user->getUserRole(); ?></p>
 
-                <form class="pull-right" action="?page=admin&action=delete_user" method="post">
+                <form class="pull-right" action="?page=users&action=delete_user" method="post">
                     <input type='hidden' name='action' value='delete' />
                     <input type='hidden' name='user_id' value='<?php echo $user->getUserId(); ?>' />
                     <button onclick="this.form.submit(); return false;">Delete user</button>
                 </form>
 
-                <form class="pull-right" action="?page=admin&action=change_role" method="post">
+                <form class="pull-right" action="?page=users&action=change_role" method="post">
                     <input type='hidden' name='user_id' value='<?php echo $user->getUserId(); ?>' />
                     <select onchange="this.form.submit();" name="user_role">
                         <option <?php echo ($user->getUserRole()=='subscriber')?'selected':'' ?> value="subscriber" name='subscriber'>Subscriber</option>
