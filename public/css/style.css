@@ -18,7 +18,7 @@
     user-select: none;
 }
 
-body {
+body, input {
   font-family: "Lato", sans-serif;
   font-size: 62.5%;
   background: #F1F1F1;
@@ -50,19 +50,19 @@ header h1 {
   margin-right: 1em;
 }
 #session > span, #session form {
-  background: #6BBBFF;
+  background: rgba(255,255,255, .1);
   line-height: 1em;
-  margin-top: -1.3em;
+  margin-top: -1.5em;
   width: 7em;
   display: inline-block;
 }
 
 #session > span {
-  padding: 0.7em;
+  padding: 0.9em;
 }
 
 #session form {
-  padding: 0.4em;
+  padding: 0.6em;
 }
 
 #session a {
@@ -76,7 +76,7 @@ header h1 {
 }
 
 #session form input[type="submit"] {
-  background: #6BBBFF;
+  background: rgba(255,255,255, .1);
   color: #FFF;
   display: inline-block;
   font-size: 150%;
@@ -95,6 +95,7 @@ input[type="search"] {
   height: 2em;
   padding-left: 1em;
   color: #FFF;
+  font-size: 150%;
 }
 
 nav {
@@ -210,6 +211,18 @@ ol li.list-header {
     font-size: 150%;
 }
 
+.block.article input[type="submit"] {
+  color: #FFF;
+  background: #6BBBFF;
+  padding: 0.25em 0.5em;
+  font-size: 130%;
+  border: none;
+}
+ .block.article input[type="submit"]:hover {
+  cursor: pointer;
+  background: #242424;
+}
+
 .block h2 {
   width: 100%;
   background: #242424;
@@ -301,8 +314,11 @@ ol li.list-header {
 	display: inline-block;
   width: 100%;
 }
+.pull-left {
+	float: left;
+}
 .pull-right {
-	float: right;
+  float: right;
 }
 .left, .right {
   float: left;

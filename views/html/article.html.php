@@ -2,13 +2,20 @@
     <div class="block article">
         <h2><?php echo $article['article_title']; ?></h2>
         <div class="small-thumb" style="background-image: url(<?php echo $article['article_image']; ?>);"></div>
-        <small>posted <?php echo date("l jS", $article['article_timestamp']); ?></small>
-        <small>author: </small>
-        <small>likes: </small>
-        <small>dislikes: </small>
-        <small>tags: </small>
-        <button>Like</button>
-        <button>Dislike</button>
+        <br />
+        <small class="pull-left">by <?php echo "author"; ?></small>
+        <small class="pull-left">on <?php echo date("l jS", $article['article_timestamp']); ?></small>
+
+        <small class="pull-left">likes: </small>
+        <small class="pull-left">dislikes: </small>
+        <small class="pull-left">tags: </small>
+
+        <form class="pull-right" action="" method="post">
+            <input type="submit" value="dislike" />
+        </form>
+        <form class="pull-right" action="" method="post">
+            <input type="submit" value="like" />
+        </form>
         <br /><br />
         <hr>
         <br />
