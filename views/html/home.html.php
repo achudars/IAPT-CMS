@@ -5,7 +5,8 @@
             <?php foreach($basic_articles as $article): ?><li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4><?php echo $article->getArticleTitle(); ?></h4>
-                    <small>posted <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
+                    <small>by <?php echo "author" ?></small>
+                    <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                 </a>
             </li><?php endforeach; ?>
@@ -18,7 +19,8 @@
             <?php foreach($column_articles as $article): ?><li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4><?php echo $article->getArticleTitle(); ?></h4>
-                    <small>posted <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
+                    <small>by <?php echo "author" ?></small>
+                    <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                 </a>
             </li><?php endforeach; ?>
@@ -31,7 +33,8 @@
             <?php foreach($review_articles as $article): ?><li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4><?php echo $article->getArticleTitle(); ?></h4>
-                    <small>posted <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
+                    <small>by <?php echo "author" ?></small>
+                    <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                 </a>
             </li><?php endforeach; ?>

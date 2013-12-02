@@ -230,9 +230,7 @@ ol li.list-header {
   text-decoration: none;
   color: #242424;
 }
-.block ol small {
-  font-size: 185%;
-}
+
 .block ol a:hover {
   color: #2B5A92;
 }
@@ -259,7 +257,7 @@ ol li.list-header {
 }
 
 .block ol small {
-  font-size: 80%;
+  font-size: 60%;
 }
 
 .block.comment article {
