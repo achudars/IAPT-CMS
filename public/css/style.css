@@ -225,14 +225,24 @@ ol li.list-header {
 }
 
 .block ol a {
-  font-size: 200%;
+  font-size: 185%;
+  text-transform: uppercase;
   text-decoration: none;
   color: #242424;
+}
+.block ol small {
+  font-size: 185%;
 }
 .block ol a:hover {
   color: #2B5A92;
 }
 
+.block ol li a h4 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
+}
 
 .block ol li {
   padding: 1em;
