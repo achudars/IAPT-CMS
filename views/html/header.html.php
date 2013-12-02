@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>CMS</title>
+    <link rel="shortcut icon" href="public/images/favicon.ico" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- I am against ugly default fonts, hence resorting to Lato -->
