@@ -109,7 +109,6 @@
     </div>
 </div>
 
-<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 <script>
     $(function () {
 

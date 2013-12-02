@@ -9,6 +9,7 @@
     <!-- I am against ugly default fonts, hence resorting to Lato -->
     <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+    <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 </head>
 <body>
     <header>
@@ -37,12 +38,22 @@
     </header>
     <nav>
         <ul class="navlist">
-            <li class="active"><a href="?page=home">home</a></li>
+        <?php
+                $url = "$_SERVER[REQUEST_URI]";
+                $parts = parse_url($url);
+                parse_str($parts['query'], $query);
+                $home =  ( $query['page'] == 'home') ? 'class="active"' : '';
+                $articles =  ( $query['page'] == 'articles') ? 'class="active"' : '';
+                $add =  ( $query['page'] == 'add') ? 'class="active"' : '';
+                $users =  ( $query['page'] == 'users') ? 'class="active"' : '';
+                $tutorial =  ( $query['page'] == 'tutorial') ? 'class="active"' : '';
 
-            <li><a href="?page=articles">articles</a></li>
-            <li><a href="?page=add">add</a></li>
-            <li><a href="?page=users">users</a></li>
-            <li><a href="?page=tutorial">tutorial</a></li>
+            ?>
+            <li <?php echo $home ?>     ><a href="?page=home">home</a></li>
+            <li <?php echo $articles ?> ><a href="?page=articles">articles</a></li>
+            <li <?php echo $add ?>      ><a href="?page=add">add</a></li>
+            <li <?php echo $users ?>    ><a href="?page=users">users</a></li>
+            <li <?php echo $tutorial ?> ><a href="?page=tutorial">tutorial</a></li>
 
         </ul>
 
