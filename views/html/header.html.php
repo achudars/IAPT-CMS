@@ -12,27 +12,38 @@
 </head>
 <body>
     <header>
-        <h1><span class="emphasis">C</span>MS for you, <span class="emphasis"><?php echo $_SESSION["user_name"]; ?></span></h1>
+        <h1>
+            <span class="emphasis">C</span>MS
+            <?php if( (isset($_SESSION['user_name']) && isset($_SESSION['user_password'])) ) { ?>
+                for you, <span class="emphasis"><?php echo $_SESSION["user_name"]; ?></span>
+            <?php } ?>
+        </h1>
 
         <form action="?page=articles&action=search_articles" method="post">
             <input type="search" placeholder="Find articles..." name="search_key" value="" autofocus />
         </form>
 
+        <span id="session">
+            <?php if( !(isset($_SESSION['user_name']) && isset($_SESSION['user_password'])) ) { ?>
+            <span><a href="?page=register">register</a></span>
+            <span><a href="?page=login">login</a></span>
+            <?php } else { ?>
+            <span><form action="?page=login&action=logout" method="post" autocomplete="off">
+                <input type="submit" value="Logout" />
+            </form></span>
+            <?php } ?>
+        </span>
+
     </header>
     <nav>
         <ul class="navlist">
             <li class="active"><a href="?page=home">home</a></li>
-            <li><a href="?page=register">register</a></li>
-            <?php if( !(isset($_SESSION['user_name']) && isset($_SESSION['user_password'])) ) { ?>
-                <li><a href="?page=login">login</a></li>
-            <?php } ?>
+
             <li><a href="?page=articles">articles</a></li>
             <li><a href="?page=add">add</a></li>
             <li><a href="?page=users">users</a></li>
             <li><a href="?page=tutorial">tutorial</a></li>
-            <li> <form action="?page=login&action=logout" method="post" autocomplete="off">
-            <input type="submit" value="Logout" />
-        </form></li>
+
         </ul>
 
     </nav>

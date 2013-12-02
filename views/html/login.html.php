@@ -11,7 +11,7 @@
     <div class="right">
         <form action="?page=login&action=login" method="post" autocomplete="off">
             <input id="user_name" type="text" name="user_name" autofocus required />
-            <input type="user_password" name="user_password" required />
+            <input type="password" name="user_password" required />
             <input type="submit" value="Login" />
         </form>
     </div>

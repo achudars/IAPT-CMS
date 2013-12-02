@@ -1,7 +1,5 @@
 <?php
 
-//session_start();
-
 // Config
 require_once "config/database.php";
 

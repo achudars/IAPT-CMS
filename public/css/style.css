@@ -45,6 +45,25 @@ header h1 {
   color: #6BBBFF;
 }
 
+#session {
+  float: right;
+  margin-right: 1em;
+}
+#session > span {
+  background: #6BBBFF;
+  line-height: 1em;
+  padding: 0.7em;
+  margin-top: -1.3em;
+  width: 7em;
+  display: inline-block;
+}
+#session a {
+  color: #FFF;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 150%;
+}
+
 input[type="search"] {
   margin-top: -1em;
   float: right;
