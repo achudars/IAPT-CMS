@@ -6,6 +6,8 @@
         <div class="pull-right">
             <p>Username</p>
             <p>Password</p>
+            <p></p>
+            <p>Not a member?</p>
         </div>
     </div>
     <div class="right">
@@ -14,7 +16,7 @@
             <input type="password" name="user_password" required />
             <input type="submit" value="Login" />
         </form>
+        <a href="?page=register">Register here</a>
     </div>
-    <p>Not a member? <a href="?page=register">Register here</a></p>
 </div>
 

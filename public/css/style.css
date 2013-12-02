@@ -333,7 +333,8 @@ ol li.list-header {
  background: #6BBBFF;
 }
 
-.left p, .right input {
+.left p, .right input, .right a {
+  text-decoration: none;
   height: 20px;
   font-size: 20px;
   line-height: 0px;
@@ -351,7 +352,7 @@ ol li.list-header {
   box-shadow:         0 0 0.1em 0.1em rgba(255,255,255, 0.5);
 }
 
-.login .right input {
+.login .right input, .login .right a {
   border: 1px solid #6BBBFF;
   border-left: none;
   color: #6BBBFF;
@@ -363,6 +364,7 @@ ol li.list-header {
 }
 
 .login .left p {
+  clear: both;
   border: 1px solid #FFF;
   border-right: none;
   text-align: right;
