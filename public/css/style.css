@@ -449,6 +449,7 @@ ol li.list-header {
 .block.article-editor textarea {
   width:100%;
   padding: 0.5em;
+  resize: none;
 }
 .block.article-editor .col {
   width: 30%;
@@ -474,6 +475,7 @@ ol li.list-header {
   color: #FFF;
   padding: 0.2em;
   border-radius: 4px;
+  line-height: 2em;
 }
 .tag:hover {
   cursor: pointer;

@@ -11,9 +11,16 @@ class ArticlesController {
         $article_title = $_POST['article_title'];
         $article_content = nl2br($_POST['article_content']);
         $article_image = $_POST['article_image'];
+
         $article_status = $_POST['article_status'];
         $article_type = $_POST['article_type'];
-        $article_author = $_POST['article_author'];
+
+        $article_tags = $_POST['article_tags'];
+        $article_authors = $_POST['article_authors'];
+
+        $article_column = $_POST['article_column'];
+        $article_staff_picked = $_POST['article_staff_picked'];
+
         $this->model->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type );
     }
 
