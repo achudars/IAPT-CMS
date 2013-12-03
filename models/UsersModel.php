@@ -136,22 +136,6 @@ class UsersModel {
         return $user_id;
     }
 
-    public function getLoggedUserRole( $user_name, $user_password ){
-        global $pdo;
-
-        //echo "1. FROM getLoggedUserRoleFromId: UN: " . $user_name . " , UP: " . $user_password;
-
-        $query = $pdo->prepare("SELECT user_role FROM users WHERE user_name =? AND user_password = ?");
-        $query->bindValue(1, $user_name);
-        $query->bindValue(2, $user_password);
-        $query->execute();
-        $user_role = $query->fetchColumn();
-
-        //echo "| 2. FROM getLoggedUserRoleFromId: USER ROLE: " . $user_role;
-        echo $user_role;
-        return $user_role;
-    }
-
 }
 
  ?>

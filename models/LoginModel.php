@@ -31,6 +31,7 @@ class LoginModel {
         } else {
             $_SESSION["user_name"] = $user_name;
             $_SESSION["user_password"] = $user_password;
+            $_SESSION['user_role'] = $this->getLoggedUserRole( $user_name, $user_password );
             header("Location: index.php?page=home");
         }
 
@@ -48,6 +49,22 @@ class LoginModel {
         session_destroy();
         // clear values
         $_SESSION = array();
+    }
+
+    public function getLoggedUserRole( $user_name, $user_password ){
+        global $pdo;
+
+        //echo "1. FROM getLoggedUserRoleFromId: UN: " . $user_name . " , UP: " . $user_password;
+
+        $query = $pdo->prepare("SELECT user_role FROM users WHERE user_name =? AND user_password = ?");
+        $query->bindValue(1, $user_name);
+        $query->bindValue(2, $user_password);
+        $query->execute();
+        $user_role = $query->fetchColumn();
+
+        //echo "| 2. FROM getLoggedUserRoleFromId: USER ROLE: " . $user_role;
+        echo $user_role;
+        return $user_role;
     }
 
 

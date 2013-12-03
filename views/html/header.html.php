@@ -49,11 +49,17 @@
                 $users =  ( $query['page'] == 'users') ? 'class="active"' : '';
                 $tutorial =  ( $query['page'] == 'tutorial') ? 'class="active"' : '';
 
-            ?>
+        ?>
             <li <?php echo $home ?>     ><a href="?page=home">home</a></li>
-            <li <?php echo $articles ?> ><a href="?page=articles">articles</a></li>
-            <li <?php echo $add ?>      ><a href="?page=add">add</a></li>
-            <li <?php echo $users ?>    ><a href="?page=users">users</a></li>
+            <?php if( isset($_SESSION['user_role']) ) {
+                if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
+                    <li <?php echo $articles ?> ><a href="?page=articles">articles</a></li>
+                    <li <?php echo $add ?>      ><a href="?page=add">add</a></li>
+                <?php } ?>
+                <?php if ( $_SESSION['user_role']=="publisher" ) { ?>
+                    <li <?php echo $users ?>    ><a href="?page=users">users</a></li>
+                <?php } ?>
+            <?php } ?>
             <li <?php echo $tutorial ?> ><a href="?page=tutorial">tutorial</a></li>
 
         </ul>
