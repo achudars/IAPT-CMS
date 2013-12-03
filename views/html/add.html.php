@@ -88,9 +88,12 @@
                     </div>
                     <br />
                     <div id="tags">
-                        <span class="tag">PC</span>
-                        <span class="tag">PS4</span>
-                        <span class="tag">XBONE</span>
+                        <span class="tag">action</span>
+                        <span class="tag">adventure</span>
+                        <span class="tag">racing</span>
+                        <span class="tag">strategy</span>
+                        <span class="tag">simulation</span>
+                        <span class="tag">puzzle</span>
                         <input type="text" value="article_tags" placeholder="Add a tag" />
                     </div>
                     <br />

@@ -460,16 +460,13 @@ ol li.list-header {
   width: 5%;
 }
 .block.article-editor input[type="submit"] {
-  float:left;
-  width: 48%;
+  width: 100%;
   background: #6BBBFF;
   color: #FFF;
-  margin: 0.25em;
 }
 .block.article-editor input[type="submit"]:hover {
   cursor: pointer;
   background: #222;
-  margin: 0.25em;
 }
 
 .tag {
