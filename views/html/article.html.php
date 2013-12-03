@@ -10,14 +10,16 @@
         <small class="pull-left">dislikes: [ <?php echo $dislikes ?> ]</small>
         <small class="pull-left">tags: </small>
 
-        <form class="pull-right" action="index.php?show=<?php echo $article['article_id']; ?>&action=dislike" method="post">
-            <input type='hidden' name='article_id' value='<?php echo $article['article_id']; ?>' />
-            <input type="submit" value="dislike" />
-        </form>
-        <form class="pull-right" action="index.php?show=<?php echo $article['article_id']; ?>&action=like" method="post">
-            <input type='hidden' name='article_id' value='<?php echo $article['article_id']; ?>' />
-            <input type="submit" value="like" />
-        </form>
+        <?php if( isset($_SESSION['user_role']) ) { ?>
+            <form class="pull-right" action="index.php?show=<?php echo $article['article_id']; ?>&action=dislike" method="post">
+                <input type='hidden' name='article_id' value='<?php echo $article['article_id']; ?>' />
+                <input type="submit" value="dislike" />
+            </form>
+            <form class="pull-right" action="index.php?show=<?php echo $article['article_id']; ?>&action=like" method="post">
+                <input type='hidden' name='article_id' value='<?php echo $article['article_id']; ?>' />
+                <input type="submit" value="like" />
+            </form>
+        <?php } ?>
         <br /><br />
         <hr>
         <br />
