@@ -9,7 +9,7 @@ class ArticlesController {
 
     public function addArticle(){
         $article_title = $_POST['article_title'];
-        $article_content = $_POST['article_content'];
+        $article_content = nl2br($_POST['article_content']);
         $article_image = $_POST['article_image'];
         $article_status = $_POST['article_status'];
         $article_type = $_POST['article_type'];
