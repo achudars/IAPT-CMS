@@ -11,28 +11,36 @@ class LoginModel {
     public function login( $user_name, $user_password ) {
         global $pdo;
 
-        $query = $pdo->prepare("SELECT * FROM users WHERE user_name = ? AND user_password = ?");
+        try {
+            $query = $pdo->prepare("SELECT * FROM users WHERE user_name = ? AND user_password = ?");
 
-        $query->bindValue(1, $user_name);
-        $query->bindValue(2, $user_password);
+            $query->bindValue(1, $user_name);
+            $query->bindValue(2, $user_password);
 
-        $query->execute();
-        $row = $query->fetch(PDO::FETCH_ASSOC);
+            $query->execute();
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e) {
+            echo $error = "Could not add user to the database:<br />" . $e;
+        }
+
 
         if(!$row) {
-            die("User with user name " . $user_name ." does not exist.");
+            echo "<div id='error'>Please check your login details for the user name <strong>" . $user_name ."</strong>.</div>";
+
         } else {
             $_SESSION["user_name"] = $user_name;
             $_SESSION["user_password"] = $user_password;
+            header("Location: index.php?page=home");
         }
 
         //$this->getLoggedUserId( $user_name, $user_password );
         //$this->getLoggedUserRole( $user_name, $user_password );
 
         //redirection
-        header("Location: index.php?page=home");
-        echo $_SESSION["user_name"];
-        echo $_SESSION["user_password"];
+
+        //echo $_SESSION["user_name"];
+        //echo $_SESSION["user_password"];
     }
 
     public function logout() {
