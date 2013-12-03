@@ -54,16 +54,18 @@
 
         ?>
             <li <?php echo $home ?>     ><a href="?page=home">home</a></li>
-            <?php if( isset($_SESSION['user_role']) ) {
-                if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
-                    <li <?php echo $basic_articles ?> ><a href="?page=articles&type=basic">basic articles</a></li>
-                    <li <?php echo $column_articles ?> ><a href="?page=articles&type=column">column articles</a></li>
-                    <li <?php echo $review_articles ?> ><a href="?page=articles&type=review">review articles</a></li>
-                    <li <?php echo $all_articles ?> ><a href="?page=articles&type=all">all articles</a></li>
+            <li <?php echo $basic_articles ?> ><a href="?page=articles&type=basic">basic articles</a></li>
+            <li <?php echo $column_articles ?> ><a href="?page=articles&type=column">column articles</a></li>
+            <li <?php echo $review_articles ?> ><a href="?page=articles&type=review">review articles</a></li>
+
+            <?php if( isset($_SESSION['user_role']) ) { ?>
+                <?php if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
+
                     <li <?php echo $add ?>      ><a href="?page=add">add</a></li>
                 <?php } ?>
                 <?php if ( $_SESSION['user_role']=="publisher" ) { ?>
-                    <li <?php echo $users ?>    ><a href="?page=users">users</a></li>
+                    <li <?php echo $all_articles ?> ><a href="?page=articles&type=all">[all articles]</a></li>
+                    <li <?php echo $users ?>    ><a href="?page=users">[users]</a></li>
                 <?php } ?>
             <?php } ?>
             <li <?php echo $tutorial ?> ><a href="?page=tutorial">tutorial</a></li>
