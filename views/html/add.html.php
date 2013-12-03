@@ -91,7 +91,7 @@
             </div>
             <br />
             <div id="authors">
-                <span class="tag">ME</span>
+                <span class="tag"><?php echo $_SESSION['user_name']; ?></span>
                 <input type="text" value="article_authors" placeholder="Add an author" />
             </div>
             <br />
@@ -125,7 +125,7 @@
         });
 
 
-        $('#tags').on('click', '.tag', function () {
+        $('#tags, #authors').on('click', '.tag', function () {
             if (confirm("Really delete this tag?")) $(this).remove();
         });
 

@@ -28,56 +28,11 @@ class UsersModel {
         return $users;
     }
 
-    public function getUserRole(){
-        global $pdo;
-
-        $query = $pdo->prepare("SELECT * FROM users");
-        $query->execute();
-        $rows = $query->fetchAll();
-
-        foreach($rows as $row){
-            $user = new User(
-                 $row['user_id']
-                ,$row['user_name']
-                ,$row['user_password']
-                ,$row['user_role']
-            );
-            $users[] = $user;
-        }
-        return $users;
-    }
-
-
-    public function getUserName(){ }
-    public function getUserPassword(){ }
-
     public function deleteUser( $user_id ) {
         global $pdo;
         $query = $pdo->prepare("DELETE FROM users WHERE user_id = ?");
         $query->bindValue(1, $user_id);
         $query->execute();
-    }
-
-    public function showUserRoles() {
-
-        $users = [];
-
-        /*foreach ($user_roles as $user_role) {
-            if ( $user_role == "subscriber") {
-                $users = array_merge($users,(array)$subscribers);
-            }
-            if ( $user_role == "writer") {
-                $users = array_merge($users,(array)$writers);
-            }
-            if ( $user_role == "editor") {
-                $users = array_merge($users,(array)$editors);
-            }
-            if ( $user_role == "publisher") {
-                $users = array_merge($users,(array)$publishers);
-            }
-        }*/
-
-        return $users;
     }
 
     public function changeUserRole( $user_id, $user_role ) {
@@ -163,6 +118,38 @@ class UsersModel {
             $publishers[] = $publisher;
         }
         return $publishers;
+    }
+
+    public function getLoggedUserId( $user_name, $user_password ){
+        global $pdo;
+
+        //echo "1. FROM getLoggedUserRoleFromId: UN: " . $user_name . " , UP: " . $user_password;
+
+        $query = $pdo->prepare("SELECT user_id FROM users WHERE user_name =? AND user_password = ?");
+        $query->bindValue(1, $user_name);
+        $query->bindValue(2, $user_password);
+        $query->execute();
+        $user_id = $query->fetchColumn();
+
+        //echo "| 2. FROM getLoggedUserRoleFromId: USER ROLE: " . $user_role;
+        //echo $user_id;
+        return $user_id;
+    }
+
+    public function getLoggedUserRole( $user_name, $user_password ){
+        global $pdo;
+
+        //echo "1. FROM getLoggedUserRoleFromId: UN: " . $user_name . " , UP: " . $user_password;
+
+        $query = $pdo->prepare("SELECT user_role FROM users WHERE user_name =? AND user_password = ?");
+        $query->bindValue(1, $user_name);
+        $query->bindValue(2, $user_password);
+        $query->execute();
+        $user_role = $query->fetchColumn();
+
+        //echo "| 2. FROM getLoggedUserRoleFromId: USER ROLE: " . $user_role;
+        echo $user_role;
+        return $user_role;
     }
 
 }
