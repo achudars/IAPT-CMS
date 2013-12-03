@@ -32,12 +32,19 @@ class ArticlesController {
     }
 
     public function changeArticleStatus() {
-
-        echo "[ ". $article_id . " | " . $article_status . " ]";
-
         $article_id = $_POST['article_id'];
         $article_status = $_POST['article_status'];
         $this->model->changeArticleStatus( $article_id, $article_status );
+    }
+
+    public function likeArticle() {
+        $article_id = $_POST['article_id'];
+        $this->model->addLike( $article_id );
+    }
+
+    public function dislikeArticle() {
+        $article_id = $_POST['article_id'];
+        $this->model->addDislike( $article_id );
     }
 
 }

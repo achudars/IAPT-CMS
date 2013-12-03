@@ -17,6 +17,13 @@ if (!empty($show_id)) {
     $model = new ArticlesModel();
     $controller = new ArticlesController($model);
     $view = new ArticlesView($controller, $model);
+    if ( isset($_GET["action"])) {
+        if ( $_GET["action"]=="like") {
+            $controller->likeArticle();
+        } else if ( $_GET["action"]=="dislike") {
+            $controller->dislikeArticle();
+        }
+    }
     echo $view->output_one_article( $show_id );
 
 } else if (!empty($edit_id)) {

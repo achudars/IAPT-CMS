@@ -43,6 +43,8 @@ class ArticlesView {
 	public function output_one_article( $article_id ){
 		include 'html/header.html.php';
 		$article = $this->model->getArticle( $article_id );
+		$likes = $this->model->getLikes( $article_id );
+		$dislikes = $this->model->getDislikes( $article_id );
 		include 'html/article.html.php';
 		include 'html/footer.html.php';
 	}

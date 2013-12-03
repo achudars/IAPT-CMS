@@ -178,6 +178,42 @@ class ArticlesModel {
         $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_id ));
     }
 
+    public function getLikes( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("SELECT article_like_amount FROM article_likes WHERE article_id = ? ");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $article_like_amount = $query->fetchColumn();
+        return $article_like_amount;
+    }
+    public function getDislikes( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("SELECT article_dislike_amount FROM article_dislikes WHERE article_id = ? ");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $article_dislike_amount = $query->fetchColumn();
+        return $article_dislike_amount;
+    }
+
+    public function addLike( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("UPDATE article_likes SET article_like_amount = article_like_amount + 1 WHERE article_id = ? ");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $article_like_amount = $query->fetchColumn();
+        return $article_like_amount;
+    }
+
+    public function addDislike( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("UPDATE article_dislikes SET article_dislike_amount = article_dislike_amount + 1 WHERE article_id = ? ");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $article_like_amount = $query->fetchColumn();
+        return $article_like_amount;
+    }
+
+
 }
 
 ?>

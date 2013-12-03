@@ -6,14 +6,16 @@
         <small class="pull-left">by <?php echo "author"; ?></small>
         <small class="pull-left">on <?php echo date("l jS", $article['article_timestamp']); ?></small>
 
-        <small class="pull-left">likes: </small>
-        <small class="pull-left">dislikes: </small>
+        <small class="pull-left">likes: [ <?php echo $likes ?> ]</small>
+        <small class="pull-left">dislikes: [ <?php echo $dislikes ?> ]</small>
         <small class="pull-left">tags: </small>
 
-        <form class="pull-right" action="" method="post">
+        <form class="pull-right" action="index.php?show=<?php echo $article['article_id']; ?>&action=dislike" method="post">
+            <input type='hidden' name='article_id' value='<?php echo $article['article_id']; ?>' />
             <input type="submit" value="dislike" />
         </form>
-        <form class="pull-right" action="" method="post">
+        <form class="pull-right" action="index.php?show=<?php echo $article['article_id']; ?>&action=like" method="post">
+            <input type='hidden' name='article_id' value='<?php echo $article['article_id']; ?>' />
             <input type="submit" value="like" />
         </form>
         <br /><br />
