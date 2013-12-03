@@ -53,6 +53,8 @@ class ArticlesView {
 		$search_key = $_POST['search_key'];
 		include 'html/header.html.php';
 		$articles = $this->model->getFoundArticles( $search_key );
+		$likes = $this->model->getLikes( $article_id );
+		$dislikes = $this->model->getDislikes( $article_id );
 		include 'html/articles.html.php';
 		include 'html/footer.html.php';
 	}

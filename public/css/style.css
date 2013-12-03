@@ -175,6 +175,9 @@ ol li.list-header {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
+.block.list h4 {
+  width: 30em;
+}
 .block.list .button {
   color: #FFF;
   background: #222;
