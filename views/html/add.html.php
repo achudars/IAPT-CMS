@@ -34,7 +34,7 @@
                                 <label for = "review_article">Review Article</label>
                             </div>
                         </span>
-                        <span class="col">
+                        <span class="col columns">
                             <div>
                                 <input checked type = "radio" name = "columns" id = "column_1" value = "column_1" />
                                 <label for = "column_1">Column 1</label>
@@ -179,6 +179,26 @@
             }
             return str;
         }
+
+        var rating = $(".rating");
+        rating.hide();
+        var columns = $(".columns");
+        columns.hide();
+
+        $("input[name$='article_type']").click(function() {
+
+            if ( $("input[value$='review_article']").is(':checked') ) {
+                rating.show();
+                columns.hide();
+            } else if ( $("input[value$='column_article']").is(':checked') ) {
+                rating.hide();
+                columns.show();
+            } else {
+                rating.hide();
+                columns.hide();
+            }
+        });
+
 
         var rating = $(".rating");
         rating.hide();
