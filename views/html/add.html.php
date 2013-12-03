@@ -177,5 +177,15 @@
             return str;
         }
 
+        var rating = $(".rating");
+        rating.hide();
+        $("input[name$='article_type']").click(function() {
+            if ( $("input[value$='review_article']").is(':checked') ) {
+                rating.show();
+            } else {
+                rating.hide();
+            }
+        });
+
     });
 </script>
