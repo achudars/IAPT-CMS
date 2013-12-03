@@ -11,6 +11,7 @@ class LoginController {
         $user_name = $_SESSION["user_name"] = $_POST['user_name'];
         $user_password = $_SESSION["user_password"] = $_POST['user_password'];
         $this->model->login( $user_name, $user_password );
+        //$this->model->getLoggedUserRole( $user_name, $user_password );
     }
 
     public function logout() {

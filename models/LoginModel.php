@@ -8,18 +8,23 @@ class LoginModel {
         $this->string= "users";
     }
 
-    public function login() {
+    public function login( $user_name, $user_password ) {
         global $pdo;
 
-        $query = $pdo->prepare("SELECT * FROM user WHERE user_name = ? and user_password = ?");
+        //echo "FROM login(): UN: " . $user_name . " , UP: " . $user_password;
+
+        $query = $pdo->prepare("SELECT * FROM user WHERE user_name = ? AND user_password = ?");
 
         $query->bindValue(1, $user_name);
         $query->bindValue(2, $user_password);
 
         $query->execute();
 
+        //$this->getLoggedUserId( $user_name, $user_password );
+        //$this->getLoggedUserRole( $user_name, $user_password );
+
         //redirection
-        header("Location: index.php?page=home");
+        //header("Location: index.php?page=home");
 
     }
 
@@ -29,6 +34,8 @@ class LoginModel {
         // clear values
         $_SESSION = array();
     }
+
+
 }
 
 ?>
