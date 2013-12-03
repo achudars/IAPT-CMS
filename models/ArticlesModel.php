@@ -45,7 +45,7 @@ class ArticlesModel {
         global $pdo;
 
         $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
-        $sth->execute(array(':type'=>'article'));
+        $sth->execute(array(':type'=>'basic_article'));
         $rows = $sth->fetchAll();
 
         foreach($rows as $row){
@@ -91,7 +91,7 @@ class ArticlesModel {
 
         //$pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
         $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
-        $sth->execute(array(':type'=>'review'));
+        $sth->execute(array(':type'=>'review_article'));
         $rows = $sth->fetchAll();
 
         foreach($rows as $row){

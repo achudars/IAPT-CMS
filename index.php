@@ -26,13 +26,6 @@ if (!empty($show_id)) {
     }
     echo $view->output_one_article( $show_id );
 
-} else if (!empty($edit_id)) {
-
-    $model = new ArticlesModel();
-    $controller = new ArticlesController($model);
-    $view = new ArticlesView($controller, $model);
-    echo $view->output_edit_article( $edit_id );
-
 } else if (!empty($page)){
 
     /*  @IAPT For each of the pages in our website, we create a view, a controller and a model.  When
@@ -78,6 +71,12 @@ if (!empty($show_id)) {
             }
             echo $view->output_article_fields();
             break;
+        case "edit":
+            $model = new ArticlesModel();
+            $controller = new ArticlesController($model);
+            $view = new ArticlesView($controller, $model);
+            echo $view->output_edit_article( $edit_id );
+            break;
         case "users":
             $model = new UsersModel();
             $controller = new UsersController($model);
@@ -115,9 +114,9 @@ if (!empty($show_id)) {
                     echo $view->output_column_articles();
                 } else if ( $_GET["type"]=="review") {
                     echo $view->output_review_articles();
-                } else {
-                    echo $view->output_articles();
                 }
+            } else {
+                echo $view->output_articles();
             }
             break;
         case "tutorial":
