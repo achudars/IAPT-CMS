@@ -3,13 +3,10 @@
 <div class="content">
     <div class="block list">
         <ol>
-            <li>
-                <h1>LIST OF ARTICLES</h1>
-            </li>
             <?php foreach($articles as $article): ?><li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <div class="square-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
-                    <h4><?php echo $article->getArticleTitle(); ?></h4>
+                    <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
                     <small>author(s): [  ]</small>
                     <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small>
                     <small>likes: [ <?php echo $this->model->getLikes( $article->getArticleId() ); ?> ]</small>

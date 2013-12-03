@@ -1,7 +1,5 @@
 <?php if( isset($_SESSION['user_role']) ) {
     if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
-        <h1>SUBMIT AN ARTICLE</h1>
-
         <div class="content">
             <div class="block article-editor">
 
@@ -104,8 +102,8 @@
                     <br />
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
                     <div>
-                        <input type="checkbox" value="staff_pick" id="staff_pick" />
-                        <label for = "staff_pick">Mark as Staff Pick</label>
+                        <input type="checkbox" value="article_staff_picked" id="article_staff_picked" />
+                        <label for = "article_staff_picked">Mark as Staff Pick</label>
                     </div>
                     <br />
                     <?php } ?>

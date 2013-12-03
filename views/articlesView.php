@@ -24,7 +24,25 @@ class ArticlesView {
 		$review_articles = $this->model->getReviewArticles();
 		include 'html/home.html.php';
 		include 'html/footer.html.php';
+	}
 
+	public function output_basic_articles(){
+		include 'html/header.html.php';
+		$articles = $this->model->getBasicArticles();
+		include 'html/articles.html.php';
+		include 'html/footer.html.php';
+	}
+	public function output_column_articles(){
+		include 'html/header.html.php';
+		$articles = $this->model->getColumnArticles();
+		include 'html/articles.html.php';
+		include 'html/footer.html.php';
+	}
+	public function output_review_articles(){
+		include 'html/header.html.php';
+		$articles = $this->model->getReviewArticles();
+		include 'html/articles.html.php';
+		include 'html/footer.html.php';
 	}
 
 	public function output_article_fields(){

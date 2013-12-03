@@ -108,7 +108,17 @@ if (!empty($show_id)) {
                     break;
                 }
             }
-            echo $view->output_articles();
+            if ( isset($_GET['type']) ) {
+                if ( $_GET["type"]=="basic") {
+                    echo $view->output_basic_articles();
+                } else if ( $_GET["type"]=="column") {
+                    echo $view->output_column_articles();
+                } else if ( $_GET["type"]=="review") {
+                    echo $view->output_review_articles();
+                } else {
+                    echo $view->output_articles();
+                }
+            }
             break;
         case "tutorial":
             $model = new ArticlesModel();
