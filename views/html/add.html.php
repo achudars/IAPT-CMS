@@ -1,114 +1,119 @@
-<h1>SUBMIT AN ARTICLE</h1>
+<?php if( isset($_SESSION['user_role']) ) {
+    if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
+        <h1>SUBMIT AN ARTICLE</h1>
 
-<div class="content">
-    <div class="block article-editor">
+        <div class="content">
+            <div class="block article-editor">
 
-        <form action="?page=add&action=add_article" method="post" autocomplete="off">
-            <input type="text" name="article_title" placeholder="Title" autofocus required />
-            <br />
-            <br />
-            <textarea rows="20" name="article_content" placeholder="Content" id="article_content" required></textarea>
-            <br />
-            <div class="word_count"><em>Word count: <span>0 / 2000</span></em></div>
-            <br />
-            <input type="text" name="article_image" placeholder="Image / Image URL" id="article_image" required />
-            <br />
-            <br />
-            <div class="content">
-                <span class="col">
+                <form action="?page=add&action=add_article" method="post" autocomplete="off">
+                    <input type="text" name="article_title" placeholder="Title" autofocus required />
+                    <br />
+                    <br />
+                    <textarea rows="20" name="article_content" placeholder="Content" id="article_content" required></textarea>
+                    <br />
+                    <div class="word_count"><em>Word count: <span>0 / 2000</span></em></div>
+                    <br />
+                    <input type="text" name="article_image" placeholder="Image / Image URL" id="article_image" required />
+                    <br />
+                    <br />
+                    <div class="content">
+                        <span class="col">
 
-                </span>
-                <span class="col">
-                    <div>
-                        <input checked type = "radio" name = "article_type" id = "basic_article" value = "basic_article" />
-                        <label for = "basic_article">Basic Article</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "article_type" id = "column_article" value = "column_article" />
-                        <label for = "column_article">Column Article</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "article_type" id = "review_article" value = "review_article" />
-                        <label for = "review_article">Review Article</label>
-                    </div>
-                </span>
-                <span class="col">
-                    <div>
-                        <input checked type = "radio" name = "columns" id = "column_1" value = "column_1" />
-                        <label for = "column_1">Column 1</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "columns" id = "column_2" value = "column_2" />
-                        <label for = "column_2">Column 2</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "columns" id = "column_3" value = "column_3" />
-                        <label for = "column_3">Column 3</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "columns" id = "column_4" value = "column_4" />
-                        <label for = "column_4">Column 4</label>
-                    </div>
-                </span>
-                <span class="col">
-                    <div>
-                        <input checked type = "radio" name = "article_status" id = "submitted" value = "submitted" />
-                        <label for = "submitted">submitted</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "article_status" id = "under_review" value = "under_review" />
-                        <label for = "under_review">under review</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "article_status" id = "awaiting_changes" value = "awaiting_changes" />
-                        <label for = "awaiting_changes">awaiting changes</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "article_status" id = "published" value = "published" />
-                        <label for = "published">published</label>
-                    </div>
-                    <div>
-                        <input type = "radio" name = "article_status" id = "rejected" value = "rejected" />
-                        <label for = "rejected">rejected</label>
-                    </div>
-                </span>
-                <span class="col">
+                        </span>
+                        <span class="col">
+                            <div>
+                                <input checked type = "radio" name = "article_type" id = "basic_article" value = "basic_article" />
+                                <label for = "basic_article">Basic Article</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "article_type" id = "column_article" value = "column_article" />
+                                <label for = "column_article">Column Article</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "article_type" id = "review_article" value = "review_article" />
+                                <label for = "review_article">Review Article</label>
+                            </div>
+                        </span>
+                        <span class="col">
+                            <div>
+                                <input checked type = "radio" name = "columns" id = "column_1" value = "column_1" />
+                                <label for = "column_1">Column 1</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "columns" id = "column_2" value = "column_2" />
+                                <label for = "column_2">Column 2</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "columns" id = "column_3" value = "column_3" />
+                                <label for = "column_3">Column 3</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "columns" id = "column_4" value = "column_4" />
+                                <label for = "column_4">Column 4</label>
+                            </div>
+                        </span>
+                        <span class="col">
+                        <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
+                            <div>
+                                <input checked type = "radio" name = "article_status" id = "submitted" value = "submitted" />
+                                <label for = "submitted">submitted</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "article_status" id = "under_review" value = "under_review" />
+                                <label for = "under_review">under review</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "article_status" id = "awaiting_changes" value = "awaiting_changes" />
+                                <label for = "awaiting_changes">awaiting changes</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "article_status" id = "published" value = "published" />
+                                <label for = "published">published</label>
+                            </div>
+                            <div>
+                                <input type = "radio" name = "article_status" id = "rejected" value = "rejected" />
+                                <label for = "rejected">rejected</label>
+                            </div>
+                        <?php } ?>
+                        </span>
+                        <span class="col">
 
-                </span>
+                        </span>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="rating">
+                        <div>Rating</div>
+                        <input type="range" name="article_rating" min="1" max="5" />
+                    </div>
+                    <br />
+                    <div id="tags">
+                        <span class="tag">PC</span>
+                        <span class="tag">PS4</span>
+                        <span class="tag">XBONE</span>
+                        <input type="text" value="article_tags" placeholder="Add a tag" />
+                    </div>
+                    <br />
+                    <div id="authors">
+                        <span class="tag"><?php echo $_SESSION['user_name']; ?></span>
+                        <input type="text" value="article_authors" placeholder="Add an author" />
+                    </div>
+                    <br />
+                    <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
+                    <div>
+                        <input type="checkbox" value="staff_pick" id="staff_pick" />
+                        <label for = "staff_pick">Mark as Staff Pick</label>
+                    </div>
+                    <br />
+                    <?php } ?>
+                    <input type="submit" value="DONE" />
+
+                </form>
+
             </div>
-            <br />
-            <br />
-            <div class="rating">
-                <div>Rating</div>
-                <input type="range" name="article_rating" min="1" max="5" />
-            </div>
-            <br />
-            <div id="tags">
-                <span class="tag">PC</span>
-                <span class="tag">PS4</span>
-                <span class="tag">XBONE</span>
-                <input type="text" value="article_tags" placeholder="Add a tag" />
-            </div>
-            <br />
-            <div id="authors">
-                <span class="tag"><?php echo $_SESSION['user_name']; ?></span>
-                <input type="text" value="article_authors" placeholder="Add an author" />
-            </div>
-            <br />
-
-            <div>
-                <input type="checkbox" value="staff_pick" id="staff_pick" />
-                <label for = "staff_pick">Mark as Staff Pick</label>
-            </div>
-            <br />
-
-            <input type="submit" value="DONE" />
-
-        </form>
-
-    </div>
-</div>
-
+        </div>
+    <?php } ?>
+<?php } ?>
 <script>
     $(function () {
 
