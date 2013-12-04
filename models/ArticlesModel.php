@@ -152,7 +152,9 @@ class ArticlesModel {
         $query->bindValue(6, $article_type);
         $query->execute();
 
-        //$this->setDefaultLikes();
+        $article_id = $pdo->lastInsertId();
+
+        $this->setDefaultLike( $article_id );
         // SELECT IDENT_CURRENT(‘tablename’)
         /*$query = $pdo->prepare("
           INSERT INTO article_likes( article_like_id, article_like_amount, article_id )
@@ -162,16 +164,39 @@ class ArticlesModel {
           ");*/
         //$query->execute();
         //echo $query;
-        print $pdo->lastInsertId();
+        //print $article_id;
         //redirection
         //header("Location: index.php?page=articles");
     }
 
+    public function setDefaultLike( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("
+          INSERT INTO article_likes (article_like_amount, article_id) VALUES (?,?)
+        ");
+        $query->bindValue(1, 0 );
+        $query->bindValue(2, $article_id );
+        $query->execute();
+    }
+
+
+
     public function deleteArticle( $article_id ) {
         global $pdo;
+
+        $query = $pdo->prepare("DELETE FROM article_likes WHERE article_like_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+
+        $query = $pdo->prepare("DELETE FROM article_dislikes WHERE article_dislike_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+
         $query = $pdo->prepare("DELETE FROM articles WHERE article_id = ?");
         $query->bindValue(1, $article_id);
         $query->execute();
+        // TODo update likes...
+
     }
 
     public function changeArticleStatus( $article_id, $article_status ) {
