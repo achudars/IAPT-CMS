@@ -42,7 +42,8 @@ class ArticlesController {
 
     public function deleteArticle() {
         $article_id = $_POST['article_id'];
-        $this->model->deleteArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_id );
+        echo "I will delete article with iD: " . $article_id;
+        $this->model->deleteArticle( $article_id );
     }
 
     public function changeArticleStatus() {
