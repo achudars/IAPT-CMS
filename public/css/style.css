@@ -502,3 +502,21 @@ ol li.list-header {
   padding: 3em;
   text-align: center;
 }
+
+.likes-dislikes {
+  display: inline-block;
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  color: #FFF;
+  padding: 0 1em;
+  margin-top: -1.8em;
+  position: relative;
+  text-align: right;
+}
+.green {
+  color: lime;
+}
+.red {
+  color: #CC0000;
+}
+

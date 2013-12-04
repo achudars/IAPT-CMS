@@ -21,7 +21,7 @@ class ArticlesView {
 
 	public function output_home_articles(){
 		include 'html/header.html.php';
-		$basic_articles = $this->model->getBasicArticles();
+		$most_liked_articles = $this->model->getMostLikedArticles();
 		$column_articles = $this->model->getColumnArticles();
 		$review_articles = $this->model->getReviewArticles();
 		include 'html/home.html.php';

@@ -131,13 +131,6 @@ class ArticlesModel {
         return $articles;
     }
 
-    public function sortAscending() {
-
-    }
-
-    public function getStaffPicks() {
-
-    }
 
     public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating ) {
         global $pdo;
@@ -337,6 +330,14 @@ class ArticlesModel {
         $query->execute();
     }
 
+    public function getMostLikedArticles() {
+        global $pdo;
+
+        $most_liked_articles = $this->getAllArticles();
+
+        return $most_liked_articles;
+
+    }
 
 }
 
