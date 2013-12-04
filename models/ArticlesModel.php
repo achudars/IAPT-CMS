@@ -155,6 +155,7 @@ class ArticlesModel {
         $article_id = $pdo->lastInsertId();
 
         $this->setDefaultLike( $article_id );
+        $this->setDefaultDislike( $article_id );
         // SELECT IDENT_CURRENT(‘tablename’)
         /*$query = $pdo->prepare("
           INSERT INTO article_likes( article_like_id, article_like_amount, article_id )
@@ -179,16 +180,26 @@ class ArticlesModel {
         $query->execute();
     }
 
+    public function setDefaultDislike( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("
+          INSERT INTO article_dislikes (article_dislike_amount, article_id) VALUES (?,?)
+        ");
+        $query->bindValue(1, 0 );
+        $query->bindValue(2, $article_id );
+        $query->execute();
+    }
+
 
 
     public function deleteArticle( $article_id ) {
         global $pdo;
 
-        $query = $pdo->prepare("DELETE FROM article_likes WHERE article_like_id = ?");
+        $query = $pdo->prepare("DELETE FROM article_likes WHERE article_id = ?");
         $query->bindValue(1, $article_id);
         $query->execute();
 
-        $query = $pdo->prepare("DELETE FROM article_dislikes WHERE article_dislike_id = ?");
+        $query = $pdo->prepare("DELETE FROM article_dislikes WHERE article_id = ?");
         $query->bindValue(1, $article_id);
         $query->execute();
 
