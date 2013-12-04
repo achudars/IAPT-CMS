@@ -69,6 +69,7 @@ class ArticlesController {
             echo "ARTCILE COLUMN[".$article_column."]";
         }
 
+        echo "RATING WILL BE: " . $article_rating;
         $article_authors = $_POST['article_authors'];
         $article_tags = $_POST['article_tags'];
 

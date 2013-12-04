@@ -211,17 +211,10 @@ class ArticlesModel {
     public function deleteArticle( $article_id ) {
         global $pdo;
 
-        $query = $pdo->prepare("DELETE FROM article_likes WHERE article_id = ?");
-        $query->bindValue(1, $article_id);
-        $query->execute();
+        $this->deleteLike( $article_id );
+        $this->deleteDislike( $article_id );
+        $this->deleteRating( $article_id );
 
-        $query = $pdo->prepare("DELETE FROM article_dislikes WHERE article_id = ?");
-        $query->bindValue(1, $article_id);
-        $query->execute();
-
-        $query = $pdo->prepare("DELETE FROM review_articles WHERE article_id = ?");
-        $query->bindValue(1, $article_id);
-        $query->execute();
 
         $query = $pdo->prepare("DELETE FROM articles WHERE article_id = ?");
         $query->bindValue(1, $article_id);
@@ -244,7 +237,10 @@ class ArticlesModel {
         $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_id ));
 
         if ( $article_type == "review_article") {
-            $this->editRating( $article_id, $article_rating );
+            $this->deleteRating( $article_id );
+            $this->addRating( $article_id, $article_rating );
+        } else {
+            $this->deleteRating( $article_id );
         }
     }
 
@@ -273,9 +269,24 @@ class ArticlesModel {
         $query->execute();
     }
 
+    public function deleteLike( $article_id ) {
+        global $pdo;
+
+        $query = $pdo->prepare("DELETE FROM article_likes WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+    }
+
     public function addDislike( $article_id ) {
         global $pdo;
         $query = $pdo->prepare("UPDATE article_dislikes SET article_dislike_amount = article_dislike_amount + 1 WHERE article_id = ? ");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+    }
+
+    public function deleteDislike( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("DELETE FROM article_dislikes WHERE article_id = ?");
         $query->bindValue(1, $article_id);
         $query->execute();
     }
@@ -316,6 +327,13 @@ class ArticlesModel {
         $query = $pdo->prepare("UPDATE review_articles SET review_rating = ? WHERE article_id = ? ");
         $query->bindValue(1, $article_rating);
         $query->bindValue(2, $article_id);
+        $query->execute();
+    }
+
+    public function deleteRating( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("DELETE FROM review_articles WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
         $query->execute();
     }
 
