@@ -46,6 +46,11 @@ class ArticlesView {
 	}
 
 	public function output_article_fields(){
+
+		include_once "models/User.php";
+		$users = new User( 22, $_SESSION['user_name'],$_SESSION['user_password'],$_SESSION['user_role']);
+		$writers_and_editors_and_publishers = $users->getAllUsers();
+
 		include 'html/header.html.php';
 		include 'html/add.html.php';
 		include 'html/footer.html.php';
@@ -59,6 +64,7 @@ class ArticlesView {
 	}
 
 	public function output_one_article( $article_id ){
+
 		include 'html/header.html.php';
 		$article = $this->model->getArticle( $article_id );
 		$likes = $this->model->getLikes( $article_id );

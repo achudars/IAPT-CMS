@@ -76,6 +76,25 @@ class User {
 
         }
 */
+
+        public function getAllUsers(){
+        global $pdo;
+
+        $query = $pdo->prepare("SELECT * FROM users");
+        $query->execute();
+        $rows = $query->fetchAll();
+
+        foreach($rows as $row){
+            $user = new User(
+                 $row['user_id']
+                ,$row['user_name']
+                ,$row['user_password']
+                ,$row['user_role']
+            );
+            $users[] = $user;
+        }
+        return $users;
+    }
       }
 
       ?>
