@@ -63,9 +63,11 @@
 
                     <li <?php echo $add ?>      ><a href="?page=add">add</a></li>
                 <?php } ?>
-                <?php if ( $_SESSION['user_role']=="publisher" ) { ?>
+                <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
                     <li <?php echo $all_articles ?> ><a href="?page=articles&type=all">[all articles]</a></li>
-                    <li <?php echo $users ?>    ><a href="?page=users">[users]</a></li>
+                    <?php if ( $_SESSION['user_role']=="publisher") { ?>
+                        <li <?php echo $users ?>    ><a href="?page=users">[users]</a></li>
+                    <?php } ?>
                 <?php } ?>
             <?php } ?>
 

@@ -30,7 +30,7 @@
                     </form>
 
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
-                        <form class="pull-right" action="?page=articles&action=change_article_status" method="post">
+                        <form class="pull-right" action="?page=articles&type=all&action=change_article_status" method="post">
                             <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
                             <select onchange="this.form.submit();" name="article_status">
                                 <option <?php echo ($article->getArticleStatus()=='submitted')?'selected':'' ?> value="submitted" name='submitted'>submitted</option>

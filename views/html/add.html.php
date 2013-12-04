@@ -34,19 +34,19 @@
                         </span>
                         <span class="col columns">
                             <div>
-                                <input checked type = "radio" name = "columns" id = "pc" value = "pc" />
+                                <input checked type = "radio" name = "article_status" id = "pc" value = "pc" />
                                 <label for = "pc">PC</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "columns" id = "ps" value = "ps" />
+                                <input type = "radio" name = "article_status" id = "ps" value = "ps" />
                                 <label for = "ps">PS</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "columns" id = "xbox" value = "xbox" />
+                                <input type = "radio" name = "article_status" id = "xbox" value = "xbox" />
                                 <label for = "xbox">XBOX</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "columns" id = "mobile" value = "mobile" />
+                                <input type = "radio" name = "article_status" id = "mobile" value = "mobile" />
                                 <label for = "mobile">Mobile</label>
                             </div>
                         </span>
@@ -89,7 +89,7 @@
                         <span class="tag">action</span>
                         <span class="tag">adventure</span>
                         <span class="tag">racing</span>
-                        <input type="text" placeholder="Add a tag" />
+                        <input type="text" placeholder="Add another tag" />
                         <input type='hidden' name='article_tags[]' value='action' />
                         <input type='hidden' name='article_tags[]' value='adventure' />
                         <input type='hidden' name='article_tags[]' value='racing' />
@@ -103,7 +103,7 @@
 
                         <!-- </select> -->
                         <span class="tag"><?php echo $_SESSION['user_name']; ?></span>
-                        <input type="text" value="" placeholder="Add an author" />
+                        <input type="text" value="" placeholder="Add another author" />
                         <input type='hidden' name='article_authors[]' value='<?php echo $_SESSION['user_name']; ?>' />
                     </div>
                     <br />

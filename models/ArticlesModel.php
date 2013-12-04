@@ -139,7 +139,7 @@ class ArticlesModel {
 
     }
 
-    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors ) {
+    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating ) {
         global $pdo;
 
         $query = $pdo->prepare("INSERT INTO articles (article_title, article_content, article_timestamp, article_image, article_status, article_type) VALUES (?,?,?,?,?,?)");
@@ -154,8 +154,14 @@ class ArticlesModel {
 
         $article_id = $pdo->lastInsertId();
 
+        echo "ADDING ARTICLE WITH ID: " . $article_id . ".";
+
         $this->setDefaultLike( $article_id );
         $this->setDefaultDislike( $article_id );
+        if ( $article_rating != 0) {
+            $this->addRating( $article_id, $article_rating );
+        }
+
         //$this->associateAuthors( $article_id );
         //
         /*foreach( $article_authors as $key => $article_author ) {
@@ -213,6 +219,10 @@ class ArticlesModel {
         $query->bindValue(1, $article_id);
         $query->execute();
 
+        $query = $pdo->prepare("DELETE FROM review_articles WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+
         $query = $pdo->prepare("DELETE FROM articles WHERE article_id = ?");
         $query->bindValue(1, $article_id);
         $query->execute();
@@ -227,11 +237,15 @@ class ArticlesModel {
     }
 
 
-    public function editArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_id ) {
+    public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating ) {
         global $pdo;
         $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=? WHERE article_id=?";
         $query = $pdo->prepare($sql);
         $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_id ));
+
+        if ( $article_type == "review_article") {
+            $this->editRating( $article_id, $article_rating );
+        }
     }
 
     public function getLikes( $article_id ) {
@@ -257,8 +271,6 @@ class ArticlesModel {
         $query = $pdo->prepare("UPDATE article_likes SET article_like_amount = article_like_amount + 1 WHERE article_id = ? ");
         $query->bindValue(1, $article_id);
         $query->execute();
-        $article_like_amount = $query->fetchColumn();
-        return $article_like_amount;
     }
 
     public function addDislike( $article_id ) {
@@ -266,8 +278,6 @@ class ArticlesModel {
         $query = $pdo->prepare("UPDATE article_dislikes SET article_dislike_amount = article_dislike_amount + 1 WHERE article_id = ? ");
         $query->bindValue(1, $article_id);
         $query->execute();
-        $article_like_amount = $query->fetchColumn();
-        return $article_like_amount;
     }
 
     public function getArticleRating( $article_id ) {
@@ -277,6 +287,36 @@ class ArticlesModel {
         $query->execute();
         $article_rating = $query->fetchColumn();
         return $article_rating;
+    }
+
+    public function addRating( $article_id, $article_rating ) {
+        global $pdo;
+
+        $query = $pdo->prepare("SELECT * FROM review_articles WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
+        $result = $query->execute();
+
+
+        if ( $result ) {
+            echo "WILL INSERT ";
+            $query = $pdo->prepare("INSERT INTO review_articles (review_rating, article_id) VALUES (?,?)");
+            $query->bindValue(1, $article_rating);
+            $query->bindValue(2, $article_id);
+        } else {
+          echo "WILL UPDATE ";
+            $query = $pdo->prepare("UPDATE review_articles SET review_rating = ? WHERE article_id = ? ");
+            $query->bindValue(1, $article_rating);
+            $query->bindValue(2, $article_id);
+        }
+        $query->execute();
+    }
+
+    public function editRating( $article_id, $article_rating ) {
+        global $pdo;
+        $query = $pdo->prepare("UPDATE review_articles SET review_rating = ? WHERE article_id = ? ");
+        $query->bindValue(1, $article_rating);
+        $query->bindValue(2, $article_id);
+        $query->execute();
     }
 
 
