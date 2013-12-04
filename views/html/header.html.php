@@ -21,7 +21,7 @@
             <?php } ?>
         </h1>
 
-        <form action="?page=articles&action=search_articles" method="post">
+        <form action="?page=articles&type=all&action=search_articles" method="post">
             <input type="search" placeholder="Find articles..." name="search_key" value="" autofocus />
         </form>
 

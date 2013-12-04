@@ -77,7 +77,7 @@ class User {
         }
 */
 
-        public function getAllUsers(){
+/*        public function getAllUsers(){
         global $pdo;
 
         $query = $pdo->prepare("SELECT * FROM users");
@@ -94,7 +94,7 @@ class User {
             $users[] = $user;
         }
         return $users;
-    }
+    }*/
       }
 
       ?>

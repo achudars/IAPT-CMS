@@ -15,6 +15,8 @@ class ArticlesView {
 		include 'html/articles.html.php';
 		include 'html/footer.html.php';
 
+        $article_ratings =  $this->model->getArticleRating( $article_id );
+
 	}
 
 	public function output_home_articles(){
@@ -47,9 +49,9 @@ class ArticlesView {
 
 	public function output_article_fields(){
 
-		include_once "models/User.php";
+		/*include_once "models/User.php";
 		$users = new User( 22, $_SESSION['user_name'],$_SESSION['user_password'],$_SESSION['user_role']);
-		$writers_and_editors_and_publishers = $users->getAllUsers();
+		$writers_and_editors_and_publishers = $users->getAllUsers();*/
 
 		include 'html/header.html.php';
 		include 'html/add.html.php';

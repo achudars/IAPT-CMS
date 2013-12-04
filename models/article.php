@@ -111,4 +111,8 @@
 
 	}
 
+	function getArticleRating($article_id) {
+        $this->model->getArticleRating( $article_id );
+    }
+
  ?>

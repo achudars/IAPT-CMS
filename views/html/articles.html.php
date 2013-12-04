@@ -11,6 +11,7 @@
                     <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small>
                     <small>likes: [ <?php echo $this->model->getLikes( $article->getArticleId() ); ?> ]</small>
                     <small>dislikes: [ <?php echo $this->model->getDislikes( $article->getArticleId() ); ?> ]</small>
+                    <?php if( $article->getArticleType() == "review_article" ) { ?><small>rating: [<?php echo $this->model->getArticleRating( $article->getArticleId() ); ?>]</small><?php } ?>
                     <small>tags: [  ]</small>
                 </a>
 

@@ -16,10 +16,11 @@ class ArticlesController {
         $article_type = $_POST['article_type'];
 
         $article_authors = $_POST['article_authors'];
+        $article_tags = $_POST['article_tags'];
 
-        foreach( $article_authors as $key => $n ) {
+        /*foreach( $article_authors as $key => $n ) {
           print "ArticleContreoller -->Authors: ".$n."\n";
-        }
+        }*/
 
         /*if ( $article_type == "column_article") {
             $article_column = $_POST['article_column'];
@@ -67,6 +68,7 @@ class ArticlesController {
         $article_id = $_POST['article_id'];
         $this->model->addDislike( $article_id );
     }
+
 
 }
 

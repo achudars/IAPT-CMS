@@ -158,10 +158,10 @@ class ArticlesModel {
         $this->setDefaultDislike( $article_id );
         //$this->associateAuthors( $article_id );
         //
-        foreach( $article_authors as $key => $article_author ) {
+        /*foreach( $article_authors as $key => $article_author ) {
           print "article_id" . $article_id . " | ". $article_author.  "\n";
           // /$this->associateAuthors( $article_id, $article_author );
-        }
+        }*/
 
         //print "Article authors: " . $article_authors;
 
@@ -268,6 +268,15 @@ class ArticlesModel {
         $query->execute();
         $article_like_amount = $query->fetchColumn();
         return $article_like_amount;
+    }
+
+    public function getArticleRating( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("SELECT review_rating FROM review_articles WHERE article_id = ? ");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $article_rating = $query->fetchColumn();
+        return $article_rating;
     }
 
 
