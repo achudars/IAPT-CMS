@@ -10,7 +10,6 @@ require_once 'config/includes.php';
 //echo $url = $_GET['url'];
 $page = $_GET['page'];
 $show_id = $_GET['show'];
-$edit_id = $_GET['edit'];
 
 if (!empty($show_id)) {
 
@@ -75,7 +74,7 @@ if (!empty($show_id)) {
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            echo $view->output_edit_article( $edit_id );
+            echo $view->output_edit_article( $_GET['id'] );
             break;
         case "users":
             $model = new UsersModel();
@@ -94,19 +93,6 @@ if (!empty($show_id)) {
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
             $view = new ArticlesView($controller, $model);
-            if ( isset($_GET['action']) ) {
-                if ( $_GET["action"]=="change_article_status") {
-                    $controller->changeArticleStatus();
-                } else if ( $_GET["action"]=="edit_article") {
-                    $controller->editArticle();
-                } else if ( $_GET["action"]=="delete_article") {
-                    $controller->deleteArticle();
-                } else if ( $_GET["action"]=="search_articles") {
-                    // filtered stuff
-                    echo $view->output_found_articles();
-                    break;
-                }
-            }
             if ( isset($_GET['type']) ) {
                 if ( $_GET["type"]=="basic") {
                     echo $view->output_basic_articles();
@@ -114,16 +100,25 @@ if (!empty($show_id)) {
                     echo $view->output_column_articles();
                 } else if ( $_GET["type"]=="review") {
                     echo $view->output_review_articles();
+                } else if ( $_GET["type"]=="all") {
+                    if ( isset($_GET['action']) ) {
+                        if ( $_GET["action"]=="change_article_status") {
+                            $controller->changeArticleStatus();
+                        } else if ( $_GET["action"]=="edit_article") {
+                            $controller->editArticle();
+                        } else if ( $_GET["action"]=="delete_article") {
+                            $controller->deleteArticle();
+                        } else if ( $_GET["action"]=="search_articles") {
+                            // filtered stuff
+                            echo $view->output_found_articles();
+                            break;
+                        }
+                    }
+                    echo $view->output_articles();
                 }
             } else {
                 echo $view->output_articles();
             }
-            break;
-        case "tutorial":
-            $model = new ArticlesModel();
-            $controller = new ArticlesController($model);
-            $view = new ArticlesView($controller, $model);
-            echo $view->output();
             break;
         default:
             echo "The request page does not exist. Please go back.";

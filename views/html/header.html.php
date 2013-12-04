@@ -68,7 +68,6 @@
                     <li <?php echo $users ?>    ><a href="?page=users">[users]</a></li>
                 <?php } ?>
             <?php } ?>
-            <li <?php echo $tutorial ?> ><a href="?page=tutorial">tutorial</a></li>
 
         </ul>
 

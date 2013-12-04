@@ -14,14 +14,15 @@
                     <small>tags: [  ]</small>
                 </a>
 
+                <?php if ( $_GET["type"]=="all") { ?>
                 <?php if( isset($_SESSION['user_role']) ) {
                     if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
 
-                    <a class="pull-right" href="index.php?edit=<?php echo $article->getArticleId(); ?>">
+                    <a class="pull-right" href="?page=edit&id=<?php echo $article->getArticleId(); ?>">
                         <button>edit</button>
                     </a>
 
-                    <form class="pull-right" action="?page=articles&action=delete_article" method="post">
+                    <form class="pull-right" action="?page=articles&type=all&action=delete_article" method="post">
                         <input type='hidden' name='action' value='delete' />
                         <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
                         <button onclick="this.form.submit(); return false;">delete</button>
@@ -38,6 +39,7 @@
                                 <option <?php echo ($article->getArticleStatus()=='rejected')?'selected':'' ?> value="rejected" name='rejected'>rejected</option>
                             </select>
                         </form>
+                    <?php } ?>
                     <?php } ?>
                     <?php } ?>
                 <?php } ?>

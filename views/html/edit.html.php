@@ -3,7 +3,7 @@
 <div class="content">
     <div class="block article-editor">
 
-        <form action="?page=edit" method="post" autocomplete="off">
+        <form action="?page=articles&type=all&action=edit_article" method="post" autocomplete="off">
             <input type="text" name="article_title" placeholder="Title" value="<?php echo $article['article_title']; ?>" autofocus required />
             <br />
             <input type="text" name="article_id" placeholder="ID" value="<?php echo $article['article_id']; ?>" readonly />
