@@ -147,13 +147,24 @@ class ArticlesModel {
         $query->bindValue(1, $article_title);
         $query->bindValue(2, $article_content);
         $query->bindValue(3, time());
-        $query->bindValue(4, "http://placehold.it/350x150"); // TODO change to real image
+        $query->bindValue(4, $article_image); // TODO change to real image
         $query->bindValue(5, "submitted");
         $query->bindValue(6, $article_type);
-
         $query->execute();
+
+        //$this->setDefaultLikes();
+        // SELECT IDENT_CURRENT(‘tablename’)
+        /*$query = $pdo->prepare("
+          INSERT INTO article_likes( article_like_id, article_like_amount, article_id )
+          SELECT article_id, RAND(100), article_id
+          FROM articles
+          WHERE article_id
+          ");*/
+        //$query->execute();
+        //echo $query;
+        print $pdo->lastInsertId();
         //redirection
-        header("Location: index.php?page=articles");
+        //header("Location: index.php?page=articles");
     }
 
     public function deleteArticle( $article_id ) {
