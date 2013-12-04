@@ -139,7 +139,7 @@ class ArticlesModel {
 
     }
 
-    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type ) {
+    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors ) {
         global $pdo;
 
         $query = $pdo->prepare("INSERT INTO articles (article_title, article_content, article_timestamp, article_image, article_status, article_type) VALUES (?,?,?,?,?,?)");
@@ -156,18 +156,28 @@ class ArticlesModel {
 
         $this->setDefaultLike( $article_id );
         $this->setDefaultDislike( $article_id );
-        // SELECT IDENT_CURRENT(‘tablename’)
-        /*$query = $pdo->prepare("
-          INSERT INTO article_likes( article_like_id, article_like_amount, article_id )
-          SELECT article_id, RAND(100), article_id
-          FROM articles
-          WHERE article_id
-          ");*/
-        //$query->execute();
-        //echo $query;
-        //print $article_id;
+        //$this->associateAuthors( $article_id );
+        //
+        foreach( $article_authors as $key => $article_author ) {
+          print "article_id" . $article_id . " | ". $article_author.  "\n";
+          // /$this->associateAuthors( $article_id, $article_author );
+        }
+
+        //print "Article authors: " . $article_authors;
+
         //redirection
-        //header("Location: index.php?page=articles");
+        //header("Location: index.php?page=articles&type=all");
+    }
+
+    public function associateAuthors( $article_id, $article_author ) {
+        global $pdo;
+        $query = $pdo->prepare("
+          INSERT INTO article_users(article_id, user_id) VALUES (?,?)
+        ");
+        $query->bindValue(1, $article_id );
+        $query->bindValue(2, $article_author );
+        $query->execute();
+
     }
 
     public function setDefaultLike( $article_id ) {
@@ -206,7 +216,6 @@ class ArticlesModel {
         $query = $pdo->prepare("DELETE FROM articles WHERE article_id = ?");
         $query->bindValue(1, $article_id);
         $query->execute();
-        // TODo update likes...
 
     }
 
@@ -233,6 +242,7 @@ class ArticlesModel {
         $article_like_amount = $query->fetchColumn();
         return $article_like_amount;
     }
+
     public function getDislikes( $article_id ) {
         global $pdo;
         $query = $pdo->prepare("SELECT article_dislike_amount FROM article_dislikes WHERE article_id = ? ");

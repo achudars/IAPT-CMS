@@ -15,7 +15,13 @@ class ArticlesController {
         $article_status = $_POST['article_status'];
         $article_type = $_POST['article_type'];
 
-        if ( $article_type == "column_article") {
+        $article_authors = $_POST['article_authors'];
+
+        foreach( $article_authors as $key => $n ) {
+          print "ArticleContreoller -->Authors: ".$n."\n";
+        }
+
+        /*if ( $article_type == "column_article") {
             $article_column = $_POST['article_column'];
         }
         if ( $article_type == "review_article") {
@@ -23,11 +29,11 @@ class ArticlesController {
         }
 
         $article_tags = $_POST['article_tags'];
-        $article_authors = $_POST['article_authors'];
 
-        $article_staff_picked = $_POST['article_staff_picked'];
 
-        $this->model->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type );
+        $article_staff_picked = $_POST['article_staff_picked'];*/
+
+        $this->model->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors );
     }
 
     public function editArticle() {

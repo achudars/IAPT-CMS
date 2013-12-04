@@ -89,15 +89,18 @@
                         <span class="tag">action</span>
                         <span class="tag">adventure</span>
                         <span class="tag">racing</span>
-                        <span class="tag">strategy</span>
-                        <span class="tag">simulation</span>
-                        <span class="tag">puzzle</span>
-                        <input type="text" value="article_tags" placeholder="Add a tag" />
+                        <input type="text" placeholder="Add a tag" />
+                        <input type='hidden' name='article_tags[]' value='action' />
+                        <input type='hidden' name='article_tags[]' value='adventure' />
+                        <input type='hidden' name='article_tags[]' value='racing' />
                     </div>
                     <br />
                     <div id="authors">
-                        <span class="tag"><?php echo $_SESSION['user_name']; ?></span>
-                        <input type="text" value="article_authors" placeholder="Add an author" />
+                        <select name="users" size="5" name="article_authors[]" multiple="multiple">
+                            <?php foreach($writers_and_editors_and_publishers as $user): ?>
+                                <option value="<?php echo $user->getUserId(); ?>"><?php echo $user->getUserName() ."[". $user->getUserRole() . "]"; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <br />
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
@@ -118,20 +121,19 @@
 <script>
     $(function () {
 
-        $('#tags input, #authors input').on('focusout', function () {
+        $('#tags input').on('focusout', function () {
             var txt = this.value.replace(/[^a-zA-Z0-9\+\-\.\#]/g, ''); // allowed characters
             if (txt) {
                 $(this).before('<span class="tag">' + txt.toLowerCase() + '</span>');
+                $(this).after("<input type='hidden' name='article_tags[]' value='" + txt + "' />");
             }
             this.value = "";
         }).on('keyup', function (e) {
             // if: comma,enter (delimit more keyCodes with | pipe)
             if (/(188|13)/.test(e.which)) $(this).focusout();
-
         });
 
-
-        $('#tags, #authors').on('click', '.tag', function () {
+        $('#tags').on('click', '.tag', function () {
             if (confirm("Really delete this tag?")) $(this).remove();
         });
 
