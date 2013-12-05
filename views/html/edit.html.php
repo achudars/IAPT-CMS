@@ -139,6 +139,10 @@
 
 
         var maxWords = 2000;
+        var words = $('#article_content').val().split(/\b[\s,\.-:;]*/);
+        var wordcount = words.length;
+        $(".word_count span").text(wordcount + " / "+ maxWords);
+
         $('#article_content').keypress(function () {
             var $this, wordcount;
             $this = $(this);
