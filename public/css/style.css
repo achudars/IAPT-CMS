@@ -519,4 +519,7 @@ ol li.list-header {
 .red {
   color: #CC0000;
 }
+select {
+  width: 100%;
+}
 

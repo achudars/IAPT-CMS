@@ -54,7 +54,10 @@ class AUView {
         /*include_once "articlesModels/User.php";
         $users = new User( 22, $_SESSION['user_name'],$_SESSION['user_password'],$_SESSION['user_role']);
         $writers_and_editors_and_publishers = $users->getAllUsers();*/
-
+        $writers = $this->usersModel->getWriters();
+        $editors = $this->usersModel->getEditors();
+        $publishers = $this->usersModel->getPublishers();
+        $writers_and_editors_and_publishers = (array)array_merge($writers,$editors,$publishers);
         include 'html/header.html.php';
         include 'html/add.html.php';
         include 'html/footer.html.php';

@@ -136,6 +136,12 @@ class UsersModel {
         return $user_id;
     }
 
+    public function getUserId() {
+        global $pdo;
+
+        return $user_id;
+    }
+
 }
 
  ?>
