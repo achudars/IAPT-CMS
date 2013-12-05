@@ -96,17 +96,13 @@
                     </div>
                     <br />
                     <div id="authors">
-                        <select name="users" size="5" name="article_authors[]" multiple="multiple">
+                        <select size="5" name="article_authors[]" multiple="multiple">
                             <?php foreach($writers_and_editors_and_publishers as $user): ?>
                                 <option value="<?php echo $user->getUserId(); ?>">
-                                    <?php echo $user->getUserName() ."[". $user->getUserRole() . "]"; ?>
+                                    <?php echo "[". $user->getUserId() . "] " . $user->getUserName() ." [". $user->getUserRole() . "]"; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <!-- $user->getUserId() -->
-                        <!-- <span class="tag"><?php echo $_SESSION['user_name']; ?></span>
-                        <input type="text" value="" placeholder="Add another author" />
-                        <input type='hidden' name='article_authors[]' value='<?php echo $_SESSION['user_name']; ?>' /> -->
                     </div>
                     <br />
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>

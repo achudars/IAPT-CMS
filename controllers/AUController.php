@@ -31,12 +31,11 @@ class AUController {
         $article_authors = $_POST['article_authors'];
         $article_tags = $_POST['article_tags'];
 
-        //echo "ARTCILE AUTHORS[".$article_authors."]";
        // echo "ARTCILE TAGS[".$article_tags."]";
 
-        /*foreach( $article_authors as $key => $n ) {
+        foreach( $article_authors as $key => $n ) {
           print "ArticleContreoller -->Authors: ".$n."\n";
-      }*/
+      }
 
 
         /*if ( $article_staff_pick == "article_staff_pick" ) {
