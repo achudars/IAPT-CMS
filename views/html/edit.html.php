@@ -84,7 +84,7 @@
                     <br />
                     <div class="rating">
                         <div>Rating</div>
-                        <input type="range" name="article_rating" min="1" max="5" value=""/>
+                        <input type="range" name="article_rating" min="1" max="5" value="<?php echo $this->model->getArticleRating( $article['article_id'] ); ?>"/>
                     </div>
                     <br />
                     <div id="tags">
@@ -111,8 +111,8 @@
                     <br />
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
                     <div>
-                        <input type="checkbox" value="article_staff_picked" id="article_staff_picked" />
-                        <label for = "article_staff_picked">Mark as Staff Pick</label>
+                        <input <?php echo ($article["article_staff_pick"])?'checked':'' ?> type="checkbox" value="article_staff_pick" name="article_staff_pick" id="article_staff_pick" />
+                        <label for = "article_staff_pick">Mark as Staff Pick</label>
                     </div>
                     <br />
                     <?php } ?>

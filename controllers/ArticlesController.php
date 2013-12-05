@@ -37,16 +37,19 @@ class ArticlesController {
         }*/
 
 
-        if ( $article_staff_picked == "article_staff_picked" ) {
-            $article_staff_picked = $_POST['article_staff_picked'];
-        } else if ( $article_staff_picked != "article_staff_picked" ){
-            $article_staff_picked = 0;
-        }
+        /*if ( $article_staff_pick == "article_staff_pick" ) {
+            $article_staff_pick = $_POST['article_staff_pick'];
+        } else if ( $article_staff_pick != "article_staff_pick" ){
+            $article_staff_pick = 0;
+        }*/
 
-        //echo "ARTCILE STAFF PICKED[".$article_staff_picked."]";
+        $article_staff_pick = (!empty($_POST["article_staff_pick"])) ? 1 : 0;
+        echo "ARTCILE STAFF PICKED[".$_POST["article_staff_pick"] . "--->".$article_staff_pick."]";
+
+        //echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
 
 
-        $this->model->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating );
+        $this->model->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick );
     }
 
     public function editArticle() {
@@ -81,16 +84,19 @@ class ArticlesController {
         }*/
 
 
-        if ( $article_staff_picked == "article_staff_picked" ) {
-            $article_staff_picked = $_POST['article_staff_picked'];
-        } else if ( $article_staff_picked != "article_staff_picked" ){
-            $article_staff_picked = 0;
-        }
+        /*if ( $article_staff_pick == 1 ) {
+            $article_staff_pick = 1;
+        } else if ( $article_staff_pick != 1 ){
+            $article_staff_pick = 0;
+        }*/
 
-        //echo "ARTCILE STAFF PICKED[".$article_staff_picked."]";
+        $article_staff_pick = ($_POST["article_staff_pick"] == "article_staff_pick") ? 1 : 0;
+        echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
+
+        //echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
 
 
-        $this->model->editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating );
+        $this->model->editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick );
     }
 
     public function deleteArticle() {

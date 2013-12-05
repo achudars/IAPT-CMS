@@ -109,8 +109,8 @@
                     <br />
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
                     <div>
-                        <input type="checkbox" value="article_staff_picked" id="article_staff_picked" />
-                        <label for = "article_staff_picked">Mark as Staff Pick</label>
+                        <input type="checkbox" value="article_staff_pick" name="article_staff_pick" id="article_staff_pick" />
+                        <label for = "article_staff_pick">Mark as Staff Pick</label>
                     </div>
                     <br />
                     <?php } ?>

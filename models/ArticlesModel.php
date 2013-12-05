@@ -35,6 +35,7 @@ class ArticlesModel {
                ,$row['article_image']
                ,$row['article_status']
                ,$row['article_type']
+               ,$row['article_staff_pick']
                );
             $articles[] = $article;
         }
@@ -57,6 +58,7 @@ class ArticlesModel {
                ,$row['article_image']
                ,$row['article_status']
                ,$row['article_type']
+               ,$row['article_staff_pick']
                );
             $basic_articles[] = $article;
         }
@@ -80,6 +82,7 @@ class ArticlesModel {
                ,$row['article_image']
                ,$row['article_status']
                ,$row['article_type']
+               ,$row['article_staff_pick']
                );
             $column_articles[] = $article;
         }
@@ -103,6 +106,7 @@ class ArticlesModel {
                ,$row['article_image']
                ,$row['article_status']
                ,$row['article_type']
+               ,$row['article_staff_pick']
                );
             $review_articles[] = $article;
         }
@@ -125,6 +129,7 @@ class ArticlesModel {
                ,$row['article_image']
                ,$row['article_status']
                ,$row['article_type']
+               ,$row['article_staff_pick']
                );
             $articles[] = $article;
         }
@@ -132,10 +137,12 @@ class ArticlesModel {
     }
 
 
-    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating ) {
+    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick ) {
         global $pdo;
 
-        $query = $pdo->prepare("INSERT INTO articles (article_title, article_content, article_timestamp, article_image, article_status, article_type) VALUES (?,?,?,?,?,?)");
+        echo "[add] STAFF PICK will be: " . $article_staff_pick;
+
+        $query = $pdo->prepare("INSERT INTO articles (article_title, article_content, article_timestamp, article_image, article_status, article_type, article_staff_pick) VALUES (?,?,?,?,?,?,?)");
 
         $query->bindValue(1, $article_title);
         $query->bindValue(2, $article_content);
@@ -143,6 +150,7 @@ class ArticlesModel {
         $query->bindValue(4, $article_image); // TODO change to real image
         $query->bindValue(5, "submitted");
         $query->bindValue(6, $article_type);
+        $query->bindValue(7, $article_staff_pick);
         $query->execute();
 
         $article_id = $pdo->lastInsertId();
@@ -223,11 +231,19 @@ class ArticlesModel {
     }
 
 
-    public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating ) {
+    public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick ) {
         global $pdo;
+
+        echo "[edit] STAFF PICK will be: " . $article_staff_pick;
+
         $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=? WHERE article_id=?";
         $query = $pdo->prepare($sql);
         $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_id ));
+
+        $query = $pdo->prepare("UPDATE articles SET article_staff_pick = ? WHERE article_id = ? ");
+        $query->bindValue(1, $article_staff_pick);
+        $query->bindValue(2, $article_id);
+        $query->execute();
 
         if ( $article_type == "review_article") {
             $this->deleteRating( $article_id );
@@ -352,6 +368,7 @@ class ArticlesModel {
                ,$row['article_image']
                ,$row['article_status']
                ,$row['article_type']
+               ,$row['article_staff_pick']
               );
             $most_liked_articles[] = $article;
         }
@@ -381,12 +398,43 @@ class ArticlesModel {
                ,$row['article_image']
                ,$row['article_status']
                ,$row['article_type']
+               ,$row['article_staff_pick']
               );
             $newest_articles[] = $article;
         }
 
         return $newest_articles;
 
+    }
+
+    public function getStaffPickedArticles() {
+        global $pdo;
+
+        $query = $pdo->prepare("
+                                SELECT a . *
+                                FROM articles AS a
+                                WHERE a.article_staff_pick = 1
+                                ORDER BY a.article_timestamp DESC
+                                LIMIT 0 , 5
+        ");
+        $query->execute();
+        $rows = $query->fetchAll();
+
+        foreach($rows as $row){
+            $article = new Article(
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+               ,$row['article_staff_pick']
+              );
+            $staff_picked_articles[] = $article;
+        }
+
+        return $staff_picked_articles;
     }
 
 }

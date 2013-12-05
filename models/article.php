@@ -10,9 +10,10 @@
 		 public $article_image;
 		 public $article_status;
 		 public $article_type;
+		 public $article_staff_pick;
 
 		 // Constructor of class Article
-		 public function __construct($article_id, $article_title, $article_content, $article_timestamp, $article_image, $article_status, $article_type){
+		 public function __construct($article_id, $article_title, $article_content, $article_timestamp, $article_image, $article_status, $article_type, $article_staff_pick){
 		 	$this->id = $article_id;
 		 	$this->title = $article_title;
 		 	$this->content = $article_content;
@@ -20,6 +21,7 @@
 		 	$this->image = $article_image;
 		 	$this->status = $article_status;
 		 	$this->type = $article_type;
+		 	$this->staff_pick = $article_staff_pick;
 		 	return true;
 		 }
 
@@ -80,39 +82,18 @@
 		 public function getArticleType(){
 		 	return $this->type;
 		 }
-	}
 
-	class ReviewArticle extends Article {
-		 // Class properties and methods go here
-
-		 // Fields
-		 public $article_rating;
-
-		 // Constructor of class Article
-		 public function __construct($article_title, $article_content, $article_timestamp, $article_image, $article_status, $article_type, $article_rating){
-		 	$this->title = $article_title;
-		 	$this->content = $article_content;
-		 	$this->timestamp = $article_timestamp;
-		 	$this->image = $article_image;
-		 	$this->status = $article_status;
-		 	$this->type = $article_type;
-		 	$this->type = $article_rating;
-		 	return true;
+		 /**
+		  * Getter Method: get the type of the Article
+		  * @return the type of the Article
+		  */
+		 public function getStaffPickedArticle(){
+		 	return $this->staff_pick;
 		 }
-
-		 public function getArticleRating(){
-		 	return $this->article_rating;
-		 }
-
 	}
 
-	class ColumnArticle extends Article {
-
-
-	}
-
-	function getArticleRating($article_id) {
+/*	function getArticleRating($article_id) {
         $this->model->getArticleRating( $article_id );
-    }
+    }*/
 
  ?>

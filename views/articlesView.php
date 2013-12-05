@@ -23,7 +23,7 @@ class ArticlesView {
 		include 'html/header.html.php';
 		$most_liked_articles = $this->model->getMostLikedArticles();
 		$newest_articles = $this->model->getNewestArticles();
-		$staff_picked_articles = $this->model->getStaffPickedArticles();
+		$staff_picked_articles = (array)$this->model->getStaffPickedArticles();
 		include 'html/home.html.php';
 		include 'html/footer.html.php';
 	}
