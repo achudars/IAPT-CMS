@@ -122,6 +122,12 @@ class AUController {
         $this->articlesModel->addDislike( $article_id );
     }
 
+    public function getLoggedUserId() {
+        echo "username: ". $_SESSION['user_name'];
+        echo "userpassword: ". $_SESSION['user_password'];
+        $this->usersModel->getLoggedUserId( $_SESSION['user_name'], $_SESSION['user_password'] );
+    }
+
 }
 
 

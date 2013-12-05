@@ -51,6 +51,10 @@ class User {
           return $this->role;
         }
 
+        public function getLoggedUserId(){
+          return $this->id;
+        }
+
 
         /*public function getUserRole(){
 

@@ -98,7 +98,7 @@
                     <div id="authors">
                         <select size="5" name="article_authors[]" multiple="multiple">
                             <?php foreach($writers_and_editors_and_publishers as $user): ?>
-                                <option value="<?php echo $user->getUserId(); ?>">
+                                <option <?php echo ( $this->usersModel->getLoggedUserId($_SESSION['user_name'], $_SESSION['user_password']) == $user->getUserId() )?'selected':'' ?> value="<?php echo $user->getUserId(); ?>">
                                     <?php echo "[". $user->getUserId() . "] " . $user->getUserName() ." [". $user->getUserRole() . "]"; ?>
                                 </option>
                             <?php endforeach; ?>
