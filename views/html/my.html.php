@@ -19,7 +19,7 @@
                         <?php endforeach; ?>
                         ]
                     </small>&nbsp;
-                    <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small>
+                    <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small><br/>
                     <small>likes: [ <?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?> ]</small>
                     <small>dislikes: [ <?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?> ]</small>
                     <small class="dark">

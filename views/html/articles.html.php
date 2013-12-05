@@ -1,7 +1,5 @@
-
-
 <div class="content">
-    <div class="block list">
+    <div class="block list <?php if ( $_GET['type']=='basic') { echo 'basic-layout'; } else if ( $_GET['type']=='column') { echo 'column-layout'; } else if ( $_GET['type']=='review') { echo 'review-layout'; }  ?> ">
         <ol>
             <?php foreach($articles as $article): ?>
                 <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
@@ -14,8 +12,8 @@
                             <?php print $author['user_name']; ?> |
                         <?php endforeach; ?>
                         ]
-                    </small>&nbsp;
-                    <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small>
+                    </small><br/>
+                    <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small><br/>
                     <small>likes: [ <?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?> ]</small>
                     <small>dislikes: [ <?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?> ]</small>
                     <?php if( $article->getArticleType() == "review_article" ) { ?><small>rating: [<?php echo $this->articlesModel->getArticleRating( $article->getArticleId() ); ?>]</small><?php } ?>

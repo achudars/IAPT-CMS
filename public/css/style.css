@@ -175,7 +175,7 @@ ol li.list-header {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-.block.list h4 {
+.content .block.list .square-thumb + h4 {
   width: 30em;
 }
 .block.list .button {
@@ -240,7 +240,7 @@ ol li.list-header {
   transition: background 2s;
 }
 
-.block ol a {
+.block ol a, .block ol form {
   font-size: 185%;
   text-transform: uppercase;
   text-decoration: none;
@@ -299,8 +299,8 @@ ol li.list-header {
 }
 
 .list .square-thumb {
-  width: 50px;
-  height: 50px;
+  width: 5em;
+  height: 5em;
   background-position: center;
   background-size: cover;
   float: left;
@@ -505,7 +505,7 @@ ol li.list-header {
 
 .likes-dislikes {
   display: inline-block;
-  background-image: linear-gradient(to right, rgba(255,255,255,0.5) 0%, #000000 100%);
+  background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #000000 100%);
   width: 100%;
   color: #FFF;
   padding: 0 1em;
@@ -525,4 +525,46 @@ select {
 
 .block.list small.dark {
   background: #242424;
+}
+
+.block.list button {
+  outline: none;
+  border: none;
+  width: 5em;
+  display: inline-block;
+  margin-right: 0.5em;
+  color: #FFF;
+  border-radius: 3px;
+  font-family: "Lato", sans-serif;
+  font-size: 70%;
+  padding: 0.25em 0.5em;
+  text-transform: uppercase;
+}
+.block.list button:hover {
+  cursor: pointer;
+}
+.block.list a button {
+  background: #00CC00;
+}
+.block.list input + button {
+  background: #CC0000;
+}
+
+.block.list.basic-layout ol li {
+  width: 48%;
+  margin: 1%;
+  float: left;
+}
+.block.list.basic-layout .square-thumb, .block.list.column-layout .square-thumb {
+  width: 100%;
+}
+
+.block.list.column-layout ol li {
+  width: 24%;
+  margin: 0.5%;
+  float: left;
+}
+
+.content .block.list.column-layout .square-thumb + h4 {
+  width: 100%;
 }
