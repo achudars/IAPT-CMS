@@ -26,16 +26,26 @@
                 <?php if( isset($_SESSION['user_role']) ) {
                     if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
 
-                    <a class="pull-right" href="?page=edit&id=<?php echo $article->getArticleId(); ?>">
+                    <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                <?php
+                    if ( $_SESSION['user_role']=="writer") {
+                        foreach ($article_authors as $author) {
+                                if ( $author["user_name"] == $_SESSION['user_name'] ) { ?>
+                        <a class="pull-right" href="?page=edit&id=<?php echo $article->getArticleId(); ?>">
+                            <button>edit</button>
+                        </a>
+                    <?php }}} else { ?>
+                        <a class="pull-right" href="?page=edit&id=<?php echo $article->getArticleId(); ?>">
                         <button>edit</button>
                     </a>
-
-                    <form class="pull-right" action="?page=articles&type=all&action=delete_article" method="post">
-                        <input type='hidden' name='action' value='delete' />
-                        <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
-                        <button onclick="this.form.submit(); return false;">delete</button>
-                    </form>
-
+                    <?php } ?>
+                    <?php if ( $_SESSION['user_role']=="publisher" ) { ?>
+                        <form class="pull-right" action="?page=articles&type=all&action=delete_article" method="post">
+                            <input type='hidden' name='action' value='delete' />
+                            <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
+                            <button onclick="this.form.submit(); return false;">delete</button>
+                        </form>
+                    <?php } ?>
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
                         <form class="pull-right" action="?page=articles&type=all&action=change_article_status" method="post">
                             <input type='hidden' name='article_id' value='<?php echo $article->getArticleId(); ?>' />
