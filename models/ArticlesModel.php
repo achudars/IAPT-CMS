@@ -160,7 +160,7 @@ class ArticlesModel {
             $this->addRating( $article_id, $article_rating );
         }
         $this->addAuthors( $article_id, $article_authors );
-
+        $this->addArticleTags( $article_id, $article_tags );
         //$this->associateAuthors( $article_id );
         //
         /*foreach( $article_authors as $key => $article_author ) {
@@ -360,6 +360,14 @@ class ArticlesModel {
         //var_dump($article_authors);
         return $article_authors;
     }
+
+/*    public function addArticleTags( $article_id, $article_tags ){
+
+    }
+
+    public function getArticleTags( $article_id ) {
+
+    }*/
 
     public function getMostLikedArticles() {
         global $pdo;

@@ -10,18 +10,16 @@
                     <small>author(s): [
                         <?php
                         $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() );
-                        ?>
-                        <?php foreach($article_authors as $author): ?>
-                            <?php echo $author['user_name']; ?> |
+                        foreach($article_authors as $author): ?>
+                            <?php print $author['user_name']; ?> |
                         <?php endforeach; ?>
                         ]
-                    </small>
+                    </small>&nbsp;
                     <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small>
                     <small>likes: [ <?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?> ]</small>
                     <small>dislikes: [ <?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?> ]</small>
                     <?php if( $article->getArticleType() == "review_article" ) { ?><small>rating: [<?php echo $this->articlesModel->getArticleRating( $article->getArticleId() ); ?>]</small><?php } ?>
                     <?php if( $article->getStaffPickedArticle() == 1 ) { ?><small>STAFF PICK</small><?php } ?>
-                    <small>tags: [  ]</small>
                 </a>
 
                 <?php if ( $_GET["type"]=="all") { ?>

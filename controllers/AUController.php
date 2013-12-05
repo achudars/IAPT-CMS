@@ -31,6 +31,11 @@ class AUController {
         $article_authors = $_POST['article_authors'];
         $article_tags = $_POST['article_tags'];
 
+        /*echo "ARTCILE TAGS[".$article_tags."]";
+        foreach( $article_tags as $key => $n ) {
+              print "ArticleController -->TAGS: ".$n."\n";
+         }*/
+
        // echo "ARTCILE TAGS[".$article_tags."]";
 
 
@@ -41,12 +46,8 @@ class AUController {
         }*/
 
         $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
-        echo "ARTCILE STAFF PICKED[".$_POST["article_staff_pick"] . "--->".$article_staff_pick."]";
 
-        //echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
-
-
-        $this->articlesModel->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick );
+        $this->articlesModel->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $article_tags );
     }
 
     public function editArticle() {
@@ -73,8 +74,10 @@ class AUController {
         $article_tags = $_POST['article_tags'];
 
         //echo "ARTCILE AUTHORS[".$article_authors."]";
-       // echo "ARTCILE TAGS[".$article_tags."]";
-
+         //echo "ARTCILE TAGS[".$article_tags."]";
+         foreach( $article_tags as $key => $n ) {
+              print "ArticleController -->TAGS: ".$n."\n";
+         }
         /*foreach( $article_authors as $key => $n ) {
           print "ArticleContreoller -->Authors: ".$n."\n";
       }*/
