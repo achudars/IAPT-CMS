@@ -31,13 +31,6 @@ if (!empty($show_id)) {
     *   someone requests the page, we instnce a version of each of those to run the page */
 
      switch ($page) {
-        case "combined":
-            $articlesModel = new ArticlesModel();
-            $usersModel = new UsersModel();
-            $controller = new AUController( $articlesModel, $usersModel );
-            $view = new AUView( $controller, $articlesModel, $usersModel );
-            echo $view -> output();
-            break;
         case "home":
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
@@ -67,9 +60,10 @@ if (!empty($show_id)) {
             echo $view->output();
             break;
         case "add":
-            $model = new ArticlesModel();
-            $controller = new ArticlesController($model);
-            $view = new ArticlesView($controller, $model);
+            $articlesModel = new ArticlesModel();
+            $usersModel = new UsersModel();
+            $controller = new AUController( $articlesModel, $usersModel );
+            $view = new AUView( $controller, $articlesModel, $usersModel );
             if ( isset($_GET["action"])) {
                 if( $_GET["action"]=="add_article") {
                     $controller->addArticle();
@@ -97,9 +91,10 @@ if (!empty($show_id)) {
             echo $view->output();
             break;
         case "articles":
-            $model = new ArticlesModel();
-            $controller = new ArticlesController($model);
-            $view = new ArticlesView($controller, $model);
+            $articlesModel = new ArticlesModel();
+            $usersModel = new UsersModel();
+            $controller = new AUController( $articlesModel, $usersModel );
+            $view = new AUView( $controller, $articlesModel, $usersModel );
             if ( isset($_GET['type']) ) {
                 if ( $_GET["type"]=="basic") {
                     echo $view->output_basic_articles();
@@ -109,7 +104,7 @@ if (!empty($show_id)) {
                     echo $view->output_review_articles();
                 } else if ( $_GET["type"]=="all") {
                     if ( isset($_GET['action']) ) {
-                        if ( $_GET["action"]=="change_article_status") {
+                               if ( $_GET["action"]=="change_article_status") {
                             $controller->changeArticleStatus();
                         } else if ( $_GET["action"]=="edit_article") {
                             $controller->editArticle();
