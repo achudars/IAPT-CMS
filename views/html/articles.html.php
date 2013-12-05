@@ -2,7 +2,8 @@
     <div class="block list <?php if ( $_GET['type']=='basic') { echo 'basic-layout'; } else if ( $_GET['type']=='column') { echo 'column-layout'; } else if ( $_GET['type']=='review') { echo 'review-layout'; }  ?> ">
         <ol>
             <?php foreach($articles as $article): ?>
-                <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                <?php $article_authors = $this->articlesModel->getArticleAuthors( $article->getArticleId() ); ?>
+                <?php $article_editors = $this->articlesModel->getArticleEditors( $article->getArticleId() ); ?>
                 <li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <div class="square-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
@@ -10,6 +11,12 @@
                     <small>author(s): [
                         <?php foreach($article_authors as $author): ?>
                             <?php print $author['user_name']; ?> |
+                        <?php endforeach; ?>
+                        ]
+                    </small>
+                    <small>editors(s): [
+                        <?php foreach($article_editors as $editor): ?>
+                            <?php print $editor['user_name']; ?> |
                         <?php endforeach; ?>
                         ]
                     </small><br/>
@@ -25,7 +32,7 @@
                 <?php if( isset($_SESSION['user_role']) ) {
                     if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
 
-                    <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                    <?php $article_authors = $this->articlesModel->getArticleAuthors( $article->getArticleId() ); ?>
                 <?php
                     if ( $_SESSION['user_role']=="writer") {
                         foreach ($article_authors as $author) {

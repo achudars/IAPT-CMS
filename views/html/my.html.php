@@ -4,7 +4,7 @@
     <div class="block list">
         <ol>
             <?php foreach($articles as $article): ?>
-                <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                <?php $article_authors = $this->articlesModel->getArticleAuthors( $article->getArticleId() ); ?>
                 <?php
                 foreach ($article_authors as $author) {
                     if ( $author["user_name"] == $_SESSION['user_name'] ) {
@@ -18,7 +18,13 @@
                             <?php print $author['user_name']; ?> |
                         <?php endforeach; ?>
                         ]
-                    </small>&nbsp;
+                    </small>
+                    <small>editors(s): [
+                        <?php foreach((array)$article_editors as $editor): ?>
+                            <?php print $editor['user_name']; ?> |
+                        <?php endforeach; ?>
+                        ]
+                    </small><br/>
                     <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small><br/>
                     <small>likes: [ <?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?> ]</small>
                     <small>dislikes: [ <?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?> ]</small>

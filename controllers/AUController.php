@@ -29,10 +29,10 @@ class AUController {
         }
 
         $article_authors = $_POST['article_authors'];
-
+        $article_editors = $_POST['article_editors'];
         $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
 
-        $this->articlesModel->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name );
+        $this->articlesModel->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name, $article_editors );
     }
 
     public function editArticle() {
@@ -56,9 +56,13 @@ class AUController {
         }
 
         $article_authors = $_POST['article_authors'];
+        $article_editors = $_POST['article_editors'];
+
+/*        echo "ARTICLE EDITORS: ". $article_editors . " size: ". sizeof($article_editors);*/
+
         $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
 
-        $this->articlesModel->editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name );
+        $this->articlesModel->editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name, $article_editors );
     }
 
     public function deleteArticle() {

@@ -164,14 +164,14 @@ class ArticlesModel {
         if ( $article_type == "column_article") {
             $this->addColumnArticle( $article_id, $column_name );
         }
-        $this->addAuthors( $article_id, $article_authors );
+        $this->addArticleAuthors( $article_id, $article_authors );
 
 
         //redirection
         //header("Location: index.php?page=articles&type=all");
     }
 
-    public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name ) {
+    public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name, $article_editors ) {
         global $pdo;
 
         $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=?, article_staff_pick=? WHERE article_id=?";
@@ -191,18 +191,21 @@ class ArticlesModel {
         } else {
             $this->deleteColumnArticle( $article_id );
         }
+
+        $this->deleteArticleEditors( $article_id );
+        $this->addArticleEditors( $article_id, $article_editors );
     }
 
-    public function associateAuthors( $article_id, $article_author ) {
+/*    public function associateArticleAuthors( $article_id, $article_author ) {
         global $pdo;
         $query = $pdo->prepare("
-          INSERT INTO article_users(article_id, user_id) VALUES (?,?)
+          INSERT INTO article_authors (article_id, user_id) VALUES (?,?)
         ");
         $query->bindValue(1, $article_id );
         $query->bindValue(2, $article_author );
         $query->execute();
 
-    }
+    }*/
 
     public function setDefaultLike( $article_id ) {
         global $pdo;
@@ -398,27 +401,63 @@ class ArticlesModel {
 
 
 
-    public function addAuthors( $article_id, $article_authors ) {
+    public function addArticleAuthors( $article_id, $article_authors ) {
         global $pdo;
         foreach( $article_authors as $key => $author_id ) {
-          $query = $pdo->prepare("INSERT INTO article_users (article_id, user_id) VALUES (?,?)");
+          $query = $pdo->prepare("INSERT INTO article_authors  (article_id, user_id) VALUES (?,?)");
           $query->bindValue(1, $article_id);
           $query->bindValue(2, $author_id);
           $query->execute();
         }
     }
 
-    public function getAuthors( $article_id ) {
+    public function getArticleAuthors( $article_id ) {
         global $pdo;
         $query = $pdo->prepare("
           SELECT U.user_name
           FROM users U
-          INNER JOIN article_users AU ON U.user_id = AU.user_id
+          INNER JOIN article_authors  AU ON U.user_id = AU.user_id
           WHERE AU.article_id = ?");
         $query->bindValue(1, $article_id);
         $query->execute();
         $article_authors = $query->fetchAll();
         return $article_authors;
+    }
+
+
+    public function addArticleEditors( $article_id, $article_editors ) {
+        global $pdo;
+
+/*        echo "TEST with size " . sizeof($article_editors);*/
+/*        foreach( $article_authors as $key => $author_id ) {
+            echo "TEST" . $author_id . " with size " . sizeof($article_authors);
+        }*/
+        foreach( $article_editors as $key => $editor_id ) {
+          $query = $pdo->prepare("INSERT INTO article_editors (article_id, user_id) VALUES (?,?)");
+          $query->bindValue(1, $article_id);
+          $query->bindValue(2, $editor_id);
+          $query->execute();
+        }
+    }
+
+    public function getArticleEditors( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("
+          SELECT U.user_name
+          FROM users U
+          INNER JOIN article_editors AU ON U.user_id = AU.user_id
+          WHERE AU.article_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $article_editors = $query->fetchAll();
+        return $article_editors;
+    }
+
+    public function deleteArticleEditors( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("DELETE FROM article_editors WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
     }
 
 

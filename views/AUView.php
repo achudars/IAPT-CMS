@@ -18,7 +18,7 @@ class AUView {
         include 'html/footer.html.php';
 
         //$article_ratings =  $this->articlesModel->getArticleRating( $article_id );
-        //$article_authors = $this->articlesModel->getAuthors( $article_id );
+        //$article_authors = $this->articlesModel->getArticleAuthors( $article_id );
     }
 
     public function output_my_articles(){
@@ -28,7 +28,7 @@ class AUView {
         include 'html/footer.html.php';
 
         //$article_ratings =  $this->articlesModel->getArticleRating( $article_id );
-        //$article_authors = $this->articlesModel->getAuthors( $article_id );
+        //$article_authors = $this->articlesModel->getArticleAuthors( $article_id );
     }
 
     public function output_home_articles(){
@@ -75,8 +75,15 @@ class AUView {
 
     public function output_edit_article( $article_id ){
         include 'html/header.html.php';
+
+        $writers = $this->usersModel->getWriters();
+        $editors = $this->usersModel->getEditors();
+        $publishers = $this->usersModel->getPublishers();
+        $writers_and_editors_and_publishers = (array)array_merge($writers,$editors,$publishers);
+
         $article = $this->articlesModel->getArticle( $article_id );
-        $authors = $this->articlesModel->getAuthors( $article_id );
+        $article_authors = $this->articlesModel->getArticleAuthors( $article_id );
+        $article_editors = $this->articlesModel->getArticleEditors( $article_id );
         include 'html/edit.html.php';
         include 'html/footer.html.php';
     }

@@ -99,9 +99,26 @@
                     <br /> -->
                     <div id="authors">
                         Author(s):
-                        <?php foreach($authors as $author): ?>
+                        <?php foreach($article_authors as $author): ?>
                             <span class="tag"><?php echo $author['user_name']; ?></span>
                         <?php endforeach; ?>
+                    </div>
+                    <br />
+
+                    <div id="editors">
+                        Editors(s) (hold CTRL to select multiple editors):
+                        <?php foreach($article_editors as $editor): ?>
+                            <span class="tag"><?php echo $editor['user_name']; ?></span>
+                        <?php endforeach; ?>
+                        <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
+                            <select size="5" name="article_editors[]" multiple="multiple">
+                                <?php foreach($writers_and_editors_and_publishers as $user): ?>
+                                    <option <?php echo ( $this->usersModel->getLoggedUserId($_SESSION['user_name'], $_SESSION['user_password']) == $user->getUserId() )?'selected':'' ?> value="<?php echo $user->getUserId(); ?>">
+                                        <?php echo "[". $user->getUserId() . "] " . $user->getUserName() ." [". $user->getUserRole() . "]"; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php } ?>
                     </div>
                     <br />
                     <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
