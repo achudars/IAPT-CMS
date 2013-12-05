@@ -568,3 +568,7 @@ select {
 .content .block.list.column-layout .square-thumb + h4 {
   width: 100%;
 }
+
+.content > .block.column-layout {
+  width: 25%;
+}

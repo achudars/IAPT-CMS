@@ -17,6 +17,7 @@
                     <small>likes: [ <?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?> ]</small>
                     <small>dislikes: [ <?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?> ]</small>
                     <?php if( $article->getArticleType() == "review_article" ) { ?><small>rating: [<?php echo $this->articlesModel->getArticleRating( $article->getArticleId() ); ?>]</small><?php } ?>
+                    <?php if( $article->getArticleType() == "column_article" ) { ?><small>column: [<?php echo $this->articlesModel->getArticleColumn( $article->getArticleId() ); ?>]</small><?php } ?>
                     <?php if( $article->getStaffPickedArticle() == 1 ) { ?><small>STAFF PICK</small><?php } ?>
                 </a>
 

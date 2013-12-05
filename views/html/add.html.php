@@ -34,19 +34,19 @@
                         </span>
                         <span class="col columns">
                             <div>
-                                <input checked type = "radio" name = "article_columns" id = "pc" value = "pc" />
+                                <input checked type = "radio" name = "column_name" id = "pc" value = "pc" />
                                 <label for = "pc">PC</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_columns" id = "ps" value = "ps" />
+                                <input type = "radio" name = "column_name" id = "ps" value = "ps" />
                                 <label for = "ps">PS</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_columns" id = "xbox" value = "xbox" />
+                                <input type = "radio" name = "column_name" id = "xbox" value = "xbox" />
                                 <label for = "xbox">XBOX</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_columns" id = "mobile" value = "mobile" />
+                                <input type = "radio" name = "column_name" id = "mobile" value = "mobile" />
                                 <label for = "mobile">Mobile</label>
                             </div>
                         </span>

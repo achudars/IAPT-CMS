@@ -49,7 +49,7 @@ class AUView {
     public function output_column_articles(){
         include 'html/header.html.php';
         $articles = $this->articlesModel->getColumnArticles();
-        include 'html/articles.html.php';
+        include 'html/columns.html.php';
         include 'html/footer.html.php';
     }
     public function output_review_articles(){

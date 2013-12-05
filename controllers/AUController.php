@@ -17,37 +17,22 @@ class AUController {
         $article_status = $_POST['article_status'];
         $article_type = $_POST['article_type'];
         $article_rating = 0;
-        $article_column = 0;
+        $column_name = 0;
 
         if ( $article_type == "review_article") {
             $article_rating = $_POST['article_rating'];
         }
 
         if ( $article_type == "column_article") {
-            $article_column = $_POST['article_column'];
-            echo "ARTCILE COLUMN[".$article_column."]";
+            $column_name = $_POST['column_name'];
+            //echo "ARTICLE COLUMN[".$column_name."]";
         }
 
         $article_authors = $_POST['article_authors'];
-        $article_tags = $_POST['article_tags'];
-
-        /*echo "ARTCILE TAGS[".$article_tags."]";
-        foreach( $article_tags as $key => $n ) {
-              print "ArticleController -->TAGS: ".$n."\n";
-         }*/
-
-       // echo "ARTCILE TAGS[".$article_tags."]";
-
-
-        /*if ( $article_staff_pick == "article_staff_pick" ) {
-            $article_staff_pick = $_POST['article_staff_pick'];
-        } else if ( $article_staff_pick != "article_staff_pick" ){
-            $article_staff_pick = 0;
-        }*/
 
         $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
 
-        $this->articlesModel->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $article_tags );
+        $this->articlesModel->addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name );
     }
 
     public function editArticle() {
@@ -59,42 +44,21 @@ class AUController {
         $article_status = $_POST['article_status'];
         $article_type = $_POST['article_type'];
         $article_rating = 0;
-        $article_column = 0;
+        $column_name = 0;
 
         if ( $article_type == "review_article") {
             $article_rating = $_POST['article_rating'];
         }
 
         if ( $article_type == "column_article") {
-            $article_column = $_POST['article_column'];
-            echo "ARTCILE COLUMN[".$article_column."]";
+            $column_name = $_POST['column_name'];
+            //echo "ARTICLE COLUMN[".$column_name."]";
         }
 
         $article_authors = $_POST['article_authors'];
-        $article_tags = $_POST['article_tags'];
-
-        //echo "ARTCILE AUTHORS[".$article_authors."]";
-         //echo "ARTCILE TAGS[".$article_tags."]";
-         foreach( $article_tags as $key => $n ) {
-              print "ArticleController -->TAGS: ".$n."\n";
-         }
-        /*foreach( $article_authors as $key => $n ) {
-          print "ArticleContreoller -->Authors: ".$n."\n";
-      }*/
-
-
-        /*if ( $article_staff_pick == 1 ) {
-            $article_staff_pick = 1;
-        } else if ( $article_staff_pick != 1 ){
-            $article_staff_pick = 0;
-        }*/
-
         $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
 
-        //echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
-
-
-        $this->articlesModel->editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick );
+        $this->articlesModel->editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name );
     }
 
     public function deleteArticle() {
@@ -123,6 +87,12 @@ class AUController {
         echo "username: ". $_SESSION['user_name'];
         echo "userpassword: ". $_SESSION['user_password'];
         $this->usersModel->getLoggedUserId( $_SESSION['user_name'], $_SESSION['user_password'] );
+    }
+
+    public function  getArticleColumn( $article_id ) {
+        $article_id = $_GET['article_id'];
+        //echo "1. ARTICLE COLUMN: " . $article_id;
+        $this->articlesModel->getArticleColumn( $article_id );
     }
 
 }

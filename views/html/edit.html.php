@@ -22,56 +22,56 @@
                         </span>
                         <span class="col">
                             <div>
-                                <input checked type = "radio" name = "article_type" id = "basic_article" value = "basic_article" />
+                                <input <?php echo ($article["article_type"] == 'basic_article')?'checked':'' ?> type = "radio" name = "article_type" id = "basic_article" value = "basic_article" />
                                 <label for = "basic_article">Basic Article</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_type" id = "column_article" value = "column_article" />
+                                <input <?php echo ($article["article_type"] == 'column_article')?'checked':'' ?> type = "radio" name = "article_type" id = "column_article" value = "column_article" />
                                 <label for = "column_article">Column Article</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_type" id = "review_article" value = "review_article" />
+                                <input <?php echo ($article["article_type"] == 'review_article')?'checked':'' ?> type = "radio" name = "article_type" id = "review_article" value = "review_article" />
                                 <label for = "review_article">Review Article</label>
                             </div>
                         </span>
                         <span class="col columns">
                             <div>
-                                <input checked type = "radio" name = "article_columns" id = "pc" value = "pc" />
+                                <input <?php echo ($this->articlesModel->getArticleColumn( $article['article_id'] ) == 'PC')?'checked':'' ?> type = "radio" name = "column_name" id = "PC" value = "PC" />
                                 <label for = "pc">PC</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_columns" id = "ps" value = "ps" />
+                                <input <?php echo ($this->articlesModel->getArticleColumn( $article['article_id'] ) == 'PS')?'checked':'' ?> type = "radio" name = "column_name" id = "PS" value = "PS" />
                                 <label for = "ps">PS</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_columns" id = "xbox" value = "xbox" />
+                                <input <?php echo ($this->articlesModel->getArticleColumn( $article['article_id'] ) == 'XBOX')?'checked':'' ?> type = "radio" name = "column_name" id = "XBOX" value = "XBOX" />
                                 <label for = "xbox">XBOX</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_columns" id = "mobile" value = "mobile" />
+                                <input <?php echo ($this->articlesModel->getArticleColumn( $article['article_id'] ) == 'MOBILE')?'checked':'' ?> type = "radio" name = "column_name" id = "MOBILE" value = "MOBILE" />
                                 <label for = "mobile">Mobile</label>
                             </div>
                         </span>
                         <span class="col">
                         <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
                             <div>
-                                <input checked type = "radio" name = "article_status" id = "submitted" value = "submitted" />
+                                <input <?php echo ($article["article_status"] == 'submitted')?'checked':'' ?> type = "radio" name = "article_status" id = "submitted" value = "submitted" />
                                 <label for = "submitted">submitted</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_status" id = "under_review" value = "under_review" />
+                                <input <?php echo ($article["article_status"] == 'under_review')?'checked':'' ?> type = "radio" name = "article_status" id = "under_review" value = "under_review" />
                                 <label for = "under_review">under review</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_status" id = "awaiting_changes" value = "awaiting_changes" />
+                                <input <?php echo ($article["article_status"] == 'awaiting_changes')?'checked':'' ?> type = "radio" name = "article_status" id = "awaiting_changes" value = "awaiting_changes" />
                                 <label for = "awaiting_changes">awaiting changes</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_status" id = "published" value = "published" />
+                                <input <?php echo ($article["article_status"] == 'published')?'checked':'' ?> type = "radio" name = "article_status" id = "published" value = "published" />
                                 <label for = "published">published</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_status" id = "rejected" value = "rejected" />
+                                <input <?php echo ($article["article_status"] == 'rejected')?'checked':'' ?> type = "radio" name = "article_status" id = "rejected" value = "rejected" />
                                 <label for = "rejected">rejected</label>
                             </div>
                         <?php } ?>
@@ -98,7 +98,7 @@
                     </div>
                     <br /> -->
                     <div id="authors">
-                        Author(s) (hold CTRL to select multiple authors):
+                        Author(s):
                         <?php foreach($authors as $author): ?>
                             <span class="tag"><?php echo $author['user_name']; ?></span>
                         <?php endforeach; ?>
@@ -186,9 +186,17 @@
         }
 
         var rating = $(".rating");
-        rating.hide();
         var columns = $(".columns");
-        columns.hide();
+        if ( $("input[value$='review_article']").is(':checked') ) {
+                rating.show();
+                columns.hide();
+            } else if ( $("input[value$='column_article']").is(':checked') ) {
+                rating.hide();
+                columns.show();
+            } else {
+                rating.hide();
+                columns.hide();
+            }
 
         $("input[name$='article_type']").click(function() {
 

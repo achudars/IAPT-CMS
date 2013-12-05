@@ -45,7 +45,7 @@ class ArticlesModel {
     public function getBasicArticles(){
         global $pdo;
 
-        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
+        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type ORDER BY article_timestamp DESC");
         $sth->execute(array(':type'=>'basic_article'));
         $rows = $sth->fetchAll();
 
@@ -69,7 +69,7 @@ class ArticlesModel {
         global $pdo;
 
         //$pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
+        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type ORDER BY article_timestamp DESC");
         $sth->execute(array(':type'=>'column_article'));
         $rows = $sth->fetchAll();
 
@@ -86,6 +86,8 @@ class ArticlesModel {
                );
             $column_articles[] = $article;
         }
+
+        //echo sizeof($column_articles);
         return $column_articles;
     }
 
@@ -93,7 +95,7 @@ class ArticlesModel {
         global $pdo;
 
         //$pdo = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type");
+        $sth = $pdo->prepare("SELECT * FROM articles WHERE article_type = :type ORDER BY article_timestamp DESC");
         $sth->execute(array(':type'=>'review_article'));
         $rows = $sth->fetchAll();
 
@@ -137,7 +139,7 @@ class ArticlesModel {
     }
 
 
-    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick ) {
+    public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name ) {
         global $pdo;
 
         $query = $pdo->prepare("INSERT INTO articles (article_title, article_content, article_timestamp, article_image, article_status, article_type, article_staff_pick) VALUES (?,?,?,?,?,?,?)");
@@ -159,19 +161,36 @@ class ArticlesModel {
         if ( $article_rating != 0) {
             $this->addRating( $article_id, $article_rating );
         }
+        if ( $article_type == "column_article") {
+            $this->addColumnArticle( $article_id, $column_name );
+        }
         $this->addAuthors( $article_id, $article_authors );
-        //$this->addArticleTags( $article_id, $article_tags );
-        //$this->associateAuthors( $article_id );
-        //
-        /*foreach( $article_authors as $key => $article_author ) {
-          print "article_id" . $article_id . " | ". $article_author.  "\n";
-          // /$this->associateAuthors( $article_id, $article_author );
-        }*/
 
-        //print "Article authors: " . $article_authors;
 
         //redirection
         //header("Location: index.php?page=articles&type=all");
+    }
+
+    public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick, $column_name ) {
+        global $pdo;
+
+        $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=?, article_staff_pick=? WHERE article_id=?";
+        $query = $pdo->prepare($sql);
+        $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_staff_pick, $article_id ));
+
+        if ( $article_type == "review_article") {
+            $this->deleteRating( $article_id );
+            $this->addRating( $article_id, $article_rating );
+        } else {
+            $this->deleteRating( $article_id );
+        }
+
+        if ( $article_type == "column_article") {
+            $this->deleteColumnArticle( $article_id );
+            $this->addColumnArticle( $article_id, $column_name );
+        } else {
+            $this->deleteColumnArticle( $article_id );
+        }
     }
 
     public function associateAuthors( $article_id, $article_author ) {
@@ -229,22 +248,7 @@ class ArticlesModel {
     }
 
 
-    public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick ) {
-        global $pdo;
 
-        $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=?, article_staff_pick=? WHERE article_id=?";
-        $query = $pdo->prepare($sql);
-        $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_staff_pick, $article_id ));
-
-
-
-        if ( $article_type == "review_article") {
-            $this->deleteRating( $article_id );
-            $this->addRating( $article_id, $article_rating );
-        } else {
-            $this->deleteRating( $article_id );
-        }
-    }
 
     public function getLikes( $article_id ) {
         global $pdo;
@@ -302,6 +306,16 @@ class ArticlesModel {
         return $article_rating;
     }
 
+    public function getArticleColumn( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("SELECT column_name FROM column_articles WHERE article_id = ? ");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $column_name = $query->fetchColumn();
+        //echo "1. ARTICLE COLUMN: " . $column_name;
+        return $column_name;
+    }
+
     public function addRating( $article_id, $article_rating ) {
         global $pdo;
 
@@ -321,13 +335,13 @@ class ArticlesModel {
         $query->execute();
     }
 
-    public function editRating( $article_id, $article_rating ) {
+    /*public function editRating( $article_id, $article_rating ) {
         global $pdo;
         $query = $pdo->prepare("UPDATE review_articles SET review_rating = ? WHERE article_id = ? ");
         $query->bindValue(1, $article_rating);
         $query->bindValue(2, $article_id);
         $query->execute();
-    }
+    }*/
 
     public function deleteRating( $article_id ) {
         global $pdo;
@@ -335,6 +349,54 @@ class ArticlesModel {
         $query->bindValue(1, $article_id);
         $query->execute();
     }
+
+
+
+
+
+
+    public function addColumnArticle( $article_id, $column_name ) {
+        global $pdo;
+
+        $query = $pdo->prepare("SELECT * FROM column_articles WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
+        $result = $query->execute();
+
+        if ( $result ) {
+            $query = $pdo->prepare("INSERT INTO column_articles (column_name, article_id) VALUES (?,?)");
+            $query->bindValue(1, $column_name);
+            $query->bindValue(2, $article_id);
+        } else {
+            $query = $pdo->prepare("UPDATE column_articles SET column_name = ? WHERE article_id = ? ");
+            $query->bindValue(1, $column_name);
+            $query->bindValue(2, $article_id);
+        }
+        $query->execute();
+    }
+
+    /*public function editRating( $article_id, $article_rating ) {
+        global $pdo;
+        $query = $pdo->prepare("UPDATE review_articles SET review_rating = ? WHERE article_id = ? ");
+        $query->bindValue(1, $article_rating);
+        $query->bindValue(2, $article_id);
+        $query->execute();
+    }*/
+
+    public function deleteColumnArticle( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("DELETE FROM column_articles WHERE article_id = ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+    }
+
+
+
+
+
+
+
+
+
 
     public function addAuthors( $article_id, $article_authors ) {
         global $pdo;
@@ -353,21 +415,12 @@ class ArticlesModel {
           FROM users U
           INNER JOIN article_users AU ON U.user_id = AU.user_id
           WHERE AU.article_id = ?");
-        //$query = $pdo->prepare("SELECT user_id FROM article_users WHERE article_id= ?");
         $query->bindValue(1, $article_id);
         $query->execute();
         $article_authors = $query->fetchAll();
-        //var_dump($article_authors);
         return $article_authors;
     }
 
-/*    public function addArticleTags( $article_id, $article_tags ){
-
-    }
-
-    public function getArticleTags( $article_id ) {
-
-    }*/
 
     public function getMostLikedArticles() {
         global $pdo;
@@ -377,7 +430,7 @@ class ArticlesModel {
                                 FROM articles AS a
                                 JOIN article_likes AS al ON al.article_id = a.article_id
                                 ORDER BY al.article_like_amount DESC
-                                LIMIT 0 , 5
+                                LIMIT 0 , 10
         ");
         $query->execute();
         $rows = $query->fetchAll();
@@ -408,7 +461,7 @@ class ArticlesModel {
                                 SELECT a . *
                                 FROM articles AS a
                                 ORDER BY a.article_timestamp DESC
-                                LIMIT 0 , 5
+                                LIMIT 0 , 10
         ");
         $query->execute();
         $rows = $query->fetchAll();
@@ -439,7 +492,7 @@ class ArticlesModel {
                                 FROM articles AS a
                                 WHERE a.article_staff_pick = 1
                                 ORDER BY a.article_timestamp DESC
-                                LIMIT 0 , 5
+                                LIMIT 0 , 10
         ");
         $query->execute();
         $rows = $query->fetchAll();
