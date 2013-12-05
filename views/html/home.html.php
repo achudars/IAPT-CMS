@@ -12,8 +12,8 @@
 
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                     <small class="likes-dislikes pull-right">
-                        <span class="green">+<?php echo $this->model->getLikes( $article->getArticleId() ); ?></span>
-                        /<span class="red">-<?php echo $this->model->getDislikes( $article->getArticleId() ); ?></span>
+                        <span class="green">+<?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?></span>
+                        /<span class="red">-<?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?></span>
                     </small>
                 </a>
             </li>
@@ -34,8 +34,8 @@
                     <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                     <small class="likes-dislikes pull-right">
-                        <span class="green">+<?php echo $this->model->getLikes( $article->getArticleId() ); ?></span>
-                        /<span class="red">-<?php echo $this->model->getDislikes( $article->getArticleId() ); ?></span>
+                        <span class="green">+<?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?></span>
+                        /<span class="red">-<?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?></span>
                     </small>
                 </a>
                 </li>
@@ -56,8 +56,8 @@
                     <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                     <small class="likes-dislikes pull-right">
-                        <span class="green">+<?php echo $this->model->getLikes( $article->getArticleId() ); ?></span>
-                        /<span class="red">-<?php echo $this->model->getDislikes( $article->getArticleId() ); ?></span>
+                        <span class="green">+<?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?></span>
+                        /<span class="red">-<?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?></span>
                     </small>
                 </a>
             </li>

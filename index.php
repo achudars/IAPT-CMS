@@ -32,9 +32,10 @@ if (!empty($show_id)) {
 
      switch ($page) {
         case "home":
-            $model = new ArticlesModel();
-            $controller = new ArticlesController($model);
-            $view = new ArticlesView($controller, $model);
+            $articlesModel = new ArticlesModel();
+            $usersModel = new UsersModel();
+            $controller = new AUController( $articlesModel, $usersModel );
+            $view = new AUView( $controller, $articlesModel, $usersModel );
             echo $view->output_home_articles();
             break;
         case "register":
