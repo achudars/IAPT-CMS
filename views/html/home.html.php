@@ -2,7 +2,9 @@
     <div class="block">
         <h2>Most liked</h2>
         <ol>
-            <?php foreach($most_liked_articles as $article): ?><li>
+            <?php foreach($most_liked_articles as $article): ?>
+                <?php if( $article->getArticleStatus() == "published") { ?>
+                <li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
                     <small>by <?php echo "author" ?></small>
@@ -14,14 +16,18 @@
                         /<span class="red">-<?php echo $this->model->getDislikes( $article->getArticleId() ); ?></span>
                     </small>
                 </a>
-            </li><?php endforeach; ?>
+            </li>
+        <?php } ?>
+    <?php endforeach; ?>
         </ol>
     </div>
 
     <div class="block">
         <h2>New</h2>
         <ol>
-            <?php foreach($newest_articles as $article): ?><li>
+            <?php foreach($newest_articles as $article): ?>
+                <?php if( $article->getArticleStatus() == "published") { ?>
+                <li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
                     <small>by <?php echo "author" ?></small>
@@ -32,14 +38,18 @@
                         /<span class="red">-<?php echo $this->model->getDislikes( $article->getArticleId() ); ?></span>
                     </small>
                 </a>
-            </li><?php endforeach; ?>
+                </li>
+                <?php } ?>
+            <?php endforeach; ?>
         </ol>
     </div>
 
     <div class="block">
         <h2>Staff picks</h2>
         <ol>
-            <?php foreach($staff_picked_articles as $article): ?><li>
+            <?php foreach($staff_picked_articles as $article): ?>
+                <?php if( $article->getArticleStatus() == "published") { ?>
+                <li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
                     <small>by <?php echo "author" ?></small>
@@ -50,7 +60,9 @@
                         /<span class="red">-<?php echo $this->model->getDislikes( $article->getArticleId() ); ?></span>
                     </small>
                 </a>
-            </li><?php endforeach; ?>
+            </li>
+        <?php } ?>
+    <?php endforeach; ?>
         </ol>
     </div>
 </div>
