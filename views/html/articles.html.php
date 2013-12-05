@@ -9,9 +9,9 @@
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
                     <small>author(s): [  ]</small>
                     <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small>
-                    <small>likes: [ <?php echo $this->model->getLikes( $article->getArticleId() ); ?> ]</small>
-                    <small>dislikes: [ <?php echo $this->model->getDislikes( $article->getArticleId() ); ?> ]</small>
-                    <?php if( $article->getArticleType() == "review_article" ) { ?><small>rating: [<?php echo $this->model->getArticleRating( $article->getArticleId() ); ?>]</small><?php } ?>
+                    <small>likes: [ <?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?> ]</small>
+                    <small>dislikes: [ <?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?> ]</small>
+                    <?php if( $article->getArticleType() == "review_article" ) { ?><small>rating: [<?php echo $this->articlesModel->getArticleRating( $article->getArticleId() ); ?>]</small><?php } ?>
                     <?php if( $article->getStaffPickedArticle() == 1 ) { ?><small>STAFF PICK</small><?php } ?>
                     <small>tags: [  ]</small>
                 </a>

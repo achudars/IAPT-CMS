@@ -39,6 +39,7 @@
     </header>
     <nav>
         <ul class="navlist">
+        <li><a href="?page=combined">COMBINED</a></li>
         <?php
                 $url = "$_SERVER[REQUEST_URI]";
                 $parts = parse_url($url);
@@ -70,6 +71,7 @@
                     <?php } ?>
                 <?php } ?>
             <?php } ?>
+
 
         </ul>
 

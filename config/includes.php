@@ -23,6 +23,9 @@ require_once 'controllers/UsersController.php';
 require_once 'models/UsersModel.php';
 require_once 'views/UsersView.php';
 
+// VC users+articles
+require_once 'controllers/AUController.php';
+require_once 'views/AUView.php';
 
 // Report all errors except E_NOTICE
 // This is the default value set in php.ini

@@ -31,6 +31,16 @@ if (!empty($show_id)) {
     *   someone requests the page, we instnce a version of each of those to run the page */
 
      switch ($page) {
+        case "combined":
+            $articlesModel = new ArticlesModel();
+            $usersModel = new UsersModel();
+            $controller = new AUController( $articlesModel, $usersModel );
+            $view = new AUView( $controller, $articlesModel, $usersModel );
+            echo $view -> output();
+
+
+
+
         case "home":
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
