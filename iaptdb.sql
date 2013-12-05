@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2013 at 10:15 PM
+-- Generation Time: Dec 05, 2013 at 10:20 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -234,20 +234,6 @@ INSERT INTO `article_users` (`article_id`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `basic_articles`
---
-
-CREATE TABLE IF NOT EXISTS `basic_articles` (
-  `basic_id` int(6) NOT NULL AUTO_INCREMENT,
-  `basic_name` varchar(30) NOT NULL,
-  `article_id` int(6) NOT NULL,
-  PRIMARY KEY (`basic_id`),
-  KEY `article_id` (`article_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `column_articles`
 --
 
@@ -272,23 +258,6 @@ INSERT INTO `column_articles` (`column_id`, `column_name`, `article_id`) VALUES
 (19, 'XBOX', 90),
 (21, 'PS', 93),
 (22, 'MOBILE', 94);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comments`
---
-
-CREATE TABLE IF NOT EXISTS `comments` (
-  `comment_id` int(6) NOT NULL AUTO_INCREMENT,
-  `comment_content` text NOT NULL,
-  `comment_timestamp` int(11) NOT NULL,
-  `user_id` int(6) NOT NULL,
-  `article_id` int(6) NOT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `user_id` (`user_id`),
-  KEY `article_id` (`article_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -382,23 +351,10 @@ ALTER TABLE `article_users`
   ADD CONSTRAINT `article_users_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
--- Constraints for table `basic_articles`
---
-ALTER TABLE `basic_articles`
-  ADD CONSTRAINT `basic_articles_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`);
-
---
 -- Constraints for table `column_articles`
 --
 ALTER TABLE `column_articles`
   ADD CONSTRAINT `column_articles_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`);
-
---
--- Constraints for table `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`);
 
 --
 -- Constraints for table `review_articles`
