@@ -21,7 +21,7 @@
     <div class="block">
         <h2>New</h2>
         <ol>
-            <?php foreach($column_articles as $article): ?><li>
+            <?php foreach($newest_articles as $article): ?><li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
                     <small>by <?php echo "author" ?></small>
@@ -39,7 +39,7 @@
     <div class="block">
         <h2>Staff picks</h2>
         <ol>
-            <?php foreach($review_articles as $article): ?><li>
+            <?php foreach($staff_picked_articles as $article): ?><li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
                     <small>by <?php echo "author" ?></small>

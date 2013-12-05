@@ -333,9 +333,59 @@ class ArticlesModel {
     public function getMostLikedArticles() {
         global $pdo;
 
-        $most_liked_articles = $this->getAllArticles();
+        $query = $pdo->prepare("
+                                SELECT a . *
+                                FROM articles AS a
+                                JOIN article_likes AS al ON al.article_id = a.article_id
+                                ORDER BY al.article_like_amount DESC
+                                LIMIT 0 , 5
+        ");
+        $query->execute();
+        $rows = $query->fetchAll();
+
+        foreach($rows as $row){
+            $article = new Article(
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+              );
+            $most_liked_articles[] = $article;
+        }
 
         return $most_liked_articles;
+
+    }
+
+    public function getNewestArticles() {
+        global $pdo;
+
+        $query = $pdo->prepare("
+                                SELECT a . *
+                                FROM articles AS a
+                                ORDER BY a.article_timestamp DESC
+                                LIMIT 0 , 5
+        ");
+        $query->execute();
+        $rows = $query->fetchAll();
+
+        foreach($rows as $row){
+            $article = new Article(
+               $row['article_id']
+               ,$row['article_title']
+               ,$row['article_content']
+               ,$row['article_timestamp']
+               ,$row['article_image']
+               ,$row['article_status']
+               ,$row['article_type']
+              );
+            $newest_articles[] = $article;
+        }
+
+        return $newest_articles;
 
     }
 
