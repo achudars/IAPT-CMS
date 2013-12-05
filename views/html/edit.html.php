@@ -36,19 +36,19 @@
                         </span>
                         <span class="col columns">
                             <div>
-                                <input checked type = "radio" name = "article_status" id = "pc" value = "pc" />
+                                <input checked type = "radio" name = "article_columns" id = "pc" value = "pc" />
                                 <label for = "pc">PC</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_status" id = "ps" value = "ps" />
+                                <input type = "radio" name = "article_columns" id = "ps" value = "ps" />
                                 <label for = "ps">PS</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_status" id = "xbox" value = "xbox" />
+                                <input type = "radio" name = "article_columns" id = "xbox" value = "xbox" />
                                 <label for = "xbox">XBOX</label>
                             </div>
                             <div>
-                                <input type = "radio" name = "article_status" id = "mobile" value = "mobile" />
+                                <input type = "radio" name = "article_columns" id = "mobile" value = "mobile" />
                                 <label for = "mobile">Mobile</label>
                             </div>
                         </span>
@@ -84,7 +84,7 @@
                     <br />
                     <div class="rating">
                         <div>Rating</div>
-                        <input type="range" name="article_rating" min="1" max="5" value="<?php echo $this->model->getArticleRating( $article['article_id'] ); ?>"/>
+                        <input type="range" name="article_rating" min="1" max="5" value="<?php echo $this->articlesModel->getArticleRating( $article['article_id'] ); ?>"/>
                     </div>
                     <br />
                     <div id="tags">
