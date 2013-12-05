@@ -37,10 +37,7 @@ if (!empty($show_id)) {
             $controller = new AUController( $articlesModel, $usersModel );
             $view = new AUView( $controller, $articlesModel, $usersModel );
             echo $view -> output();
-
-
-
-
+            break;
         case "home":
             $model = new ArticlesModel();
             $controller = new ArticlesController($model);
