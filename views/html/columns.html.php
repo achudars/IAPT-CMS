@@ -10,7 +10,7 @@
                     <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                         <h4><?php echo $article->getArticleTitle(); ?></h4>
                         <small>by
-                            <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                            <?php $article_authors = $this->articlesModel->getArticleAuthors( $article->getArticleId() ); ?>
                             <?php foreach($article_authors as $author): ?>
                                 <?php print $author['user_name']; ?> |
                             <?php endforeach; ?>

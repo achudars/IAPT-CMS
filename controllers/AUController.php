@@ -52,7 +52,7 @@ class AUController {
 
         if ( $article_type == "column_article") {
             $column_name = $_POST['column_name'];
-            //echo "ARTICLE COLUMN[".$column_name."]";
+            echo "ARTICLE COLUMN[".$column_name."]";
         }
 
         $article_authors = $_POST['article_authors'];

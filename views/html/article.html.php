@@ -4,7 +4,7 @@
         <div class="small-thumb" style="background-image: url(<?php echo $article['article_image']; ?>);"></div>
         <br />
         <small class="pull-left">by
-            <?php $article_authors = $this->articlesModel->getAuthors( $article['article_id'] ); ?>
+            <?php $article_authors = $this->articlesModel->getArticleAuthors( $article['article_id'] ); ?>
             <?php foreach($article_authors as $author): ?>
                 <?php print $author['user_name']; ?> |
             <?php endforeach; ?>
