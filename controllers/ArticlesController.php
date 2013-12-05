@@ -43,7 +43,7 @@ class ArticlesController {
             $article_staff_pick = 0;
         }*/
 
-        $article_staff_pick = (!empty($_POST["article_staff_pick"])) ? 1 : 0;
+        $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
         echo "ARTCILE STAFF PICKED[".$_POST["article_staff_pick"] . "--->".$article_staff_pick."]";
 
         //echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
@@ -90,7 +90,7 @@ class ArticlesController {
             $article_staff_pick = 0;
         }*/
 
-        $article_staff_pick = ($_POST["article_staff_pick"] == "article_staff_pick") ? 1 : 0;
+        $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
         echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
 
         //echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";

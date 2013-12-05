@@ -236,14 +236,11 @@ class ArticlesModel {
 
         echo "[edit] STAFF PICK will be: " . $article_staff_pick;
 
-        $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=? WHERE article_id=?";
+        $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=?, article_staff_pick=? WHERE article_id=?";
         $query = $pdo->prepare($sql);
-        $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_id ));
+        $query->execute(array( $article_title, $article_content, time(), $article_image, $article_status, $article_type, $article_staff_pick, $article_id ));
 
-        $query = $pdo->prepare("UPDATE articles SET article_staff_pick = ? WHERE article_id = ? ");
-        $query->bindValue(1, $article_staff_pick);
-        $query->bindValue(2, $article_id);
-        $query->execute();
+
 
         if ( $article_type == "review_article") {
             $this->deleteRating( $article_id );
