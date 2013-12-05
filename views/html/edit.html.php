@@ -87,7 +87,7 @@
                         <input type="range" name="article_rating" min="1" max="5" value="<?php echo $this->articlesModel->getArticleRating( $article['article_id'] ); ?>"/>
                     </div>
                     <br />
-                    <div id="tags">
+                    <!-- <div id="tags">
                         <span class="tag">action</span>
                         <span class="tag">adventure</span>
                         <span class="tag">racing</span>
@@ -96,8 +96,9 @@
                         <input type='hidden' name='article_tags[]' value='adventure' />
                         <input type='hidden' name='article_tags[]' value='racing' />
                     </div>
-                    <br />
+                    <br /> -->
                     <div id="authors">
+                        Author(s) (hold CTRL to select multiple authors):
                         <?php foreach($authors as $author): ?>
                             <span class="tag"><?php echo $author['user_name']; ?></span>
                         <?php endforeach; ?>

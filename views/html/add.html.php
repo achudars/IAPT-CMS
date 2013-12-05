@@ -84,8 +84,7 @@
                         <div>Rating</div>
                         <input type="range" name="article_rating" min="1" max="5" />
                     </div>
-                    <br />
-                    <div id="tags">
+                    <!-- <div id="tags">
                         <span class="tag">action</span>
                         <span class="tag">adventure</span>
                         <span class="tag">racing</span>
@@ -94,8 +93,9 @@
                         <input type='hidden' name='article_tags[]' value='adventure' />
                         <input type='hidden' name='article_tags[]' value='racing' />
                     </div>
-                    <br />
+                    <br /> -->
                     <div id="authors">
+                        Author(s) (hold CTRL to select multiple authors):
                         <select size="5" name="article_authors[]" multiple="multiple">
                             <?php foreach($writers_and_editors_and_publishers as $user): ?>
                                 <option <?php echo ( $this->usersModel->getLoggedUserId($_SESSION['user_name'], $_SESSION['user_password']) == $user->getUserId() )?'selected':'' ?> value="<?php echo $user->getUserId(); ?>">

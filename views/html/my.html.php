@@ -33,9 +33,6 @@
                     <?php if( $article->getStaffPickedArticle() == 1 ) { ?><small>STAFF PICK</small><?php } ?>
                 </a>
 
-                <?php if ( $_GET["type"]=="all") { ?>
-                <?php if( isset($_SESSION['user_role']) ) {
-                    if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
 
                     <a class="pull-right" href="?page=edit&id=<?php echo $article->getArticleId(); ?>">
                         <button>edit</button>
@@ -48,10 +45,6 @@
                     </form>
 
 
-
-                    <?php } ?>
-                    <?php } ?>
-                <?php } ?>
             </li>
             <?php } } ?>
         <?php endforeach; ?>
