@@ -66,6 +66,7 @@ class AUView {
     public function output_edit_article( $article_id ){
         include 'html/header.html.php';
         $article = $this->articlesModel->getArticle( $article_id );
+        $authors = $this->articlesModel->getAuthors( $article_id );
         include 'html/edit.html.php';
         include 'html/footer.html.php';
     }

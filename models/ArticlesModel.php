@@ -309,14 +309,11 @@ class ArticlesModel {
         $query->bindValue(1, $article_id);
         $result = $query->execute();
 
-
         if ( $result ) {
-            echo "WILL INSERT ";
             $query = $pdo->prepare("INSERT INTO review_articles (review_rating, article_id) VALUES (?,?)");
             $query->bindValue(1, $article_rating);
             $query->bindValue(2, $article_id);
         } else {
-          echo "WILL UPDATE ";
             $query = $pdo->prepare("UPDATE review_articles SET review_rating = ? WHERE article_id = ? ");
             $query->bindValue(1, $article_rating);
             $query->bindValue(2, $article_id);
@@ -343,11 +340,25 @@ class ArticlesModel {
         global $pdo;
         foreach( $article_authors as $key => $author_id ) {
           $query = $pdo->prepare("INSERT INTO article_users (article_id, user_id) VALUES (?,?)");
-          echo "INSERT INTO article_users: article_id " . $article_id . ", user_id " . $author_id ." )";
           $query->bindValue(1, $article_id);
           $query->bindValue(2, $author_id);
           $query->execute();
         }
+    }
+
+    public function getAuthors( $article_id ) {
+        global $pdo;
+        $query = $pdo->prepare("
+          SELECT U.user_name
+          FROM users U
+          INNER JOIN article_users AU ON U.user_id = AU.user_id
+          WHERE AU.article_id = ?");
+        //$query = $pdo->prepare("SELECT user_id FROM article_users WHERE article_id= ?");
+        $query->bindValue(1, $article_id);
+        $query->execute();
+        $article_authors = $query->fetchAll();
+        //var_dump($article_authors);
+        return $article_authors;
     }
 
     public function getMostLikedArticles() {
