@@ -122,16 +122,11 @@ class UsersModel {
 
     public function getLoggedUserId( $user_name, $user_password ){
         global $pdo;
-
-/*        echo "[1.UN: " . $user_name . " , UP: " . $user_password . "]";*/
-
         $query = $pdo->prepare("SELECT user_id FROM users WHERE user_name =? AND user_password = ?");
         $query->bindValue(1, $user_name);
         $query->bindValue(2, $user_password);
         $query->execute();
         $user_id = $query->fetchColumn();
-/*
-        echo "[2. FROM getLoggedUserRoleFromId: USER ROLE: " . $user_id . "]";*/
         return $user_id;
     }
 

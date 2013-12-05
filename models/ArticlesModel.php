@@ -140,8 +140,6 @@ class ArticlesModel {
     public function addArticle( $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick ) {
         global $pdo;
 
-        echo "[add] STAFF PICK will be: " . $article_staff_pick;
-
         $query = $pdo->prepare("INSERT INTO articles (article_title, article_content, article_timestamp, article_image, article_status, article_type, article_staff_pick) VALUES (?,?,?,?,?,?,?)");
 
         $query->bindValue(1, $article_title);
@@ -155,13 +153,13 @@ class ArticlesModel {
 
         $article_id = $pdo->lastInsertId();
 
-        echo "ADDING ARTICLE WITH ID: " . $article_id . ".";
 
         $this->setDefaultLike( $article_id );
         $this->setDefaultDislike( $article_id );
         if ( $article_rating != 0) {
             $this->addRating( $article_id, $article_rating );
         }
+        $this->addAuthors( $article_id, $article_authors );
 
         //$this->associateAuthors( $article_id );
         //
@@ -233,8 +231,6 @@ class ArticlesModel {
 
     public function editArticle( $article_id, $article_title, $article_content, $article_image, $article_status, $article_type, $article_authors, $article_rating, $article_staff_pick ) {
         global $pdo;
-
-        echo "[edit] STAFF PICK will be: " . $article_staff_pick;
 
         $sql = "UPDATE articles SET article_title=?, article_content=?, article_timestamp=?, article_image=?, article_status=?, article_type=?, article_staff_pick=? WHERE article_id=?";
         $query = $pdo->prepare($sql);
@@ -343,6 +339,17 @@ class ArticlesModel {
         $query->execute();
     }
 
+    public function addAuthors( $article_id, $article_authors ) {
+        global $pdo;
+        foreach( $article_authors as $key => $author_id ) {
+          $query = $pdo->prepare("INSERT INTO article_users (article_id, user_id) VALUES (?,?)");
+          echo "INSERT INTO article_users: article_id " . $article_id . ", user_id " . $author_id ." )";
+          $query->bindValue(1, $article_id);
+          $query->bindValue(2, $author_id);
+          $query->execute();
+        }
+    }
+
     public function getMostLikedArticles() {
         global $pdo;
 
@@ -373,6 +380,7 @@ class ArticlesModel {
         return $most_liked_articles;
 
     }
+
 
     public function getNewestArticles() {
         global $pdo;

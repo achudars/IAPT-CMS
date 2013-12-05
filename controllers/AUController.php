@@ -33,10 +33,6 @@ class AUController {
 
        // echo "ARTCILE TAGS[".$article_tags."]";
 
-        foreach( $article_authors as $key => $n ) {
-          print "ArticleContreoller -->Authors: ".$n."\n";
-      }
-
 
         /*if ( $article_staff_pick == "article_staff_pick" ) {
             $article_staff_pick = $_POST['article_staff_pick'];
@@ -73,7 +69,6 @@ class AUController {
             echo "ARTCILE COLUMN[".$article_column."]";
         }
 
-        echo "RATING WILL BE: " . $article_rating;
         $article_authors = $_POST['article_authors'];
         $article_tags = $_POST['article_tags'];
 
@@ -92,7 +87,6 @@ class AUController {
         }*/
 
         $article_staff_pick = ( $_POST["article_staff_pick"] == 0 ) ? 0 : 1;
-        echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
 
         //echo "ARTCILE STAFF PICKED[".$article_staff_pick."]";
 
