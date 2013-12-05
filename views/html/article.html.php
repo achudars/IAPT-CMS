@@ -3,7 +3,12 @@
         <h2><?php echo $article['article_title']; ?></h2>
         <div class="small-thumb" style="background-image: url(<?php echo $article['article_image']; ?>);"></div>
         <br />
-        <small class="pull-left">by <?php echo "author"; ?></small>
+        <small class="pull-left">by
+            <?php $article_authors = $this->articlesModel->getAuthors( $article['article_id'] ); ?>
+            <?php foreach($article_authors as $author): ?>
+                <?php print $author['user_name']; ?> |
+            <?php endforeach; ?>
+        </small>
         <small class="pull-left">on <?php echo date("l jS", $article['article_timestamp']); ?></small>
 
         <small class="pull-left">likes: [ <?php echo $likes ?> ]</small>
@@ -30,27 +35,27 @@
 
     <div class="block article comment">
         <article>
-            <a rel='author'>John</a> posted @ <time>09-02-2011</time>
+            <a rel='commentator'>John</a> posted @ <time>09-02-2011</time>
             <p>Comment #1</p>
         </article>
         <article>
-            <a rel='author'>John</a> posted @ <time>09-02-2011</time>
+            <a rel='commentator'>John</a> posted @ <time>09-02-2011</time>
             <p>Comment #1</p>
         </article>
         <article>
-            <a rel='author'>John</a> posted @ <time>09-02-2011</time>
+            <a rel='commentator'>John</a> posted @ <time>09-02-2011</time>
             <p>Comment #1</p>
         </article>
         <article>
-            <a rel='author'>John</a> posted @ <time>09-02-2011</time>
+            <a rel='commentator'>John</a> posted @ <time>09-02-2011</time>
             <p>Comment #1</p>
         </article>
         <article>
-            <a rel='author'>John</a> posted @ <time>09-02-2011</time>
+            <a rel='commentator'>John</a> posted @ <time>09-02-2011</time>
             <p>Comment #1</p>
         </article>
         <article>
-            <a rel='author'>John</a> posted @ <time>09-02-2011</time>
+            <a rel='commentator'>John</a> posted @ <time>09-02-2011</time>
             <p>Comment #1</p>
         </article>
     </div>
