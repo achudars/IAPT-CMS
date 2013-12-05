@@ -17,8 +17,8 @@ class AUView {
         include 'html/articles.html.php';
         include 'html/footer.html.php';
 
-        $article_ratings =  $this->articlesModel->getArticleRating( $article_id );
-
+        //$article_ratings =  $this->articlesModel->getArticleRating( $article_id );
+        //$article_authors = $this->articlesModel->getAuthors( $article_id );
     }
 
     public function output_home_articles(){

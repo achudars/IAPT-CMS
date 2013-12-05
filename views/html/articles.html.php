@@ -7,7 +7,15 @@
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <div class="square-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
-                    <small>author(s): [  ]</small>
+                    <small>author(s): [
+                        <?php
+                        $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() );
+                        ?>
+                        <?php foreach($article_authors as $author): ?>
+                            <?php echo $author['user_name']; ?> |
+                        <?php endforeach; ?>
+                        ]
+                    </small>
                     <small>date posted: [ <?php echo date("l jS", $article->getArticleTimestamp()); ?> ]</small>
                     <small>likes: [ <?php echo $this->articlesModel->getLikes( $article->getArticleId() ); ?> ]</small>
                     <small>dislikes: [ <?php echo $this->articlesModel->getDislikes( $article->getArticleId() ); ?> ]</small>
