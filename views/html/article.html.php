@@ -8,7 +8,6 @@
 
         <small class="pull-left">likes: [ <?php echo $likes ?> ]</small>
         <small class="pull-left">dislikes: [ <?php echo $dislikes ?> ]</small>
-        <small class="pull-left">tags: </small>
 
         <?php if( isset($_SESSION['user_role']) ) { ?>
             <form class="pull-right" action="index.php?show=<?php echo $article['article_id']; ?>&action=dislike" method="post">

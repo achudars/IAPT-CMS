@@ -160,7 +160,7 @@ class ArticlesModel {
             $this->addRating( $article_id, $article_rating );
         }
         $this->addAuthors( $article_id, $article_authors );
-        $this->addArticleTags( $article_id, $article_tags );
+        //$this->addArticleTags( $article_id, $article_tags );
         //$this->associateAuthors( $article_id );
         //
         /*foreach( $article_authors as $key => $article_author ) {

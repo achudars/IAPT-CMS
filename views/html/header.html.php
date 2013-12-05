@@ -47,6 +47,7 @@
                 $basic_articles =  ( $query['type'] == 'basic') ? 'class="active"' : '';
                 $column_articles =  ( $query['type'] == 'column') ? 'class="active"' : '';
                 $review_articles =  ( $query['type'] == 'review') ? 'class="active"' : '';
+                $my_articles =  ( $query['type'] == 'my') ? 'class="active"' : '';
                 $all_articles =  ( $query['type'] == 'all') ? 'class="active"' : '';
                 $add =  ( $query['page'] == 'add') ? 'class="active"' : '';
                 $users =  ( $query['page'] == 'users') ? 'class="active"' : '';
@@ -58,10 +59,12 @@
             <li <?php echo $column_articles ?> ><a href="?page=articles&type=column">column articles</a></li>
             <li <?php echo $review_articles ?> ><a href="?page=articles&type=review">review articles</a></li>
 
+
             <?php if( isset($_SESSION['user_role']) ) { ?>
                 <?php if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
 
                     <li <?php echo $add ?>      ><a href="?page=add">add</a></li>
+                    <li <?php echo $my_articles ?> ><a href="?page=articles&type=my">[my articles]</a></li>
                 <?php } ?>
                 <?php if ( $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
                     <li <?php echo $all_articles ?> ><a href="?page=articles&type=all">[all articles]</a></li>

@@ -21,6 +21,16 @@ class AUView {
         //$article_authors = $this->articlesModel->getAuthors( $article_id );
     }
 
+    public function output_my_articles(){
+        include 'html/header.html.php';
+        $articles = $this->articlesModel->getAllArticles();
+        include 'html/my.html.php';
+        include 'html/footer.html.php';
+
+        //$article_ratings =  $this->articlesModel->getArticleRating( $article_id );
+        //$article_authors = $this->articlesModel->getAuthors( $article_id );
+    }
+
     public function output_home_articles(){
         include 'html/header.html.php';
         $most_liked_articles = $this->articlesModel->getMostLikedArticles();

@@ -13,9 +13,11 @@ $show_id = $_GET['show'];
 
 if (!empty($show_id)) {
 
-    $model = new ArticlesModel();
-    $controller = new ArticlesController($model);
-    $view = new ArticlesView($controller, $model);
+    $articlesModel = new ArticlesModel();
+    $usersModel = new UsersModel();
+    $controller = new AUController( $articlesModel, $usersModel );
+    $view = new AUView( $controller, $articlesModel, $usersModel );
+
     if ( isset($_GET["action"])) {
         if ( $_GET["action"]=="like") {
             $controller->likeArticle();
@@ -104,6 +106,8 @@ if (!empty($show_id)) {
                     echo $view->output_column_articles();
                 } else if ( $_GET["type"]=="review") {
                     echo $view->output_review_articles();
+                } else if ( $_GET["type"]=="my") {
+                    echo $view->output_my_articles();
                 } else if ( $_GET["type"]=="all") {
                     if ( isset($_GET['action']) ) {
                                if ( $_GET["action"]=="change_article_status") {

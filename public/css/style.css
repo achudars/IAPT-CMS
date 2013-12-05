@@ -523,3 +523,6 @@ select {
   width: 100%;
 }
 
+.block.list small.dark {
+  background: #242424;
+}
