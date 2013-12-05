@@ -7,7 +7,12 @@
                 <li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
-                    <small>by <?php echo "author" ?></small>
+                    <small>by
+                        <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                        <?php foreach($article_authors as $author): ?>
+                            <?php print $author['user_name']; ?> |
+                        <?php endforeach; ?>
+                    </small>
                     <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
 
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
@@ -30,7 +35,12 @@
                 <li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
-                    <small>by <?php echo "author" ?></small>
+                    <small>by
+                        <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                        <?php foreach($article_authors as $author): ?>
+                            <?php print $author['user_name']; ?> |
+                        <?php endforeach; ?>
+                    </small>
                     <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                     <small class="likes-dislikes pull-right">
@@ -52,7 +62,12 @@
                 <li>
                 <a href="index.php?show=<?php echo $article->getArticleId(); ?>">
                     <h4>[<?php echo $article->getArticleType(); ?>] <?php echo $article->getArticleTitle(); ?></h4>
-                    <small>by <?php echo "author" ?></small>
+                    <small>by
+                        <?php $article_authors = $this->articlesModel->getAuthors( $article->getArticleId() ); ?>
+                        <?php foreach($article_authors as $author): ?>
+                            <?php print $author['user_name']; ?> |
+                        <?php endforeach; ?>
+                    </small>
                     <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
                     <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                     <small class="likes-dislikes pull-right">
