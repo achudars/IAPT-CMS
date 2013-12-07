@@ -2,19 +2,28 @@
 
 class LoginController {
 	private $model;
-
+	
+	/**
+	 * Constructs login model
+	 * @param loginModel $model
+	 * @access public
+	 */
 	public function __construct($model) {
 		$this->model = $model;
 	}
-
+	
+	/**
+	 * calls the login fucntion with the 'user_name' and 'user_password' fields
+	 * @access public
+	 */
     public function login() {
-        //$user_name = $_SESSION["user_name"] = $_POST['user_name'];
-        //$user_password = $_SESSION["user_password"] = $_POST['user_password'];
         $this->model->login( $_POST['user_name'], $_POST['user_password'] );
-       /* $this->model->getLoggedUserRole( $user_name, $user_password );
-        $this->model->getLoggedUserRole( $user_name, $user_password );*/
     }
-
+	
+	/**
+	 * Ends session / logs out the user
+	 * @access public
+	 */
     public function logout() {
         $this->model->logout();
     }
