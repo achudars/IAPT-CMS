@@ -2,573 +2,588 @@
  * now be set to be the size specified, regardless of border or
  * padding being provided.  It makes layout of comparable boxes
  * with different types of formatting easier. */
- * {
- 	-webkit-box-sizing: border-box;
- 	-moz-box-sizing: border-box;
- 	box-sizing: border-box;
- 	margin: 0;
- 	padding: 0;
- }
-
- .untouchable {
- 	-moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
-
+/* global styles */
 body, input {
-  font-family: "Lato", sans-serif;
-  font-size: 62.5%;
-  background: #F1F1F1;
+	font-family: "Lato", sans-serif;
+	font-weight: 300;
+	font-size: 62.5%;
+	background: #F1F1F1;
 }
 
 header {
-  padding: 3em;
-  text-align: center;
-  height: 5em;
-  width: 100%;
-  display: inline-block;
-  background: #222;
-  color: #FFF;
-  line-height: 0em;
-  -moz-box-shadow:    rgba(0,0,0,0.3) 0px 2px 2px -1px;
-  -webkit-box-shadow: rgba(0,0,0,0.3) 0px 2px 2px -1px;
-  box-shadow:         rgba(0,0,0,0.3) 0px 2px 2px -1px;
+	padding: 3em;
+	text-align: center;
+	height: 5em;
+	width: 100%;
+	display: inline-block;
+	background: #222;
+	color: #FFF;
+	line-height: 0em;
+	-moz-box-shadow: rgba(0,0,0,0.3) 0px 2px 2px -1px;
+	-webkit-box-shadow: rgba(0,0,0,0.3) 0px 2px 2px -1px;
+	box-shadow: rgba(0,0,0,0.3) 0px 2px 2px -1px;
 }
 
 header h1 {
-  margin-top: 0em;
+	margin-top: 0em;
+}
+/* this class disables text selection */
+.untouchable {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+/* helper classes */
+.green {
+	color: lime;
+}
+.red {
+	color: #CC0000;
 }
 .emphasis {
-  color: #6BBBFF;
+	color: #6BBBFF;
+}
+/* float right and left as classes */
+.pull-left {
+	float: left;
+}
+.pull-right {
+	float: right;
+}
+small.bubble {
+	background: #242424 !important;
+	border-radius: 0 !important;
+	color: #FFF;
+	text-transform: lowercase;
+	padding: 0.5em 1em;
+	font-size: 150%;
+	line-height: 1em;
+	display: inline-block !important;
+	vertical-align: top;
 }
 
+/* style for showing logged user's name */
 #session {
-  float: right;
-  margin-right: 1em;
+	float: right;
+	margin-right: 3em;
 }
 #session > span, #session form {
-  background: rgba(255,255,255, .1);
-  line-height: 1em;
-  margin-top: -1.5em;
-  width: 7em;
-  display: inline-block;
+	background: rgba(255,255,255, .1);
+	line-height: 1em;
+	margin-top: -1.5em;
+	width: 7em;
+	display: inline-block;
 }
 
 #session > span {
-  padding: 0.9em;
+	padding: 0.9em;
 }
 
 #session form {
-  padding: 0.6em;
+	padding: 0.6em;
 }
 
 #session a {
-  color: #FFF;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 150%;
+	color: #FFF;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 150%;
 }
 #session a:hover, #session form input[type="submit"]:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 #session form input[type="submit"] {
-  background: rgba(255,255,255, .1);
-  color: #FFF;
-  display: inline-block;
-  font-size: 150%;
-  background: none;
-  outline: none;
-  border: none;
+	background: rgba(255,255,255, .1);
+	color: #FFF;
+	display: inline-block;
+	font-size: 150%;
+	background: none;
+	outline: none;
+	border: none;
 }
-
+/* style for search input box in the header */
 input[type="search"] {
-  margin-top: -1em;
-  float: right;
-  border: none;
-  display: inline-block;
-  background: rgba(255,255,255, .1);
-  outline: none;
-  height: 2em;
-  padding-left: 1em;
-  color: #FFF;
-  font-size: 150%;
+	margin-top: -1em;
+	float: right;
+	border: none;
+	display: inline-block;
+	background: rgba(255,255,255, .1);
+	outline: none;
+	height: 2em;
+	padding-left: 1em;
+	color: #FFF;
+	font-size: 150%;
 }
-
+/* navigation bar styles */
 nav {
-  width: 100%;
-  height: 3em;
-  background: #6BBBFF;
-  text-align: center;
+	width: 100%;
+	height: 3em;
+	background: #6BBBFF;
+	text-align: center;
 }
 nav li {
-  list-style: none;
-  display: inline-block;
+	list-style: none;
+	display: inline-block;
 }
 nav li a {
-  text-decoration: none;
-  color: #FFF;
-  padding: 1em;
-  font-size: 200%;
+	text-decoration: none;
+	color: #FFF;
+	padding: 1em;
+	font-size: 200%;
 }
 nav li.active {
-  text-decoration: overline;
+	font-weight: 400;
 }
 nav li:hover a {
-  color: #242424;
+	color: #242424;
 }
-
+/* main content styles */
 main {
-  display: inline-block;
-  padding: 3em;
-  width: 100%;
-  top: 8em;
-  bottom: 0;
-  position: static;
+	display: inline-block;
+	padding: 3em;
+	width: 100%;
+	top: 8em;
+	bottom: 0;
+	position: static;
 }
 
 ol {
 	list-style: none;
 }
 ol li.list-header {
-  line-height: 3em !important;
+	line-height: 3em !important;
 }
 .content {
-  background: #FFF;
-  width: 100%;
-  height: 100%;
-  display: inline-block;
+	background: #FFF;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
 }
 
 .content > :first-child {
-  width: 20%;
+	width: 20%;
 }
 .content > :nth-child(2) {
-  width: 30%;
+	width: 30%;
 }
 .content > :nth-child(3) {
-  width: 50%;
+	width: 50%;
 }
 
 .block {
-  position: relative;
-  padding: 1em;
-  float: left;
-  -moz-box-shadow:    0 0 0.1em 0.1em rgba(255,255,255, 0.5);
-  -webkit-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
-  box-shadow:         0 0 0.1em 0.1em rgba(255,255,255, 0.5);
-  height: 100%;
+	position: relative;
+	padding: 1em;
+	float: left;
+	-moz-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+	-webkit-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+	box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+	height: 100%;
 }
 .block.list {
-  float: left;
-  width: 100%;
+	float: left;
+	width: 100%;
 }
 .block.list small {
-  color: #FFF;
-  background: #6BBBFF;
-  padding: 0.25em 0.5em;
-  font-size: 70%;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+	color: #FFF;
+	background: #6BBBFF;
+	padding: 0.25em 0.5em;
+	font-size: 70%;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 .content .block.list .square-thumb + h4 {
-  width: 30em;
+	width: 30em;
 }
 .block.list .button {
-  color: #FFF;
-  background: #222;
-  padding: 0.25em 0.5em;
-  font-size: 100%;
-  border: none;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+	color: #FFF;
+	background: #242424;
+	padding: 0.25em 0.5em;
+	font-size: 100%;
+	border: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 .block.list .button:hover {
-  background: #CC0000;
-  cursor: pointer;
+	background: #CC0000;
+	cursor: pointer;
 }
-
 
 .block.article {
-  float: none;
-  width: 700px;
-  margin: 0 auto;
+	float: none;
+	width: 700px;
+	margin: 0 auto;
 }
 
-.block.article .small-thumb{
-  height: 300px;
+.block.article .small-thumb {
+	height: 300px;
 }
 
 .block.article small {
-  color: #FFF;
-  background: #6BBBFF;
-  padding: 0.25em 0.5em;
-  font-size: 130%;
+	color: #FFF;
+	background: #6BBBFF;
+	padding: 0.25em 0.5em;
+	font-size: 130%;
 }
 .block.article p {
-  font-size: 150%;
+	font-size: 150%;
+	text-align: justify;
 }
 
 .block.article input[type="submit"] {
-  color: #FFF;
-  background: #6BBBFF;
-  padding: 0.25em 0.5em;
-  font-size: 130%;
-  border: none;
+	color: #FFF;
+	background: #6BBBFF;
+	padding: 0.25em 0.5em;
+	font-size: 130%;
+	border: none;
 }
 .block.article input[type="submit"]:hover {
-  cursor: pointer;
-  background: #242424;
+	cursor: pointer;
+	background: #242424;
 }
 
 .block h2 {
-  width: 100%;
-  background: #242424;
-  color: #FFF;
-  text-transform: uppercase;
-  padding: 0.4em 0.8em;
-  transition: background 2s;
+	width: 100%;
+	background: #242424;
+	color: #FFF;
+	text-transform: uppercase;
+	padding: 0.4em 0.8em;
+	transition: background 2s;
 }
 
 .block:hover h2 {
-  background: #6BBBFF;
-  transition: background 2s;
+	background: #6BBBFF;
+	transition: background 2s;
 }
 
 .block ol a, .block ol form {
-  font-size: 185%;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #242424;
+	font-size: 185%;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #242424;
 }
 
 .block ol a:hover {
-  color: #2B5A92;
+	color: #2B5A92;
 }
 
 .block ol li a h4 {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%;
-  overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
+	overflow: hidden;
 }
 
 .block ol li {
-  padding: 1em;
-  -moz-box-shadow:    rgba(0,0,0,0.5) 0px 0px 5px -1px;
-  -webkit-box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
-  box-shadow:         rgba(0,0,0,0.5) 0px 0px 5px -1px;
-  margin: 0.5em auto;
+	padding: 1em;
+	-moz-box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
+	-webkit-box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
+	box-shadow: rgba(0,0,0,0.5) 0px 0px 5px -1px;
+	margin: 0.5em auto;
 }
 .block ol li:hover {
-  cursor: pointer;
-  -moz-box-shadow:    rgba(0,0,0,1) 0px 0px 5px -1px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0px 0px 5px -1px;
-  box-shadow:         rgba(0,0,0,1) 0px 0px 5px -1px;
+	cursor: pointer;
+	-moz-box-shadow: rgba(0,0,0,1) 0px 0px 5px -1px;
+	-webkit-box-shadow: rgba(0,0,0,1) 0px 0px 5px -1px;
+	box-shadow: rgba(0,0,0,1) 0px 0px 5px -1px;
 }
 
 .block ol small {
-  font-size: 60%;
+	font-size: 60%;
 }
 
 .block.comment article {
-  border-left: 1em solid #6BBBFF;
-  margin-bottom: 0.5em;
-  padding: 1em;
-  font-size: 130%;
+	border-left: 1em solid #6BBBFF;
+	margin-bottom: 0.5em;
+	padding: 1em;
+	font-size: 130%;
 }
 .block.comment article a, .block.comment article time {
-  font-weight: bold;
+	font-weight: bold;
 }
 .block.comment article p {
-  margin-top: 1em;
-  font-size: 100%;
+	margin-top: 1em;
+	font-size: 100%;
 }
 
 .block .small-thumb {
-  width: 100%;
-  height: 100px;
-  background-position: center;
-  background-size: cover;
-  display: inline-block;
+	width: 100%;
+	height: 100px;
+	background-position: center;
+	background-size: cover;
+	display: inline-block;
 }
 
 .list .square-thumb {
-  width: 5em;
-  height: 5em;
-  background-position: center;
-  background-size: cover;
-  float: left;
-  margin-right: 0.5em;
+	width: 5em;
+	height: 5em;
+	background-position: center;
+	background-size: cover;
+	float: left;
+	margin-right: 0.5em;
 }
 
 .form-content.login {
 	background: #6BBBFF;
 	display: inline-block;
-  width: 100%;
+	width: 100%;
 }
 .form-content.register {
 	background: #FFF;
 	display: inline-block;
-  width: 100%;
+	width: 100%;
 }
-.pull-left {
-	float: left;
-}
-.pull-right {
-  float: right;
-}
+
 .left, .right {
-  float: left;
-  width: 50%;
-  height: 100%;
+	float: left;
+	width: 50%;
+	height: 100%;
 }
 
 .login .right {
- background: #FFF;
+	background: #FFF;
 }
 .register .right {
- background: #6BBBFF;
+	background: #6BBBFF;
 }
 
 .left p, .right input, .right a {
-  text-decoration: none;
-  height: 20px;
-  font-size: 20px;
-  line-height: 0px;
-  display: block;
-  outline: none;
-  margin: 1em 0;
-  padding: 1em;
-  background: none;
-  width: 15em;
+	text-decoration: none;
+	height: 20px;
+	font-size: 20px;
+	line-height: 0px;
+	display: block;
+	outline: none;
+	margin: 1em 0;
+	padding: 1em;
+	background: none;
+	width: 15em;
 }
 .right input[type="submit"]:hover {
-  cursor: pointer;
-  -moz-box-shadow:    0 0 0.1em 0.1em rgba(255,255,255, 0.5);
-  -webkit-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
-  box-shadow:         0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+	cursor: pointer;
+	-moz-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+	-webkit-box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
+	box-shadow: 0 0 0.1em 0.1em rgba(255,255,255, 0.5);
 }
 
 .login .right input, .login .right a {
-  border: 1px solid #6BBBFF;
-  border-left: none;
-  color: #6BBBFF;
+	border: 1px solid #6BBBFF;
+	border-left: none;
+	color: #6BBBFF;
 }
 .login .right input[type="submit"] {
-  width: 30em;
-  margin-left: -15em;
-  background: #FFF;
+	width: 30em;
+	margin-left: -15em;
+	background: #FFF;
 }
 
 .login .left p {
-  clear: both;
-  border: 1px solid #FFF;
-  border-right: none;
-  text-align: right;
-  color: #FFF;
+	clear: both;
+	border: 1px solid #FFF;
+	border-right: none;
+	text-align: right;
+	color: #FFF;
 }
 
 .register .right input {
-  border: 1px solid #FFF;
-  border-left: none;
-  color: #FFF;
+	border: 1px solid #FFF;
+	border-left: none;
+	color: #FFF;
 }
 .register .right input[type="submit"] {
-  width: 30em;
-  margin-left: -15em;
-  background: #FFF;
-  border: 1px solid #6BBBFF;
-  color: #6BBBFF;
+	width: 30em;
+	margin-left: -15em;
+	background: #FFF;
+	border: 1px solid #6BBBFF;
+	color: #6BBBFF;
 }
 
 .register .left p {
-  border: 1px solid #6BBBFF;
-  border-right: none;
-  text-align: right;
-  color: #6BBBFF;
+	border: 1px solid #6BBBFF;
+	border-right: none;
+	text-align: right;
+	color: #6BBBFF;
 }
 
 .block.user-list {
-  width: 100%;
+	width: 100%;
 }
 
 .user-list p {
-  display: inline-block;
-  width: 8.2%;
+	display: inline-block;
+	width: 8.2%;
 }
 .user-list li p {
-  display: inline-block;
-  font-size: 200%;
-  width: 15%;
-  padding: 0.5em 0;
+	display: inline-block;
+	font-size: 200%;
+	width: 15%;
+	padding: 0.5em 0;
 }
 .user-list li p:before {
-  content: " | ";
+	content: " | ";
 }
 .user-list li {
-  height: 5em;
-  line-height: 0.5em;
+	height: 5em;
+	line-height: 0.5em;
 }
 .user-list li div {
-  display: inline-block;
-  font-size: 200%;
-  padding: 0em 1em;
+	display: inline-block;
+	font-size: 200%;
+	padding: 0em 1em;
 }
 
 .block.article-editor {
-  margin: 0 auto;
-  float: none;
-  font-size: 200%;
-  width: 700px;
+	margin: 0 auto;
+	float: none;
+	font-size: 200%;
+	width: 700px;
 }
 .block.article-editor form * {
-  font-family: "Lato", sans-serif;
-  font-size: 100%;
+	font-family: "Lato", sans-serif;
+	font-weight: 300;
+	font-size: 100%;
 }
 .block.article-editor form > * {
-  padding: 0.5em;
-  border: none;
-  -moz-box-shadow:    #6BBBFF 0px 0px 5px 1px;
-  -webkit-box-shadow: #6BBBFF 0px 0px 5px 1px;
-  box-shadow:         #6BBBFF 0px 0px 5px 1px;
-  color: #222;
+	padding: 0.5em;
+	border: none;
+	-moz-box-shadow: #6BBBFF 0px 0px 5px 1px;
+	-webkit-box-shadow: #6BBBFF 0px 0px 5px 1px;
+	box-shadow: #6BBBFF 0px 0px 5px 1px;
+	color: #242424;
 }
-.block.article-editor input[type="text"],
-.block.article-editor input[type="range"] {
-  width:100%;
-  height: 2em;
-  padding: 0.5em;
-  background: #FFF;
+.block.article-editor input[type="text"], .block.article-editor input[type="range"] {
+	width: 100%;
+	height: 2em;
+	padding: 0.5em;
+	background: #FFF;
 }
 .block.article-editor textarea {
-  width:100%;
-  padding: 0.5em;
-  resize: none;
+	width: 100%;
+	padding: 0.5em;
+	resize: none;
 }
 .block.article-editor .col {
-  width: 30%;
-  float: left;
-  height: 130px;
+	width: 30%;
+	float: left;
+	height: 130px;
 }
-.block.article-editor .col:first-child,
-.block.article-editor .col:last-child {
-  width: 5%;
+.block.article-editor .col:first-child, .block.article-editor .col:last-child {
+	width: 5%;
 }
 .block.article-editor input[type="submit"] {
-  width: 100%;
-  background: #6BBBFF;
-  color: #FFF;
+	width: 100%;
+	background: #6BBBFF;
+	color: #FFF;
 }
 .block.article-editor input[type="submit"]:hover {
-  cursor: pointer;
-  background: #222;
+	cursor: pointer;
+	background: #242424;
 }
 
 .tag {
-  background: #6BBBFF;
-  color: #FFF;
-  padding: 0.2em;
-  border-radius: 4px;
-  line-height: 2em;
+	background: #6BBBFF;
+	color: #FFF;
+	padding: 0.2em;
+	border-radius: 4px;
+	line-height: 2em;
 }
 .tag:hover {
-  cursor: pointer;
-  background: #222;
+	cursor: pointer;
+	background: #242424;
 }
 .tag + input[type="text"] {
-  margin-top: 0.5em;
-  border: none;
-  -moz-box-shadow:    #6BBBFF 0px 0px 5px 1px;
-  -webkit-box-shadow: #6BBBFF 0px 0px 5px 1px;
-  box-shadow:         #6BBBFF 0px 0px 5px 1px;
+	margin-top: 0.5em;
+	border: none;
+	-moz-box-shadow: #6BBBFF 0px 0px 5px 1px;
+	-webkit-box-shadow: #6BBBFF 0px 0px 5px 1px;
+	box-shadow: #6BBBFF 0px 0px 5px 1px;
 }
-
+/* styled errors */
 #error {
-  width: 20em;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-left: -10em;
-  margin-top: - 5em;
-  font-size: 300%;
-  color: #CC0000;
-  background: #242424;
-  padding: 3em;
-  text-align: center;
+	width: 20em;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -10em;
+	margin-top:  - 5em;
+	font-size: 300%;
+	color: #CC0000;
+	background: #242424;
+	padding: 3em;
+	text-align: center;
+}
+/* styled likes and dislikes */
+.likes-dislikes {
+	display: inline-block;
+	background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #000000 100%);
+	width: 100%;
+	color: #FFF;
+	padding: 0 1em;
+	margin-top: -1.75em;
+	position: relative;
+	text-align: right;
 }
 
-.likes-dislikes {
-  display: inline-block;
-  background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #000000 100%);
-  width: 100%;
-  color: #FFF;
-  padding: 0 1em;
-  margin-top: -1.75em;
-  position: relative;
-  text-align: right;
-}
-.green {
-  color: lime;
-}
-.red {
-  color: #CC0000;
-}
 select {
-  width: 100%;
+	width: 100%;
 }
 
 .block.list small.dark {
-  background: #242424;
+	background: #242424;
 }
 
 .block.list button {
-  outline: none;
-  border: none;
-  width: 5em;
-  display: inline-block;
-  margin-right: 0.5em;
-  color: #FFF;
-  border-radius: 3px;
-  font-family: "Lato", sans-serif;
-  font-size: 70%;
-  padding: 0.25em 0.5em;
-  text-transform: uppercase;
+	outline: none;
+	border: none;
+	width: 5em;
+	display: inline-block;
+	margin-right: 0.5em;
+	color: #FFF;
+	border-radius: 3px;
+	font-family: "Lato", sans-serif;
+	font-weight: 300;
+	font-size: 70%;
+	padding: 0.25em 0.5em;
+	text-transform: uppercase;
 }
 .block.list button:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 .block.list a button {
-  background: #00CC00;
+	background: #00CC00;
 }
 .block.list input + button {
-  background: #CC0000;
+	background: #CC0000;
 }
-
+/* specific layout for basic articles */
 .block.list.basic-layout ol li {
-  width: 48%;
-  margin: 1%;
-  float: left;
+	width: 48%;
+	margin: 1%;
+	float: left;
 }
 .block.list.basic-layout .square-thumb, .block.list.column-layout .square-thumb {
-  width: 100%;
+	width: 100%;
 }
-
+/* specific layout for column articles */
 .block.list.column-layout ol li {
-  width: 24%;
-  margin: 0.5%;
-  float: left;
+	width: 24%;
+	margin: 0.5%;
+	float: left;
 }
-
 .content .block.list.column-layout .square-thumb + h4 {
-  width: 100%;
+	width: 100%;
 }
-
 .content > .block.column-layout {
-  width: 25%;
+	width: 25%;
 }
