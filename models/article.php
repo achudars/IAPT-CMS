@@ -1,8 +1,6 @@
 <?php
 	class Article {
-		 // Class properties and methods go here
-
-		 // Fields
+		
 		 public $article_id;
 		 public $article_title;
 		 public $article_content;
@@ -11,8 +9,19 @@
 		 public $article_status;
 		 public $article_type;
 		 public $article_staff_pick;
-
-		 // Constructor of class Article
+		
+		 /**
+		 * Constructs the Article class
+		 * @param int $article_id 
+		 * @param string $article_title
+		 * @param string $article_content
+		 * @param timestamp $article_timestamp
+		 * @param string $article_image which is a URL to an image hosted somewhere on the internet
+		 * @param string $article_status
+		 * @param string $article_type
+		 * @param int $article_staff_pick
+		 * @access public
+		 */
 		 public function __construct($article_id, $article_title, $article_content, $article_timestamp, $article_image, $article_status, $article_type, $article_staff_pick){
 		 	$this->id = $article_id;
 		 	$this->title = $article_title;
@@ -22,14 +31,15 @@
 		 	$this->status = $article_status;
 		 	$this->type = $article_type;
 		 	$this->staff_pick = $article_staff_pick;
+		 	
 		 	return true;
 		 }
 
 		 /** Getter Methods */
 
 		 /**
-		  * Getter Method: get the title of the Article
-		  * @return the title of the Article
+		  * Getter Method: get the ID of the Article
+		  * @return the ID of the Article
 		  */
 		 public function getArticleId(){
 		 	return $this->id;
@@ -84,16 +94,12 @@
 		 }
 
 		 /**
-		  * Getter Method: get the type of the Article
-		  * @return the type of the Article
+		  * Getter Method: get the value of the staff pick of the Article
+		  * @return the value of the staff pick of the Article
 		  */
 		 public function getStaffPickedArticle(){
 		 	return $this->staff_pick;
 		 }
 	}
-
-/*	function getArticleRating($article_id) {
-        $this->model->getArticleRating( $article_id );
-    }*/
 
  ?>
