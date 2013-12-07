@@ -2,15 +2,15 @@
 
 session_start();
 
-/*  @IAPT Bring in the includes - the list was getting kind of long and is needed on most pages,
-*   so let's bring it in one file just to make including a do-it-once */
+// the link includes all manadatory 'includes'
 require_once 'config/includes.php';
 
-/*  @IAPT Let's get our URL and find out to what page we should be directing */
-//echo $url = $_GET['url'];
+// Get URL and find out to what page we should be directing
 $page = $_GET['page'];
+// get show parameter when viewing single articles
 $show_id = $_GET['show'];
 
+// display single article
 if (!empty($show_id)) {
 
     $articlesModel = new ArticlesModel();
@@ -28,12 +28,11 @@ if (!empty($show_id)) {
     echo $view->output_one_article( $show_id );
 
 } else if (!empty($page)){
-
-    /*  @IAPT For each of the pages in our website, we create a view, a controller and a model.  When
-    *   someone requests the page, we instnce a version of each of those to run the page */
-
+	
+     // based on page create the relevant Model, View and Controller
      switch ($page) {
         case "home":
+			// home page
             $articlesModel = new ArticlesModel();
             $usersModel = new UsersModel();
             $controller = new AUController( $articlesModel, $usersModel );
@@ -44,6 +43,7 @@ if (!empty($show_id)) {
             $model = new RegisterModel();
             $controller = new RegisterController($model);
             $view = new RegisterView($controller, $model);
+			// if action is set, register user
             if ( isset($_GET['action']) ) {
                 $controller->registerUser();
             }
@@ -53,9 +53,12 @@ if (!empty($show_id)) {
             $model = new LoginModel();
             $controller = new LoginController($model);
             $view = new LoginView($controller, $model);
+			// if action is set, register user
             if ( isset($_GET["action"])) {
+            	// if action is set and is 'login', log user in
                 if( $_GET["action"]=="login") {
                     $controller->login();
+				// if action is set and is 'logout', log user out
                 } else if( $_GET["action"]=="logout") {
                     $controller->logout();
                 }
@@ -63,6 +66,7 @@ if (!empty($show_id)) {
             echo $view->output();
             break;
         case "add":
+			// page to add an article
             $articlesModel = new ArticlesModel();
             $usersModel = new UsersModel();
             $controller = new AUController( $articlesModel, $usersModel );
@@ -75,6 +79,7 @@ if (!empty($show_id)) {
             echo $view->output_article_fields();
             break;
         case "edit":
+			// page to edit an existing article
             $articlesModel = new ArticlesModel();
             $usersModel = new UsersModel();
             $controller = new AUController( $articlesModel, $usersModel );
@@ -101,15 +106,20 @@ if (!empty($show_id)) {
             $view = new AUView( $controller, $articlesModel, $usersModel );
             if ( isset($_GET['type']) ) {
                 if ( $_GET["type"]=="basic") {
+                	// link to basic articles
                     echo $view->output_basic_articles();
                 } else if ( $_GET["type"]=="column") {
+                	// link to column articles
                     echo $view->output_column_articles();
                 } else if ( $_GET["type"]=="review") {
+                	// link to review articles
                     echo $view->output_review_articles();
                 } else if ( $_GET["type"]=="my") {
+                	// link to articles the user has contributed to
                     echo $view->output_my_articles();
                 } else if ( $_GET["type"]=="all") {
                     if ( isset($_GET['action']) ) {
+                    	// call different function if action is set
                                if ( $_GET["action"]=="change_article_status") {
                             $controller->changeArticleStatus();
                         } else if ( $_GET["action"]=="edit_article") {
@@ -117,7 +127,7 @@ if (!empty($show_id)) {
                         } else if ( $_GET["action"]=="delete_article") {
                             $controller->deleteArticle();
                         } else if ( $_GET["action"]=="search_articles") {
-                            // filtered stuff
+                            // filtered stuff from search
                             echo $view->output_found_articles();
                             break;
                         }
@@ -133,7 +143,7 @@ if (!empty($show_id)) {
 
     }
 } else {
-    //include 'home.php';
+	// redirection to home in URL invalid
     header("Location: index.php?page=home");
 }
 
