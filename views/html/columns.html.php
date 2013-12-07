@@ -1,4 +1,4 @@
-<?php $columns = ["PC","PS","XBOX", "MOBILE"]?>
+<?php $columns = ["PC","PS","XBOX", "MOBILE"]; ?>
 <div class="content">
     <?php foreach ($columns as $key => $column_name) { ?>
     <div class="block column-layout">
@@ -15,7 +15,7 @@
                                 <?php print $author['user_name']; ?> |
                             <?php endforeach; ?>
                         </small>
-                        <small>on <?php echo date("l jS", $article->getArticleTimestamp()); ?></small>
+                        <small>on <?php echo date("G:i l jS", $article->getArticleTimestamp()); ?></small>
 
                         <div class="small-thumb" style="background-image: url(<?php echo $article->getArticleImage(); ?>);"></div>
                         <small class="likes-dislikes pull-right">

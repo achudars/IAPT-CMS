@@ -1,12 +1,11 @@
-
-
+<!-- content viewable only to publishers -->
 <div class="content">
     <div class="block user-list">
         <ol>
             <li class="list-header">
                 <h1>ADMIN DASHBOARD</h1>
-
             </li>
+            <!-- displays all users -->
             <?php foreach((array)$users as $user): ?><li>
 
                 <p><?php echo $user->getUserId(); ?></p>

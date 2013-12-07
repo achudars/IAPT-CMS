@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CMS</title>
-    <link rel="shortcut icon" href="public/images/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- I am against ugly default fonts, hence resorting to Lato -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 </head>
 <body>
@@ -39,6 +39,7 @@
     </header>
     <nav>
         <ul class="navlist">
+        <!-- adds active class based on the view -->
         <?php
                 $url = "$_SERVER[REQUEST_URI]";
                 $parts = parse_url($url);
@@ -59,7 +60,7 @@
             <li <?php echo $column_articles ?> ><a href="?page=articles&type=column">column articles</a></li>
             <li <?php echo $review_articles ?> ><a href="?page=articles&type=review">review articles</a></li>
 
-
+			<!-- content visible based on user role -->
             <?php if( isset($_SESSION['user_role']) ) { ?>
                 <?php if ( $_SESSION['user_role']=="writer" || $_SESSION['user_role']=="editor" || $_SESSION['user_role']=="publisher" ) { ?>
 
